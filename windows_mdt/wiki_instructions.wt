@@ -1,0 +1,463 @@
+__TOC__
+
+MDT with Windows 10 Enterprise Process. '''We strictly follow Microsoft Docs, and this page is the best:''' https://docs.microsoft.com/en-us/windows/deployment/deploy-windows-mdt/deploy-a-windows-10-image-using-mdt#step-5-prepare-the-drivers-repository
+
+An older alternative method is [[MDT 20H2 Galvin Method]] as well (not reccomended).
+
+Follow the steps on this page from top to bottom to build your MDT environment.
+
+==Download the ISOs from Microsoft Volume License Center ==
+
+* Login to Microsoft VLSC (https://www.microsoft.com/Licensing/servicecenter/Downloads/DownloadsAndKeys.aspx), and download the ISO's into '''\\lm-nas\ISO''' for: 
+#Windows10Pro/Edu English  '''<--- UPDATED OFTEN''' . Pro includes the "Enterprise WIM" which we will use our LTSB license on.
+#Windows10Pro/Edu Japanese '''<--- UPDATED OFTEN''' 
+#Windows 10 LXP ISO MultiLangAll32/64 (Not updated often)
+#Windows 10 LXP ISO MultiLanguage32/64 '''<--- UPDATED OFTEN'''
+#Windows 10 FOD ISO Disc1, and Disc2 (Not updated often)
+
+* Make sure you download the support LXP for that version of windows, everything is documented on the website, for example see:
+[[File:Fod-supportedversion.png|700px]][[File:Fod-supportedversion2.png|700px]]
+
+==Create the MDT VM==
+
+* Install Windows Server VM (Using a Windows Server 2012 or higher).
+# Ensure it has a big C drive (400gb).
+# Ensure it has vmware-tools installed b/c a lot of disk IO required for MDT.
+# Windows Update it COMPLETELY.
+# Windows2012 Powershell4 to Powershell5 Required: If you are using Windows 2012, please update Powershell to at least v5.0:
+  $ProgressPreference=0 
+  wget https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu -out Win8.1AndW2K12R2-KB3191564-x64.msu 
+  ... Then Double Click the installer. (If you use WSUS this is already in it).
+
+* To open the BDD.log files in the C:\MDTShare$\ Logs, you will need the "Trace32" GUI in:
+  choco install sccmtoolkit
+  #Or you can do "gc -wait C:\MDTBuildLab\Logs\BDD.log" after MDT is set up with Dynamic Logging
+
+==Install MDT/ADK Software==
+
+* (On the MDT Server): Before installing MDT, you will need the .NET 3.5 Feature to be installed. This is to enable the http://lm-mdt.lm.local:9801/MDTMonitorData/ webpage, and MDT Monitoring section of the GUI. To install .NET 3.5, use the internet or mount the DVD, then use server manager with the last step of sources to use the WindowsServer DVD Install Disk of K:\sources\sxs (or similar). After installing 3.5, it is a good idea to reboot before proceeding to install MDT. '''Also: Note that McAfee may cause issues with the webserver responding so you may need to adjust rules or uninstall it from mdt server'''.
+
+* (On the NAS): Download the latest Windows 10 ISO of Windows 10 Pro/Edu (example Windows 10 20H2.1 from downloaded the Microsoft VLSC Webpage. (I always get the x64 english, x64 japanese, FoD Disk1, FoD disk2, and MultiLanguage-All ISOs from the VLSC download page).
+
+* (On the MDT Server): Install WINDOWSADK then MDT (You MUST use the website http://docs.ms to do this, I usually do choco install for this part). Or you can lazily use chocolatey (which is fine) via first confirming with website that chocolatey matches the latest, then you can install chocolatey client(http://chocolatey.org/); then run these commands):
+  choco install windows-adk-all
+  choco install mdt
+
+* If you have a previously existing DeploymentShare, go ahead and open up mdt, upgrade the share, then close it, and proceed to the next step to fix the bootloop dll error.
+
+* Next install the Fix for PXE Installing on nonUEFI for W2004Above from: https://support.microsoft.com/en-us/help/4564442/windows-10-deployments-fail-with-microsoft-deployment-toolkit   '''(Remember to copy the file microsoft.bdd.utility.dll to ALL BELOW)''':
+  C:\Program Files\Microsoft Deployment Toolkit\Templates\Distribution\Tools\x64
+  C:\Program Files\Microsoft Deployment Toolkit\Templates\Distribution\Tools\x86
+  ... then right click and update deployment share, and '''checkmark "Regenerate a completely new boot image", and import it into WDS'''
+
+==Installing the WDS Role==
+* Ensure that you are on the network static IP, and DNS is set up correctly before proceeding.
+* Ensure that your MDT (WDS Server) is Domain Joined as we will need this for shared folder access later.
+* Disable the MS Firewall (or allow what is needed through).
+* Server Manager > Manage > Add Role > Use the Wizard to add the "Windows Deployment Services Role" 
+* Server Manager > Tools > WDS > Servers > YOUR_MDT_SERVER > Right click Configure > Go through the wizard and use:
+#Integrated with AD
+#default dir C:\remoteinstall (this is the WDS FOLDER, not the MDTBuildLab), hit yes to the popup of using C:\ root volume.
+# Respond to all client computers  known and unknown (no need to checkmark Require Admin Permission to PXE...)
+# Finish 
+
+==Installing the SYSLINUX PXE Menu==
+* Follow these steps to ensure Syslinux is installed now that we created a default C:\remoteinstall, see: THE LM WIKI FOR MORE INFORMATION
+
+==Installing the DHCP Option66 and Option 67 Filter to support UEFI and BIOS Boots==
+Using this guide, you can pxe both legacy BIOS and UEFI machines: https://medium.com/visitedspace/pxe-boot-both-legacy-bios-and-uefi-96ecf95a504
+
+New desktop systems now come with UEFI instead of the traditional BIOS. We provision and manage our desktop systems using Microsoft MDT.
+
+The screens for your DHCP Vendor Class, and DHCP Policies, for supporting both BIOS and UEFI should now be like these:
+
+[[File:DHCP POLICY.png|400px]]
+[[File:PXEClient UEFI x64 vendor class equals.png|400px]]
+[[File:UEFI Boot file is wdsmgfw.efi.png|400px]]
+[[File:Vendor Class policy.png|400px]]
+[[File:bios client.png|400px]]
+[[File:option 67 is twice once for bios and once for uefi.png|400px]]
+[[File:pxeclientarch.png  |400px]]
+[[File:uefi client.png|400px]]
+[[File:vendor class.png|400px]]
+
+==Installing the Boot Images==
+* Next you can add your MDT Boot CD to "Boot Images"
+* WDS > Servers > YOUR_MDT_SERVER > Right click Properties > "Boot Tab" > Checkmark both "Continue the PXE unless user presses ESC key" > "DHCP" Tab > Checkmark "do not listen on DHCP ports" 
+* Right click the WDS Server > Properties > TFTP Tab > Maximum Block Size = 16384(If you want to try super fast pxe), or blank for defaults ''(I dont usually do this because HQ is... Weird).'' ; AND UNCHECK THE Variable TFTP Checkbox
+* Right click restart WDS Services
+
+==Import the ISOs into MDT==
+
+* Double click the latest ISO to mount it as the E:\ Drive
+
+* Open the MDT Gui, and open the MDT Deployment Share (C:\DeploymentShare)
+
+* Create 2 folders: (Name it with the folder name matching your version of Windows 10 ISO)
+#MDT Deployment Share >> Operating Systems >> Windows 10 >> OFFICIAL_ISO >> "ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX" 
+#MDT Deployment Share >> Operating Systems >> Windows 10 >> CUSTOM_LM_IMAGES >> "ENT_2004.1" >> "Injected"
+#MDT Deployment Share >> Operating Systems >> Windows 10 >> CUSTOM_LM_IMAGES >> "ENT_2004.1" >> "Final_Reference_Image"
+
+* Import the Original ISO into the OFFICIAL ISO folder's ENT subfolder:
+#Rclick "ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX" 
+#Import operating system 
+#full set of files 
+#source directory: E:\ 
+#Destination directory name: '''ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX''' 
+#next 
+#finish (takes 3 minutes)
+#now delete (checkmark force) all the WIM files it imported EXCEPT: '''Windows 10 Enterprise in ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX install.wim'''
+[[File:Mdt-delete-all-leaving-only-one-behind.png|700px]]
+
+* Now check on the MDT server and confirm that this folder was created:
+  C:\DeploymentShare\Operating Systems\ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX\sources
+  ... You should see a huge file called 'install.wim' in here. This is the original wim.
+  ... We will now inject the languages/features into this wim and import it to the "Injected"...
+
+* '''IMAGEINDEX''': Next lets open the install.wim once, and confirm the INDEX of the Installer that Microsoft used. Normally the '''IMAGEINDEX:''' is:
+  Win10Ent ENGLISH = Index 3
+  Win10Ent JAPANESE = Index 2
+
+* '''IMAGEINDEX''': Confirm the Above INDEX via, rightclicking the "Windows 10 Enterprise in ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX install.wim" in the MDT GUI, and you will see a Image index value. We will need this for the DISM Mount image command in the powershell below. '''Take note of this index number now and remember it.'''
+
+* You can also see the Version number here, you can copy that and rename OFFICIAL_ISO\ENT_20H2_10.0xxx to this new name, for example: ''ENT_20H2.1_ENGLISH_10.0.19041.631''
+
+* NOW...
+
+* Repeat IMPORT a second time... into CUSTOM_LM_IMAGES >> "ENT_20H2.1" >> "Injected". NOTE: This Injected folder also has a install.wim, we will be modifying it and injecting LXP/FODs now, using the version number we found. Example '''ENT_20H2.1_ENGLISH_WITH_INJECTED_LXP+FOD'''.
+
+==Inject the Languages and FeatureOnDemands into the install.wim==
+
+* Next open VSCode or ISE and open the file:
+  C:\DeploymentShare\Scripts\LM\Inject-LXP-FOD-IntoWIM.ps1
+
+* Look at the top of the script and now make a copy of the line, and change the $TARGETWIMDIR to the "Injected" WIM path:
+  $TARGETWIMDIR = 'C:\DeploymentShare\Operating Systems\ENT_20H2.1_ENGLISH_10.0.XXXXX.XXX\sources'
+
+* Uncomment the Mount-Image command for the english OR the japanese, and make sure the correct /Index:# matches the '''IMAGEINDEX''' number we verified from the install.wim previously.
+
+* Next, keep these pages open, in case you need to reference:
+# https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/add-language-packs-to-windows
+# https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/available-language-packs-for-windows
+# https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/available-language-packs-for-windows#language-interface-packs-lips
+
+
+* Next Point the $LXPISO, $FODISO1, $FODISO2 to the correct language pack (docs.ms will tell you exactly which one). Remember that, LXPISOs are updated often.:
+<pre>
+#LXP and FODs for 20H2.1:
+$LXPISO1 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
+$LXPISO2 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_10C_LXP_ONLY_X22-44318.ISO'
+$FODISO1 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
+$FODISO2 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
+</pre>
+
+* Next uncomment the below depending on which language you are using:
+<pre>
+#Set Language and SKU Defaults (choose english or japanese appropriately)
+# Dism /Image:"C:\mount\windows" /Set-AllIntl:ja-jp  /Set-SysLocale:ja-jp /Set-UILang:ja-jp /set-userlocale:ja-jp
+# Dism /Image:"C:\mount\windows" /Set-SKUIntlDefaults:ja-jp 
+Dism /Image:"C:\mount\windows" /Set-AllIntl:en-us  /Set-SysLocale:en-us /Set-UILang:en-us /set-userlocale:en-us
+Dism /Image:"C:\mount\windows" /Set-SKUIntlDefaults:en-us 
+</pre>
+
+* Save the script now.
+
+* Make a backup of install.wim just in case, before we run the script to inject.
+
+* Open Powershell as INSERT_YOUR_USERNAME_HERE NOW.
+
+* Launch the script carefully one line at a time to make sure no errors ocurred. ''I recommend using VSCode with Powershell Addon, and using the integrated shell (in a escalated VSCode), and highlighting a few lines at a time and running them in the console at the bottom.''
+
+* It takes about 1 hour or so to perform all the steps in the Inject-LXP+FOD.ps1 script.
+
+* When you have finished, you should now have a modified install.wim with the languages and features injected. If everything is ok with the install.wim, you can delete the backup install.wim, before the next step.
+
+
+==Creating the CIFS Shares on MDT==
+* Share out the C:\MDTBuildLab and C:\MDTBuildLab as open as possible now via Windows Explorer ''(Use both Share and Advanced Share Buttons in the properties window)''
+
+==Create the Task Sequence: BLD-W10E-REF20H2 ==
+
+* Open the MDT GUI > Task Sequences
+
+* Rclick > New Task Squence
+  Task seq ID: BLD-W10E-REF20H2
+  Task seq name:BLD-W10E-REF20H2
+* Standard Client Task Sequence
+* Select Wim file: OperatingSystems\Windows10\CUSTOM_LM_IMAGES\ENT_20H2.1\Windows10Enterprise_20H2.1_ENG_INJECTED.wim
+* No product key > next
+* organization: lm, defaults > next
+* Password: P@
+* Next > Finish
+
+==Enable Application Filtering for specific Task Sequences to show/hide apps==
+Source for this script change is in: https://techcommunity.microsoft.com/t5/windows-blog-archive/revisiting-lti-deployment-wizard-application-selection-profiles/ba-p/706633
+
+* Make a backup, and open the '''C:\DeploymentShare\Scripts\DeployWiz_Applications.vbs''' 
+* Ensure that the below line is moved out of the "Global Function" area at the top --> a few lines below into the "Function IsThereAtLeastOneApplicationPresent, like so:
+<pre>
+' Global Area
+Dim g_sApplicationDialog
+
+   ' Function Area
+   Function IsThereAtLeastOneApplicationPresent
+
+   'MOVED TO HERE: (This global variable needs to not be global)
+   Dim g_oXMLAppList
+
+   Dim oXMLAppList
+   Dim oXMLCollection
+   Dim oTaskList
+   Dim oAction
+   Dim oShell
+   '... and so on.
+</pre>
+
+* Modify this line from...
+  g_oXMLAppList.sSelectionProfile = oEnvironment.Item("WizardSelectionProfile")
+  to:
+  g_oXMLAppList.sSelectionProfile = oEnvironment.Substitute("%TaskSequenceID%")  
+
+
+* And a new additional "If" block is is added (Right before the 'If dXMLCollection.count' existing block, so now there are 2 if blocks)
+<pre>
+	'LM (New "If" Block) for Application Checkbox Filtering
+	If dXMLCollection.count = 0 then
+		g_oXMLAppList.sSelectionProfile = oEnvironment.Item("WizardSelectionProfile")
+		Set dXMLCollection = g_oXMLAppList.FindItems
+	End if
+</pre>
+
+* Now create a Selection Profile with the same name as %TaskSequenceID%, and you can check mark what APPS will Appear. We made a "Optional" Folder in "\Applications" via the MDT GUI, and moved "McAfee Agent" and "VMware Tools" into this, then created a Selection Profile with the same Name as the task sequenceID for the DPL- sequences (because these already have Office,WSUSPatched,EUorLMApps), and this selection profile only has "\Applications\Optional" checkmarked. Repeated for the other DPL-W10J-ENT as well.
+
+==Add the LM Custom Task Sequence Scripts ==
+* Now Rclick the newly created BLD-W10E-REF20H2 > Properties
+* Scroll down to "State Restore", and create a folder called "@LM SCRIPTS@" after the "Opt In to CEIP and WER" so that it looks like:
+[[File:Lm-scripts-mdt.png|700px]]
+* Add all of these Sub-tasks Scripts to the LM folder you made (check "continue on error" FOR EVERY TASK YOU ADD):
+# %SCRIPTROOT%\LM\PointToWSUSLowSideServer.ps1
+# %SCRIPTROOT%\LM\Install-WindowsUpdatesFromWSUS.ps1
+# Restart-Computer
+# %SCRIPTROOT%\LM\Enable-JP-ForceLoginToJapanese.ps1  <-- if the task sequence if for JP Image
+# Install Roles/Features for .NET Framework 3.5
+# Install Application: Visual C++ 2005 SP1 – x86-x64 (VBS)
+# Install Application: Visual C++ 2008 SP1
+# Visual C++ 2010 SP1
+# Install Application: Visual C++ 2012 – x86-x64
+# Install Application: Visual C++ 2013 – x86-x64
+# Install Application: Visual C++ 2014 – x86-x64
+# Install Application: Visual C++ 2015 – x86-x64
+# Install Application: Visual C++ 2017 – x86-x64
+# Install Application: Microsoft Office2013
+# Install Application: Visio Standard 2013
+# %SCRIPTROOT%\LM\Inject-ChocoClient-IntoWIM.ps1
+# %SCRIPTROOT%\LM\Disable-TelemetryCEIP.ps1
+# %SCRIPTROOT%\LM\Disable-OneDrive.ps1
+# %SCRIPTROOT%\LM\Install-WindowsUpdatesFromWSUS.ps1
+
+* Click OK 
+* Right click the deployment share and update the share.
+* It will create a \Boot iso, that you can now import into the ServerManager\WDS GUI boot images. Import it.
+
+==Settings for Unattend.xml (For Japanese Build ONLY) ==
+See this for reference: https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/automate-oobe
+
+*1. Open up the MDT GUI >> C:\DeploymentShare > Task Sequences > Right click the "BLD-W10J-REF1909" > Properties 
+*2. OS Info > Edit Unnattend.xml > Takes 10 Minutes To Open > (This should open WSIM, if it errors, Reboot the MDT server and open the install.wim once with WSIM then close it, and try this button in MDT again)
+*3. In the Unattend.xml in WSIM Gui > Answer File, set these for '''Unattend\Components\7oobeSystem\amd64_MS-Windows-International-Core_neutral''':
+  ** Input Locale: 0411:00000409   (to set to Japanese Input Locale)
+  ** SystemLocale/UILanguage/UserLocale: ja-JP  (or en-US if english is default user account you want)
+
+==Import Drivers into MDT==
+
+* Download Drivers via...
+
+* A) Get the Dell Driver Pack or HP Driver Pack CAB for your device using the serial number at and the webpage. 
+
+  1) Dell Command Deploy Driver Pack Webpage
+  https://www.dell.com/support/kbdoc/en-us/000124139/dell-command-deploy-driver-packs-for-enterprise-client-os-deployment
+  2) HP Driver Pack Webpage
+  https://www.hp.com/us-en/ads/clientmanagement/drivers-pack.html
+
+...or....
+
+* B) If it is not included, download each driver manually and unzip to a folder.
+  We did this for XPS8700 in:
+  \\lm-nas.lm.local\INSERT_YOUR_NASNFSSHARE_HERE\software\Dell\Dell Drivers\Dell Drivers XPS8700_Win10Drivers\Version 20210928
+
+
+* Open up MDT GUI > Out-of-box Drivers > Windows 10 > Dell > XPS 8700 (or similar) > create a folder with todays date.
+
+* Rclick this folder and select import drivers, and browse to the NAS to import them. For a 2.9 gig folder, it took about 30 minutes to ingest.
+
+[[File:2021-09-28 13 07 07-lm-mdt (215) - VMware Workstation.png| 700px]]
+
+* FINALLY, Dont forget to '''Right click the deployment share and update the share.''' (This will take a while because you are adding drivers into the PE boot image as a result as well.
+
+==Import Boot Disk into WDS==
+
+* Open the MDT Gui
+
+* Right click the MDT Deployment Share > Update
+
+* It will build ISOs into C:\DeploymentShare\Boot
+
+* You will need the LiteTouchPE_x64.iso (and x86)
+
+* Ensure that the Windows Deployment Service Role is installed (via start>run>servermanager>tools>add role). 
+
+* Ensure that your service is started in the WDS Gui with a green checkmark.
+
+* Ensure that your service PXE Response is set to "Respond to all client computers" in the WDS Gui (WDS Server Properties).
+
+* Ensure that your Boot is set to "Continue the PXE boot unless the user presses the ESC key" for both known and unknown clients (WDS Server Properties).
+
+* Open the WDS Gui > Servers > YOURSERVER > Boot Images > Right click > Add Boot Image > Select the LiteTouchPE_x64.iso > Next > defaults > defaults > Finish.
+
+* Test a F12 pxe vm and you should see the SYSLINUX menu configured with the MDT LiteTouch as pxeboot.0. See our instructions for using Syslinux to host a menu that chainloads to MDT or spacewalk/cloud-init: ==> [[How to Make a WDS SERVER become a SYSLINUX PXE SERVER]]
+
+==POSTINJECT "High Side Special Apps" ==
+* After kicking a BLD Sequence, checkmarking chocolatey config (ADMIN or EU), McAfee, and option VMwareTools or Graphic Card Drivers, we should have a full image with APPS. Note if you run "wmic qfe list" at this point, you should also have several WSUS Updates which match internet side).
+
+* Now we need to do many "Special App Configurations" only for the {{highlight| HIGH SIDE}}:
+
+=== McAfee Client + McAfee Agent (ePo) - SHOULD NOT BE IN DPL IMAGE!!!!!!!!!!! ===
+Note: McAfee Agent is a UUID based install, so it should not be in the DPL image which you plan to capture, but as a checkbox in MDT for Post Installation.
+* McAfee ePo Client (See McAfee wiki instructions for installing a epo client AFTER the standalone TP client is installed). The process is to install the standalone client, build a ePolicy server, then install the agent built by the ePolicy server. We chocolatized this to just be 1 line: "choco install -yf mcafee-agent-or (or mcafee-agent-hq, or mcafee-agent-lm for low)".
+
+FOR FULL INFORMATION SEE ==> [[McAfee_ePolicy_Orchestrator_Notes]]
+
+=== Extra EU Apps (High Side) ===
+* Legacy Kashmir EU Approved Version from Ornas01 (new version is only cloud based).
+* Logovista Britanica 2015
+* Logovista Translation 2016 (Korya 2016M)
+* Encarta 2004 (HQ Mandated this app as required) + Encarta Bookshelf
+* i8 Analyst Notebook
+* OpenText Exceed 14
+* Ogata-san Software Load into C:\SoftwareDevelopment
+
+=== Locale / Welcome Screen for JP Images===
+'''This is has already been automated by our Inject script''', but regardless is here for documentation. All JAPANESE WIM files need to have this on this AFTER installing language cabs, or language LXP's, (Windows 11 included).
+
+See MS DOCS: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/add-language-packs-to-windows#change-your-default-language-locale-and-other-international-settings
+
+This is done via:
+*DISM Mount the Japanese WIM file. See the [[MDT WIM Injection Powershell Script]], that we normally have in the MDT Deployment Folder, such as ''C:\DeploymentShare\Scripts\LM\Inject-LXP+FOD-IntoWIM.ps1''
+  (before or after capture - both times work). 
+  (Remember DISM ADK is required, not the default DISM for this language pack (see above MS Doc)).
+  (Remember that Windows System Image Mounter, and MDT Gui might need to be closed to mount).
+*Run this command, then commit the wim changes:
+  Dism /Image:"C:\mount\windows" /Get-Intl
+  Dism /Image:"C:\mount\windows" /Set-AllIntl:ja-jp
+  Dism /Image:"C:\mount\windows" /Get-Intl
+
+=== Hibun Encryption DE Software - MUST BE IN DPL IMAGE===
+Note: Hibun SHOULD be in the '''EU''' DPL image, not a checkmark b/c EU uses Hibun everywhere (their policy).
+
+* Manually install HIBUN using the the v030126.zip or higher file (on the high side only). (See high side Instructions.txt note in the ornas01\software\cots\hibun folder). After installing it remember to disable SecureFS via renaming the post installed directory of '''"C:\Program Files\HitachiSolutions\SecureFS"'''.
+
+==CAP the Image into a DPL IMAGE Final_Reference_Image==
+
+There are 2 possibilities:
+
+* For Low Side Capture (ex. CAP-W10J-20211007.WIM): 
+  Imported Original ISO, Injected LangPacks and RSAT
+  Created a kick task sequence with LM scripts for Installing .NET, Office2013, etc.. (LM Scripts Folder)
+  Kicked a W10 Image with (LM Apps or EU Apps) + McAfee CHECKMARKED
+  Ran Windows update to make sure it was Fully WSUS patched
+  You can now capture it into a WIM image that we can use as our main image via snapshot, run LiteTouch.vbs from MDT with it normally powered on, and save it to CAP-W10J-20211007.wim
+
+* For {{highlight | High Side}} Capture to be sent to High side (ex. BLD-W10J-20211007.WIM): 
+  Imported Original ISO, Injected LangPacks and RSAT
+  Created a kick task sequence with LM scripts for Installing .NET, Office2013, etc.. (LM Scripts Folder)
+  Ensured that for THIS HIGH SIDE Task Sequence that the following LM Scripts were disabled (since they run on the high side): {{highlight | install-chococlient.ps1, pointto-wsus.ps1, install-pswindows.ps1, install-windowsupdatesfromwsus.ps1, install pipconfig.ps1, install-windowsupdatesfromwsus.ps1}}
+  Kicked a W10 Image with NO APPS & NO MCAFEE CHECKMARKED
+  Ran Windows update to make sure it was Fully WSUS patched
+  You can now capture it into a WIM image that we can use as our main image via snapshot, run LiteTouch.vbs from MDT with it normally powered on, and save it to BLD-W10J-20211007.wim (NOTICE THIS IS A BLD image, because we have to recapture on the high side).
+  On the Highside import the BLD Image, Kick the BLD Image, and now checkmark high-side apps BUT DONT CHECKMARK MCAFEE, Capture this new image as the DPL final image.
+
+After the VM is powered on and logged in (NOT via F12), we will now capture via:
+
+* Clean everything on the Win10, shutdown, take a snapshot now.
+
+* Boot up the Win10.
+
+* Disable McAfee Antivirus (it will always auto-reenable by itself).
+
+* Open a folder explorer to '''\\lm-mdt.lm.local\''' 
+
+* Navigate to '''.\deploymentshare\scripts\'''
+
+* Right click the '''LiteTouch.vbs''' and select '''open with command prompt'''
+
+* Run through the wizard using the "CAP" task sequence, and saving it with a filename needed.
+
+* Wait a long time. When it is done, restore this snapshot (because capture'ing sysprep'ed this vm, and ruined the capture counter registry value).
+
+==Create the Task Sequence: DPL-W10E-REF2XHX==
+
+* Create a new default basic deployment task sequence
+
+* Make it point to your newly created capture file (in .\Captures\CAP-W10E-XXXX.wim.
+
+* Disable the "Apps Page", and the "Capture page" via checkmarking "Disable this step" for:
+
+# State Restore >> Imaging >> Capture WIM >>> Options Tab, Disable
+
+==Reference/Troubleshooting==
+===MDT Logging ===
+To turn on Normal Logging, add this to your "Rules" tab in the Deployment Share:
+  SLShare=\\192.168.0.215\Logs
+
+DANGEROUS / To turn on DYNAMIC Logging (Live Debugging Logging, adds a lot of network traffic to each kick):
+  SLShareDynamicLogging=\\192.168.0.215\Logs
+
+===MDT DeploymentShare Rules (CustomSettings.ini) ===
+
+* Note that the "Monitoring" tab of the MDT Deployment share has to have "Enable Monitoring" checked with the FQDN. Also if it doesnt respond to http://mdt.lm.local:9800/MDTMonitorEvent then you need to uncheck "Enable Monitoring" then Apply then Re-Check then Apply.
+
+* MDT Deployment Share settings are:
+<pre>
+; THIS IS THE MDT SETTINGS ON THE LOW SIDE
+[Settings]
+Priority=Default
+[Default]
+_SMSTSORGNAME=LMLowSide
+UserDataLocation=NONE
+DoCapture=NO
+OSInstall=Y
+AdminPassword=INSERT_YOUR_PASSWORD_HERE
+TimeZoneName=Pacific Standard Time 
+JoinWorkgroup=WORKGROUP
+HideShell=YES
+FinishAction=REBOOT
+DoNotCreateExtraPartition=YES
+WSUSServer=http://192.168.0.116:8530
+ApplyGPOPack=NO
+SLShare=\\192.168.0.215\Logs
+; SLShareDynamicLogging=\\192.168.0.215\Logs
+SkipAdminPassword=YES
+SkipProductKey=YES
+SkipComputerName=NO
+SkipDomainMembership=YES
+SkipUserData=YES
+SkipLocaleSelection=YES
+SkipTaskSequence=NO
+SkipTimeZone=YES
+SkipApplications=NO
+SkipBitLocker=YES
+SkipSummary=YES
+SkipRoles=YES
+SkipCapture=NO
+SkipFinalSummary=YES
+SkipComputerBackup=YES
+EventService=http://lm-mdt.lm.local:9800
+
+; Skip AppSelectionTS for the DPL deployments
+Priority=DPL-W10E-LM1909,DPL-W10J-LM1909,Default
+
+[DPL-W10E-LM1909]
+SelectionProfile=HideAppsButLeaveDrivers
+[DPL-W10J-LM1909]
+SelectionProfile=HideAppsButLeaveDrivers
+</pre>

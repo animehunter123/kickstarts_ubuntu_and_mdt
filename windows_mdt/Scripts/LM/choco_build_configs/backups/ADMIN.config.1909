@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="7zip" />
+
+    <package id="vim" packageParameters='" /InstallDir:C:\Program Files\Vim /NoDesktopShortcuts "' />
+    <package id="paint.net" ignoreDependencies="true" />
+    <package id="python3" ignoreDependencies="true" />
+    <!-- <package id="tightvnc" /> -->
+    <package id="vscode" ignoreDependencies="true" />
+    <package id="wireshark" ignoreDependencies="true" />
+
+    <package id="adobereader" />
+    <package id="adobeshockwaveplayer" />
+    <package id="audacity" />
+    <package id="audacity-ffmpeg" />
+    <package id="audacity-lame" />
+    <package id="autohotkey.install" />
+    <package id="autoit.install" />
+    <package id="cdburnerxp" />
+    <package id="chocolatey" />
+    <package id="chocolateygui" />
+    <package id="cmder" />
+    <package id="cpu-z" />
+    <package id="everything" />
+    <package id="ffmpeg" />
+    <package id="filezilla" />
+    <package id="firefox" />
+    <package id="flashplayernpapi" />
+    <package id="flashplayerppapi" />
+    <package id="foxitreader" />
+    <package id="fsviewer" />
+    <package id="gimp" />
+    <package id="git" />
+    <package id="googlechrome" />
+    <package id="gpu-z" />
+    <package id="gsudo" />
+    <package id="hwmonitor" />
+    <package id="hxd" />
+    <package id="imageresizerapp" />
+    <package id="irfanview" />
+    <package id="javajre8" />
+    <package id="jwpce" />
+    <package id="k-litecodecpackfull" />
+    <package id="lame" />
+    <package id="lockhunter" />
+    <package id="microsoft-edge" />
+    <package id="microsoft-windows-terminal" />
+    <package id="mobaxterm" />
+    <package id="nagios-ncpa" />
+    <package id="NAME" />
+    <package id="netapp-sysmgr" />
+    <package id="notepadplusplus" />
+    <package id="path-copy-copy" />
+    <package id="processhacker" />
+    <package id="pswindowsupdate-psmodule" />
+    <package id="putty" />
+    <package id="python2" />
+    <package id="rufus" />
+    <package id="rvtools" />
+    <package id="silverlight" />
+    <package id="sqlserver-cmdlineutils" />
+    <package id="sqlserver-management-studio" />
+    <package id="sysinternals" />
+    <package id="takoboto" />
+    <package id="telnetclient-feature" />
+    <package id="terminus" />
+    <package id="tightvnc" />
+    <package id="unxutils" />
+    <package id="vcxsrv" />
+    <package id="vlc" />
+    <package id="vmware-powercli-psmodule" />
+    <package id="vmware-vmrc " />
+    <package id="vmware-workstation" />
+    <package id="windirstat" />
+    <package id="winrar" />
+    <package id="winscp" />
+    <package id="wsl " />
+    <package id="wsl2-kernel" />
+
+
+
+    <package id="mcafee" />
+</packages>
+
+
+
+
+
+
+
+<!-- 
+    Old 1909 list was:
+
+    <package id="adobereader" />
+    <package id="adobeshockwave" />
+    <package id="audacity" />
+    <package id="audacity-ffmpeg" />
+    <package id="audacity-lame" />
+    <package id="autohotkey.install" />
+    <package id="autoit.install" />
+    <package id="cdburnerxp" />
+    <package id="cpu-z" />
+    <package id="chocolateygui" />
+    <package id="firefox" />
+    <package id="flashplayernpapi" />
+    <package id="flashplayerppapi" />
+    <package id="foxitreader" />
+    <package id="fsviewer" />
+    <package id="everything" />
+    <package id="ffmpeg" />
+    <package id="filezilla" />
+    <package id="gimp" />
+    <package id="googlechrome-enterprise" />
+    <package id="imageresizer" />
+    <package id="javajre8" />
+    <package id="jwpce" />
+    <package id="k-litecodecpack" />
+    <package id="git.install" />
+    <package id="gpu-z" />
+    <package id="lockhunter" />
+    <package id="hxd" />
+    <package id="irfanview" />
+    <package id="mobaxterm" />
+    <package id="microsoft-edge" />
+    <package id="microsoft-windows-terminal" />
+    <package id="lame" />
+    <package id="netapp-sysmgr" />
+    <package id="nagios-nscp" />
+    <package id="processhacker" />
+    <package id="notepadplusplus.install" />
+    <package id="silverlight" />
+    <package id="sqlserver-cmdlineutils" />
+    <package id="putty.install" />
+    <package id="python2" />
+    <package id="sqlserver-management-studio" />
+    <package id="rufus" />
+    <package id="rvtools" />
+    <package id="sysinternals" />
+    <package id="takoboto" />
+    <package id="unxutils" />
+    <package id="vmware-powercli" />
+    <package id="vmware-workstation" />
+    <package id="winrar" />
+    <package id="vlc" />
+    <package id="windirstat" />
+    <package id="winscp.install" />
+    <package id="wsl" />
+    <package id="cmder" /> -->

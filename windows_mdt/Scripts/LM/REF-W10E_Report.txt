@@ -1,0 +1,255 @@
+Windows Update Report For Computer: REF-W10E
+Report Created On: 06/24/2020 02:52:19
+==============================================================================
+
+List of Applicable Updates For This Computer
+------------------------------------------------
+	 1 -- Update for Microsoft OneNote 2013 (KB2760334) 64-Bit Edition
+	 2 -- Update for Microsoft Office 2013 (KB2817316) 64-Bit Edition
+	 3 -- Definition Update for Microsoft Office 2013 (KB2760587) 64-Bit Edition
+	 4 -- Security Update for Microsoft Office 2013 (KB2768005) 64-Bit Edition
+	 5 -- Update for Microsoft SkyDrive Pro (KB2837652) 64-Bit Edition
+	 6 -- Update for Microsoft Project 2013 (KB2727085) 64-Bit Edition
+	 7 -- Security Update for Microsoft Office 2013 (KB2850064) 64-Bit Edition
+	 8 -- Service Pack 1 for Microsoft Office 2013 (KB2850036) 64-Bit Edition
+	 9 -- Update for Microsoft Office 2013 (KB2760344) 64-Bit Edition
+	 10 -- Update for Microsoft Visio Viewer 2013 (KB2817301) 64-Bit Edition
+	 11 -- Security Update for Microsoft Office 2013 (KB2880463) 64-Bit Edition
+	 12 -- Update for Microsoft Office 2013 (KB2883095) 64-Bit Edition
+	 13 -- Update for Microsoft Office 2013 (KB2760371) 64-Bit Edition
+	 14 -- Update for Microsoft Office 2013 (KB2899522) 64-Bit Edition
+	 15 -- Security Update for Microsoft Office 2013 (KB2726958) 64-Bit Edition
+	 16 -- Security Update for Microsoft Office 2013 (KB2910941) 64-Bit Edition
+	 17 -- Security Update for Skype for Business 2015 (KB3039779) 64-Bit Edition
+	 18 -- Update for Microsoft Outlook Social Connector 2013 (KB3054854) 64-Bit Edition
+	 19 -- Update for Microsoft Office 2013 (KB3023052) 64-Bit Edition
+	 20 -- Security Update for Microsoft Office 2013 (KB3054816) 64-Bit Edition
+	 21 -- Security Update for Microsoft Office 2013 (KB3039798) 64-Bit Edition
+	 22 -- Update for Microsoft Office 2013 (KB3039766) 64-Bit Edition
+	 23 -- Update for Microsoft Office 2013 (KB3039778) 64-Bit Edition
+	 24 -- Update for Microsoft Office 2013 (KB3039701) 64-Bit Edition
+	 25 -- Update for Microsoft Office 2013 (KB3039720) 64-Bit Edition
+	 26 -- Security Update for Microsoft InfoPath 2013 (KB3054793) 64-Bit Edition
+	 27 -- Update for Microsoft Office 2013 (KB3085578) 64-Bit Edition
+	 28 -- Update for Microsoft Office 2013 (KB3085482) 64-Bit Edition
+	 29 -- Update for Microsoft Office 2013 (KB3054819) 64-Bit Edition
+	 30 -- Security Update for Microsoft InfoPath 2013 (KB3114833) 64-Bit Edition
+	 31 -- Update for Microsoft Office 2013 (KB3114488) 64-Bit Edition
+	 32 -- Update for Microsoft Office 2013 (KB3114499) 64-Bit Edition
+	 33 -- Update for Microsoft Office 2013 (KB3039756) 64-Bit Edition
+	 34 -- Update for Microsoft Office 2013 (KB3085587) 64-Bit Edition
+	 35 -- Update for Microsoft InfoPath 2013 (KB3114946) 64-Bit Edition
+	 36 -- Update for Microsoft Office 2013 (KB3023049) 64-Bit Edition
+	 37 -- Update for Microsoft Office 2013 (KB3101503) 64-Bit Edition
+	 38 -- Update for Microsoft Office 2013 (KB3085565) 64-Bit Edition
+	 39 -- Security Update for Microsoft OneNote 2013 (KB3115256) 64-Bit Edition
+	 40 -- Definition Update for Microsoft Office 2013 (KB3115404) 64-Bit Edition
+	 41 -- Update for Microsoft Office 2013 (KB3172523) 64-Bit Edition
+	 42 -- Update for Microsoft Office 2013 (KB3191872) 64-Bit Edition
+	 43 -- Security Update for Microsoft Office 2013 (KB3162051) 64-Bit Edition
+	 44 -- Security Update for Skype for Business 2015 (KB3191937) 64-Bit Edition
+	 45 -- Update for Microsoft Office 2013 (KB3172545) 64-Bit Edition
+	 46 -- Security Update for Microsoft Office 2013 (KB3213564) 64-Bit Edition
+	 47 -- Update for Microsoft Office 2013 (KB3172533) 64-Bit Edition
+	 48 -- Security Update for Microsoft Office 2013 (KB4011580) 64-Bit Edition
+	 49 -- Update for Microsoft Office 2013 (KB3172471) 64-Bit Edition
+	 50 -- Update for Microsoft OneNote 2013 (KB4011281) 64-Bit Edition
+	 51 -- Security Update for Microsoft Visual C++ 2008 Service Pack 1 Redistributable Package (KB2538243)
+	 52 -- Security Update for Microsoft Visual C++ 2005 Service Pack 1 Redistributable Package (KB2538242)
+	 53 -- Security Update for Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (KB2565063)
+	 54 -- Update for Microsoft Visual Studio 2010 Tools for Office Runtime (KB3001652)
+	 55 -- Security Update for Microsoft Office 2013 (KB4018387) 64-Bit Edition
+	 56 -- Update for Microsoft Office 2013 (KB4018378) 64-Bit Edition
+	 57 -- Update for Microsoft Office 2013 (KB2760544) 64-Bit Edition
+	 58 -- Update for Microsoft Office 2013 (KB2760249) 64-Bit Edition
+	 59 -- Security Update for Microsoft Office 2013 (KB4022189) 64-Bit Edition
+	 60 -- Security Update for Microsoft Office 2013 (KB4022188) 64-Bit Edition
+	 61 -- Definition Update for Windows Defender Antivirus - KB2267602 (Definition 1.273.770.0)
+	 62 -- Update for Microsoft OneDrive for Business (KB4022226) 64-Bit Edition
+	 63 -- Update for Microsoft Office 2013 (KB4022212) 64-Bit Edition
+	 64 -- Update for Microsoft Office 2013 (KB4011155) 64-Bit Edition
+	 65 -- Update for Microsoft Office 2013 (KB2827228) 64-Bit Edition
+	 66 -- Update for Microsoft Word 2013 (KB2878319) 64-Bit Edition
+	 67 -- Update for Microsoft Office 2013 (KB3178640) 64-Bit Edition
+	 68 -- Security Update for Microsoft Office 2013 (KB3172522) 64-Bit Edition
+	 69 -- Microsoft Silverlight (KB4481252)
+	 70 -- Update for Microsoft Office 2013 (KB3172473) 64-Bit Edition
+	 71 -- Update for Microsoft Office 2013 (KB4462200) 64-Bit Edition
+	 72 -- Update for Microsoft Office 2013 (KB4011677) 64-Bit Edition
+	 73 -- Security Update for Microsoft Office 2013 (KB4018375) 64-Bit Edition
+	 74 -- Security Update for Skype for Business 2015 (KB4475519) 64-Bit Edition
+	 75 -- Update for Microsoft Office 2013 (KB4475562) 64-Bit Edition
+	 76 -- Update for Skype for Business 2015 (KB4484097) 64-Bit Edition
+	 77 -- Windows Malicious Software Removal Tool x64 - v5.82 (KB890830)
+	 78 -- 2020-06 Cumulative Update for Windows 10 Version 2004 for x64-based Systems (KB4557957)
+	 79 -- 2020-06 Servicing Stack Update for Windows 10 Version 2004 for x64-based Systems (KB4560366)
+	 80 -- 2020-06 Security Update for Adobe Flash Player for Windows 10 Version 2004 for x64-based Systems (KB4561600)
+
+
+Initialising Download of Applicable Updates
+------------------------------------------------
+	 1 -- Downloading Update Update for Microsoft OneNote 2013 (KB2760334) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 2 -- Downloading Update Update for Microsoft Office 2013 (KB2817316) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 3 -- Downloading Update Definition Update for Microsoft Office 2013 (KB2760587) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 4 -- Downloading Update Security Update for Microsoft Office 2013 (KB2768005) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 5 -- Downloading Update Update for Microsoft SkyDrive Pro (KB2837652) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 6 -- Downloading Update Update for Microsoft Project 2013 (KB2727085) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 7 -- Downloading Update Security Update for Microsoft Office 2013 (KB2850064) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 8 -- Downloading Update Service Pack 1 for Microsoft Office 2013 (KB2850036) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 9 -- Downloading Update Update for Microsoft Office 2013 (KB2760344) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 10 -- Downloading Update Update for Microsoft Visio Viewer 2013 (KB2817301) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 11 -- Downloading Update Security Update for Microsoft Office 2013 (KB2880463) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 12 -- Downloading Update Update for Microsoft Office 2013 (KB2883095) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 13 -- Downloading Update Update for Microsoft Office 2013 (KB2760371) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 14 -- Downloading Update Update for Microsoft Office 2013 (KB2899522) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 15 -- Downloading Update Security Update for Microsoft Office 2013 (KB2726958) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 16 -- Downloading Update Security Update for Microsoft Office 2013 (KB2910941) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 17 -- Downloading Update Security Update for Skype for Business 2015 (KB3039779) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 18 -- Downloading Update Update for Microsoft Outlook Social Connector 2013 (KB3054854) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 19 -- Downloading Update Update for Microsoft Office 2013 (KB3023052) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 20 -- Downloading Update Security Update for Microsoft Office 2013 (KB3054816) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 21 -- Downloading Update Security Update for Microsoft Office 2013 (KB3039798) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 22 -- Downloading Update Update for Microsoft Office 2013 (KB3039766) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 23 -- Downloading Update Update for Microsoft Office 2013 (KB3039778) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 24 -- Downloading Update Update for Microsoft Office 2013 (KB3039701) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 25 -- Downloading Update Update for Microsoft Office 2013 (KB3039720) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 26 -- Downloading Update Security Update for Microsoft InfoPath 2013 (KB3054793) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 27 -- Downloading Update Update for Microsoft Office 2013 (KB3085578) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 28 -- Downloading Update Update for Microsoft Office 2013 (KB3085482) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 29 -- Downloading Update Update for Microsoft Office 2013 (KB3054819) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 30 -- Downloading Update Security Update for Microsoft InfoPath 2013 (KB3114833) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 31 -- Downloading Update Update for Microsoft Office 2013 (KB3114488) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 32 -- Downloading Update Update for Microsoft Office 2013 (KB3114499) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 33 -- Downloading Update Update for Microsoft Office 2013 (KB3039756) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 34 -- Downloading Update Update for Microsoft Office 2013 (KB3085587) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 35 -- Downloading Update Update for Microsoft InfoPath 2013 (KB3114946) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 36 -- Downloading Update Update for Microsoft Office 2013 (KB3023049) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 37 -- Downloading Update Update for Microsoft Office 2013 (KB3101503) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 38 -- Downloading Update Update for Microsoft Office 2013 (KB3085565) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 39 -- Downloading Update Security Update for Microsoft OneNote 2013 (KB3115256) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 40 -- Downloading Update Definition Update for Microsoft Office 2013 (KB3115404) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 41 -- Downloading Update Update for Microsoft Office 2013 (KB3172523) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 42 -- Downloading Update Update for Microsoft Office 2013 (KB3191872) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 43 -- Downloading Update Security Update for Microsoft Office 2013 (KB3162051) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 44 -- Downloading Update Security Update for Skype for Business 2015 (KB3191937) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 45 -- Downloading Update Update for Microsoft Office 2013 (KB3172545) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 46 -- Downloading Update Security Update for Microsoft Office 2013 (KB3213564) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 47 -- Downloading Update Update for Microsoft Office 2013 (KB3172533) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 48 -- Downloading Update Security Update for Microsoft Office 2013 (KB4011580) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 49 -- Downloading Update Update for Microsoft Office 2013 (KB3172471) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 50 -- Downloading Update Update for Microsoft OneNote 2013 (KB4011281) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 51 -- Downloading Update Security Update for Microsoft Visual C++ 2008 Service Pack 1 Redistributable Package (KB2538243) 
+	 Download Status: SUCCESS
+	 52 -- Downloading Update Security Update for Microsoft Visual C++ 2005 Service Pack 1 Redistributable Package (KB2538242) 
+	 Download Status: SUCCESS
+	 53 -- Downloading Update Security Update for Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (KB2565063) 
+	 Download Status: SUCCESS
+	 54 -- Downloading Update Update for Microsoft Visual Studio 2010 Tools for Office Runtime (KB3001652) 
+	 Download Status: SUCCESS
+	 55 -- Downloading Update Security Update for Microsoft Office 2013 (KB4018387) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 56 -- Downloading Update Update for Microsoft Office 2013 (KB4018378) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 57 -- Downloading Update Update for Microsoft Office 2013 (KB2760544) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 58 -- Downloading Update Update for Microsoft Office 2013 (KB2760249) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 59 -- Downloading Update Security Update for Microsoft Office 2013 (KB4022189) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 60 -- Downloading Update Security Update for Microsoft Office 2013 (KB4022188) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 61 -- Downloading Update Definition Update for Windows Defender Antivirus - KB2267602 (Definition 1.273.770.0) 
+	 Download Status: SUCCESS
+	 62 -- Downloading Update Update for Microsoft OneDrive for Business (KB4022226) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 63 -- Downloading Update Update for Microsoft Office 2013 (KB4022212) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 64 -- Downloading Update Update for Microsoft Office 2013 (KB4011155) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 65 -- Downloading Update Update for Microsoft Office 2013 (KB2827228) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 66 -- Downloading Update Update for Microsoft Word 2013 (KB2878319) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 67 -- Downloading Update Update for Microsoft Office 2013 (KB3178640) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 68 -- Downloading Update Security Update for Microsoft Office 2013 (KB3172522) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 69 -- Downloading Update Microsoft Silverlight (KB4481252) 
+	 Download Status: SUCCESS
+	 70 -- Downloading Update Update for Microsoft Office 2013 (KB3172473) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 71 -- Downloading Update Update for Microsoft Office 2013 (KB4462200) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 72 -- Downloading Update Update for Microsoft Office 2013 (KB4011677) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 73 -- Downloading Update Security Update for Microsoft Office 2013 (KB4018375) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 74 -- Downloading Update Security Update for Skype for Business 2015 (KB4475519) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 75 -- Downloading Update Update for Microsoft Office 2013 (KB4475562) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 76 -- Downloading Update Update for Skype for Business 2015 (KB4484097) 64-Bit Edition 
+	 Download Status: SUCCESS
+	 77 -- Downloading Update Windows Malicious Software Removal Tool x64 - v5.82 (KB890830) 
+	 Download Status: SUCCESS
+	 78 -- Downloading Update 2020-06 Cumulative Update for Windows 10 Version 2004 for x64-based Systems (KB4557957) 
+	 Download Status: SUCCESS
+	 79 -- Downloading Update 2020-06 Servicing Stack Update for Windows 10 Version 2004 for x64-based Systems (KB4560366) 
+	 Download Status: SUCCESS
+	 80 -- Downloading Update 2020-06 Security Update for Adobe Flash Player for Windows 10 Version 2004 for x64-based Systems (KB4561600) 
+	 Download Status: SUCCESS
+
+
+Installation of Downloaded Updates
+------------------------------------------------
+	 1 -- Installing Update: Update for Microsoft OneNote 2013 (KB2760334) 64-Bit Edition

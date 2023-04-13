@@ -1,0 +1,73 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: localhost
+    username: INSERT_YOUR_USERNAME_HERE
+    password: "$6$6Vzl0s8nx34m65j2$K.F6MsoKAFBK6ehnUtj9Gfhp/oy/U7mlJSkiurOKiaZvJwVDaH8kzRem/HfSl1fNeCmPBfezxz5yENj28b87r0"
+
+  storage:
+    config:
+    - grub_device: true
+      id: disk-sda
+      path: /dev/sda
+      ptable: msdos
+      type: disk
+      wipe: superblock-recursive
+    - device: disk-sda
+      flag: boot
+      id: partition-0
+      number: 1
+      size: 2G
+      type: partition
+    - fstype: ext4
+      id: format-0
+      type: format
+      volume: partition-0
+    - device: format-0
+      id: mount-0
+      path: /boot
+      type: mount 
+    - device: disk-sda
+      id: partition-1
+      number: 2
+      size: -1
+      type: partition
+      wipe: superblock
+    - fstype: ext4
+      id: format-1
+      type: format
+      volume: partition-1
+    - device: format-1
+      id: mount-1
+      path: /
+      type: mount
+
+  apt:
+    preserve_sources_list: false
+    primary:
+      - arches: [i386, amd64]
+        uri: "http://192.168.0.81/repos/apt"
+
+  network:
+    network:
+      version: 2
+      renderer: NetworkManager
+
+  late-commands:
+  #  - mv /target/etc/xdg/autostart/light-locker.desktop /target/etc/xdg/autostart/light-locker.desktop.backup
+   - printf 'blacklist {\n    devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st|sda)[0-9]*"\n}' >> /target/etc/multipath.conf 
+   - curtin in-target --target=/target -- sh -c 'echo root:QHQKD20mcxv9g | chpasswd --encrypted'
+   - echo 'INSERT_YOUR_USERNAME_HERE ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/INSERT_YOUR_USERNAME_HERE
+   - echo "PermitRootLogin yes" >> /target/etc/ssh/sshd_config
+   - curtin in-target --target=/target -- sh -c 'wget -O /etc/pip.conf http://192.168.0.5:8082/pip/pip.conf'
+
+  packages:
+    - network-manager
+    - ssh
+    - nfs-common
+    - curl
+    - cifs-utils
+    - python3-pip
+    - whois
+    - git

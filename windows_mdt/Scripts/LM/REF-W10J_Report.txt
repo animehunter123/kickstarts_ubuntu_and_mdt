@@ -1,0 +1,166 @@
+Windows Update Report For Computer: REF-W10J
+Report Created On: 06/24/2020 04:04:16
+==============================================================================
+
+List of Applicable Updates For This Computer
+------------------------------------------------
+	 1 -- Microsoft OneNote 2013 (KB2760334) 64 ビット版 の更新プログラム
+	 2 -- Microsoft Office 2013 (KB2817316) 64 ビット版 の更新プログラム
+	 3 -- Microsoft Office 2013 (KB2760587) 64 ビット版 の定義の更新
+	 4 -- Microsoft Office 2013 (KB2768005) 64 ビット版 のセキュリティ更新プログラム
+	 5 -- Microsoft SkyDrive Pro (KB2837652) 64 ビット版 の更新プログラム
+	 6 -- Microsoft Project 2013 (KB2727085) 64 ビット版 の更新プログラム
+	 7 -- Microsoft Office 2013 (KB2850064) 64 ビット版 のセキュリティ更新プログラム
+	 8 -- Microsoft Office 2013 (KB2850036) 64 ビット版 Service Pack 1
+	 9 -- Microsoft Office 2013 (KB2760344) 64 ビット版 の更新プログラム
+	 10 -- Microsoft Visio Viewer 2013 (KB2817301) 64 ビット版 の更新プログラム
+	 11 -- Microsoft Office 2013 (KB2880463) 64 ビット版 のセキュリティ更新プログラム
+	 12 -- Microsoft Office 2013 (KB2883095) 64 ビット版 の更新プログラム
+	 13 -- Microsoft Office 2013 (KB2760371) 64 ビット版 の更新プログラム
+	 14 -- Microsoft Office 2013 (KB2899522) 64 ビット版 の更新プログラム
+	 15 -- Microsoft Office 2013 (KB2726958) 64 ビット版 のセキュリティ更新プログラム
+	 16 -- Microsoft Office 2013 (KB2910941) 64 ビット版 のセキュリティ更新プログラム
+	 17 -- Skype for Business 2015 (KB3039779) 64 ビット版 のセキュリティ更新プログラム
+	 18 -- Microsoft Outlook Social Connector 2013 (KB3054854) 64 ビット版 の更新プログラム
+	 19 -- Microsoft Office 2013 (KB3023052) 64 ビット版 の更新プログラム
+	 20 -- Microsoft Office 2013 (KB3054816) 64 ビット版 のセキュリティ更新プログラム
+	 21 -- Microsoft Office 2013 (KB3039798) 64 ビット版 のセキュリティ更新プログラム
+	 22 -- Microsoft Office 2013 (KB3039766) 64 ビット版 の更新プログラム
+	 23 -- Microsoft Office 2013 (KB3039778) 64 ビット版 の更新プログラム
+	 24 -- Microsoft Office 2013 (KB3039701) 64 ビット版 の更新プログラム
+	 25 -- Microsoft Office 2013 (KB3039720) 64 ビット版 の更新プログラム
+	 26 -- Microsoft InfoPath 2013 (KB3054793) 64 ビット版 のセキュリティ更新プログラム
+	 27 -- Microsoft Office 2013 (KB3085578) 64 ビット版 の更新プログラム
+	 28 -- Microsoft Office 2013 (KB3085482) 64 ビット版 の更新プログラム
+	 29 -- Microsoft Office 2013 (KB3054819) 64 ビット版 の更新プログラム
+	 30 -- Microsoft InfoPath 2013 (KB3114833) 64 ビット版 のセキュリティ更新プログラム
+	 31 -- Microsoft Office 2013 (KB3114488) 64 ビット版 の更新プログラム
+	 32 -- Microsoft Office 2013 (KB3114499) 64 ビット版 の更新プログラム
+	 33 -- Microsoft Office 2013 (KB3039756) 64 ビット版 の更新プログラム
+	 34 -- Microsoft Office 2013 (KB3085587) 64 ビット版 の更新プログラム
+	 35 -- Microsoft InfoPath 2013 (KB3114946) 64 ビット版 の更新プログラム
+	 36 -- Microsoft Office 2013 (KB3023049) 64 ビット版 の更新プログラム
+	 37 -- Microsoft Office 2013 (KB3101503) 64 ビット版 の更新プログラム
+	 38 -- Microsoft Office 2013 (KB3085565) 64 ビット版 の更新プログラム
+	 39 -- Microsoft OneNote 2013 (KB3115256) 64 ビット版 のセキュリティ更新プログラム
+	 40 -- Microsoft Office 2013 (KB3115404) 64 ビット版 の定義の更新
+	 41 -- Microsoft Office 2013 (KB3172523) 64 ビット版 の更新プログラム
+	 42 -- Microsoft Office 2013 (KB3191872) 64 ビット版 の更新プログラム
+	 43 -- Microsoft Office 2013 (KB3162051) 64 ビット版 のセキュリティ更新プログラム
+	 44 -- Skype for Business 2015 (KB3191937) 64 ビット版 のセキュリティ更新プログラム
+	 45 -- Microsoft Office 2013 (KB3172545) 64 ビット版 の更新プログラム
+	 46 -- Microsoft Office 2013 (KB3213564) 64 ビット版 のセキュリティ更新プログラム
+	 47 -- Microsoft Office 2013 (KB3172533) 64 ビット版 の更新プログラム
+	 48 -- Microsoft Office 2013 (KB4011580) 64 ビット版 のセキュリティ更新プログラム
+	 49 -- Microsoft Office 2013 (KB3172471) 64 ビット版 の更新プログラム
+	 50 -- Microsoft OneNote 2013 (KB4011281) 64 ビット版 の更新プログラム
+	 51 -- Microsoft Visual C++ 2008 Service Pack 1 再頒布可能パッケージのセキュリティ更新プログラム (KB2538243)
+	 52 -- Microsoft Visual C++ 2005 Service Pack 1 再頒布可能パッケージのセキュリティ更新プログラム (KB2538242)
+	 53 -- Microsoft Visual C++ 2010 Service Pack 1 再頒布可能パッケージのセキュリティ更新プログラム (KB2565063)
+	 54 -- Microsoft Visual Studio 2010 Tools for Office Runtime の更新プログラム (KB3001652)
+	 55 -- Microsoft Office 2013 (KB4018387) 64 ビット版 のセキュリティ更新プログラム
+	 56 -- Microsoft Office 2013 (KB4018378) 64 ビット版 の更新プログラム
+	 57 -- Microsoft Office 2013 (KB2760544) 64 ビット版 の更新プログラム
+	 58 -- Microsoft Office 2013 (KB2760249) 64 ビット版 の更新プログラム
+	 59 -- Microsoft Office 2013 (KB4022189) 64 ビット版 のセキュリティ更新プログラム
+	 60 -- Microsoft Office 2013 (KB4022188) 64 ビット版 のセキュリティ更新プログラム
+	 61 -- Microsoft OneDrive for Business (KB4022226) 64 ビット版 の更新プログラム
+	 62 -- Microsoft Office 2013 (KB4022212) 64 ビット版 の更新プログラム
+	 63 -- Microsoft Office 2013 (KB4011155) 64 ビット版 の更新プログラム
+	 64 -- Microsoft Office 2013 (KB2827228) 64 ビット版 の更新プログラム
+	 65 -- Microsoft Word 2013 (KB2878319) 64 ビット版 の更新プログラム
+	 66 -- Microsoft Office 2013 (KB3178640) 64 ビット版 の更新プログラム
+	 67 -- Microsoft Office 2013 (KB3172522) 64 ビット版 のセキュリティ更新プログラム
+	 68 -- Microsoft Silverlight (KB4481252)
+	 69 -- Microsoft Office 2013 (KB3172473) 64 ビット版 の更新プログラム
+	 70 -- Microsoft Office 2013 (KB4462200) 64 ビット版 の更新プログラム
+	 71 -- Microsoft Office 2013 (KB4011677) 64 ビット版 の更新プログラム
+	 72 -- Microsoft Office 2013 (KB4018375) 64 ビット版 のセキュリティ更新プログラム
+	 73 -- Skype for Business 2015 (KB4475519) 64 ビット版 のセキュリティ更新プログラム
+	 74 -- Microsoft Office 2013 (KB4475562) 64 ビット版 の更新プログラム
+	 75 -- Skype for Business 2015 (KB4484097) 64 ビット版 の更新プログラム
+	 76 -- 悪意のあるソフトウェアの削除ツール x64 - v5.82 (KB890830)
+	 77 -- 2020-06 x64 ベース システム用 Windows 10 Version 2004 の累積更新プログラム (KB4557957)
+	 78 -- 2020-06x64 ベース システム用 Windows 10 Version 2004 サービス スタック更新プログラム (KB4560366)
+	 79 -- 2020-06 x64 ベース システム用 Windows 10 Version 2004 セキュリティ更新プログラム (Adobe Flash Player 対応) (KB4561600)
+
+
+Initialising Download of Applicable Updates
+------------------------------------------------
+	 1 -- Downloading Update Microsoft OneNote 2013 (KB2760334) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 2 -- Downloading Update Microsoft Office 2013 (KB2817316) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 3 -- Downloading Update Microsoft Office 2013 (KB2760587) 64 ビット版 の定義の更新 
+	 Download Status: SUCCESS
+	 4 -- Downloading Update Microsoft Office 2013 (KB2768005) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 5 -- Downloading Update Microsoft SkyDrive Pro (KB2837652) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 6 -- Downloading Update Microsoft Project 2013 (KB2727085) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 7 -- Downloading Update Microsoft Office 2013 (KB2850064) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 8 -- Downloading Update Microsoft Office 2013 (KB2850036) 64 ビット版 Service Pack 1 
+	 Download Status: SUCCESS
+	 9 -- Downloading Update Microsoft Office 2013 (KB2760344) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 10 -- Downloading Update Microsoft Visio Viewer 2013 (KB2817301) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 11 -- Downloading Update Microsoft Office 2013 (KB2880463) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 12 -- Downloading Update Microsoft Office 2013 (KB2883095) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 13 -- Downloading Update Microsoft Office 2013 (KB2760371) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 14 -- Downloading Update Microsoft Office 2013 (KB2899522) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 15 -- Downloading Update Microsoft Office 2013 (KB2726958) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 16 -- Downloading Update Microsoft Office 2013 (KB2910941) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 17 -- Downloading Update Skype for Business 2015 (KB3039779) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 18 -- Downloading Update Microsoft Outlook Social Connector 2013 (KB3054854) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 19 -- Downloading Update Microsoft Office 2013 (KB3023052) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 20 -- Downloading Update Microsoft Office 2013 (KB3054816) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 21 -- Downloading Update Microsoft Office 2013 (KB3039798) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 22 -- Downloading Update Microsoft Office 2013 (KB3039766) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 23 -- Downloading Update Microsoft Office 2013 (KB3039778) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 24 -- Downloading Update Microsoft Office 2013 (KB3039701) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 25 -- Downloading Update Microsoft Office 2013 (KB3039720) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 26 -- Downloading Update Microsoft InfoPath 2013 (KB3054793) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 27 -- Downloading Update Microsoft Office 2013 (KB3085578) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 28 -- Downloading Update Microsoft Office 2013 (KB3085482) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 29 -- Downloading Update Microsoft Office 2013 (KB3054819) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 30 -- Downloading Update Microsoft InfoPath 2013 (KB3114833) 64 ビット版 のセキュリティ更新プログラム 
+	 Download Status: SUCCESS
+	 31 -- Downloading Update Microsoft Office 2013 (KB3114488) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 32 -- Downloading Update Microsoft Office 2013 (KB3114499) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 33 -- Downloading Update Microsoft Office 2013 (KB3039756) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 34 -- Downloading Update Microsoft Office 2013 (KB3085587) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 35 -- Downloading Update Microsoft InfoPath 2013 (KB3114946) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 36 -- Downloading Update Microsoft Office 2013 (KB3023049) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 37 -- Downloading Update Microsoft Office 2013 (KB3101503) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 38 -- Downloading Update Microsoft Office 2013 (KB3085565) 64 ビット版 の更新プログラム 
+	 Download Status: SUCCESS
+	 39 -- Downloading Update Microsoft OneNote 2013 (KB3115256) 64 ビット版 のセキュリティ更新プログラム 

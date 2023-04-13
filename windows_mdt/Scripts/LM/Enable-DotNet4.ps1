@@ -1,0 +1,1 @@
+enable-Windowsoptionalfeature –Online -FeatureName NetFx4
