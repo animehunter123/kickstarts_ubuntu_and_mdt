@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/42163211/231925197-c375244d-22a0-4db5-a40d-c4bbd388e13c.png)
+
 This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/CentOS kickstart. It is only a repository of code at this point, and I will need to document in more detail later.
 
 All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (synology or truenas), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
@@ -21,4 +23,3 @@ All important fields need to be replaced after cloning this repo. Search and rep
 
 * Scripts folder (has a subfolder called LM, this is what you paste into your C:\MDTBuildLab or similar folder's Scripts folder. There is also a custom modification to DeployWiz, ZTIUtility, and ZTI-Chocolatey-Wrapper, use `diff` on the latest versions supplied from Microsoft before merging)
 
-![image](https://user-images.githubusercontent.com/42163211/231925197-c375244d-22a0-4db5-a40d-c4bbd388e13c.png)
