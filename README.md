@@ -1,6 +1,6 @@
 This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/CentOS kickstart. It is only a repository of code at this point, and I will need to document in more detail later.
 
-All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```
+All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (synology or truenas), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
 
 ## ipxe
 * boot-images: Has the unzipped server iso files for any iso's you have (1. ubuntu server standard iso, and 2. a special cubic live custom kubuntu iso we created which isnt required for kickstarts but rather recovery)
