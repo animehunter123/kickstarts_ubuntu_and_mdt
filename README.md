@@ -14,3 +14,4 @@ All important fields need to be replaced after cloning this repo. Search and rep
 
 * Scripts folder (has a subfolder called LM, this is what you paste into your C:\MDTBuildLab or similar folder's Scripts folder. There is also a custom modification to DeployWiz, ZTIUtility, and ZTI-Chocolatey-Wrapper, use `diff` on the latest versions supplied from Microsoft before merging)
 
+![image](https://user-images.githubusercontent.com/42163211/231925197-c375244d-22a0-4db5-a40d-c4bbd388e13c.png)
