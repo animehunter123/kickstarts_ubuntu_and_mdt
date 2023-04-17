@@ -13,4 +13,5 @@ foreach ($i in $scheduledTasksToDisable) {
 }
 
 #Disable Telemetry 
+Write-host -fore "Disabling Tasks which contain Telemetry..."
 get-scheduledtask "*telemetry*" | Disable-ScheduledTask -Verbose
