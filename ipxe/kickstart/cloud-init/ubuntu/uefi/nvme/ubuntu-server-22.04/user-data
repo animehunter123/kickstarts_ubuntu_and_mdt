@@ -111,11 +111,13 @@ autoinstall:
     #  - curtin in-target --target=/target -- sh -c 'snap refresh --hold ; snap set system refresh.metered=hold 2>/dev/null ; systemctl disable snapd --now 2>/dev/null ; systemctl mask snapd --now 2>/dev/null ; echo "127.0.0.1 api.snapcraft.io" >> /etc/hosts'
  
     # Workaround to ensure that DNS is automatically pulled from DHCP and not from system-resolved service:
-    - rm -f /target/etc/nsswitch.conf
+    # - rm -f /target/etc/nsswitch.conf
+    - curtin in-target --target=/target -- sh -c ' sed -i "s/\(hosts. \+\)/\1dns /" /etc/nsswitch.conf '
     - rm -f /target/etc/resolv.conf
     - curtin in-target --target=/target -- sh -c ' cd /etc ; systemctl disable systemd-resolved --now ; sed -i "s/\[main\]/\[main\]\ndns=default/" /etc/NetworkManager/NetworkManager.conf '
 
   packages:
+    - open-vm-tools
     - network-manager
     - ssh
     - nfs-common
