@@ -5,7 +5,7 @@
 
 #2. we set up a custom /etc/apt/mirror.list (backuped/removed contents) and added:
 # sudo cp /etc/apt/mirror.list /etc/apt/mirror.list.orig
-# lmadmin@linux:~$ sudo cat /etc/apt/mirror.list 
+# INSERT_YOUR_USERNAME_HERE@linux:~$ sudo cat /etc/apt/mirror.list 
 #  ############# config ##################
 #  set base_path   /mnt/INSERT_YOUR_NFSSHARE_HERE/repos/docker 
 #  deb https://download.docker.com/linux/ubuntu groovy stable
