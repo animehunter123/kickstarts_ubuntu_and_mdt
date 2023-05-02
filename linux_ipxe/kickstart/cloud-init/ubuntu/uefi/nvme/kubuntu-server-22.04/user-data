@@ -98,6 +98,7 @@ autoinstall:
     - curtin in-target --target=/target -- sh -c 'echo root:QHQKD20mcxv9g | chpasswd --encrypted'
     - echo 'INSERT_YOUR_USERNAME_HERE ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/INSERT_YOUR_USERNAME_HERE
     - echo "PermitRootLogin yes" >> /target/etc/ssh/sshd_config
+    - curtin in-target --target=/target -- sh -c 'sed -i  "s/^Host \*/Host \*\n    StrictHostKeyChecking no\n    UserKnownHostsFile \/dev\/null\n    IdentityFile ~\/.ssh\/id_rsa\n    HostKeyAlgorithms \*\n    Ciphers `ssh -Q cipher|tr "\n" "," | sed "s/,$//"`\n    KexAlgorithms `ssh -Q kex|tr "\n" "," | sed "s/,$//"`/" /etc/ssh/ssh_config'
  
     # INSTALL FIREFOX 111, via:
     # 1. Fresh Kick a 2204 with Internet, snap install firefox, locate firefox > allfirefoxfiles.txt, tar cvpzf allfiles.tar.tz -T mylist.txt, Now I have all traces of firefox on system (with /snap/) as a tarball > restore this kick FIRST!
