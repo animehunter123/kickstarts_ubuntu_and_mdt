@@ -1,0 +1,2 @@
+# This is the Docker Repo that we sync'd with docker-ce, docker-ce-cli, and containerd.io for apt installs (ubuntu only)
+deb [allow-insecure=yes] http://192.168.0.81/repos/docker jammy main stable
