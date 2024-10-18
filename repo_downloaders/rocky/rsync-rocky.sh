@@ -11,8 +11,8 @@ nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
 rsync_url='rsync://mirror.usi.edu/rocky' #Korea University Official Mirror 1GBps (Our Rsync Avg=1.95MB/s)
 
 #Output Folders:
-#rsync_dest='/mnt/OrioleNAS-Data/repos/apt/'
-rsync_dest='/mnt/OrioleNAS-Data/repos/rocky/'
+#rsync_dest='/mnt/MYSITENAS-Data/repos/apt/'
+rsync_dest='/mnt/MYSITENAS-Data/repos/rocky/'
 
 #Main()
 echo "Rsync download is now in progress --- please verify log via:    tail -f $nohup_log"

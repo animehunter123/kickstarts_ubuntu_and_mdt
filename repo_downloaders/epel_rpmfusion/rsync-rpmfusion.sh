@@ -12,8 +12,8 @@ nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
 rsync_url='rsync://download1.rpmfusion.org/rpmfusion/' 
 
 #Output Folders:
-#rsync_dest='/mnt/OrioleNAS-Data/repos/apt/'
-rsync_dest='/mnt/OrioleNAS-Data/repos/rpmfusion/'
+#rsync_dest='/mnt/MYSITENAS-Data/repos/apt/'
+rsync_dest='/mnt/MYSITENAS-Data/repos/rpmfusion/'
 
 #Main()
 echo "Rsync download is now in progress --- please verify log via:    tail -f $nohup_log"

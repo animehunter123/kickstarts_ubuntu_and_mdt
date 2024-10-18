@@ -2,7 +2,7 @@
 
 # Define the source directory
 # source_dir="./pypi-pipdownloaded"
-source_dir="/mnt/OrioleNAS-Data/repos/pypi-pipdownloaded"
+source_dir="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded"
 
 exit #INTENTIONAL AT THE MOMENT!!!!!!!!!!!
 
@@ -13,7 +13,7 @@ exit #INTENTIONAL AT THE MOMENT!!!!!!!!!!!
 #!/bin/bash
 
 # Start in the repository root
-cd "/mnt/OrioleNAS-Data/repos/pypi-pipdownloaded"
+cd "/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded"
 
 # Create simple directory
 rm -rf simple
@@ -157,7 +157,7 @@ trusted-host = 172.16.0.63
 
 # pip install --no-index --find-links=. yapi
 # pip install --no-index --find-links=. numpy pandas dash
-# Mount it and then, pip install --no-index --find-links=/tmp/OrioleNAS-Data/repos/pypi-pipdownloaded numpy pandas dash
+# Mount it and then, pip install --no-index --find-links=/tmp/MYSITENAS-Data/repos/pypi-pipdownloaded numpy pandas dash
 # pip install --index-url http://172.16.0.63:8000/ numpy pandas dash --trusted-host 172.16.0.63
 
 

@@ -25,9 +25,9 @@ I.e. use Rocky93 VM to get a pypi_rocky93, or a Windows10 with Python12.2 to get
 
 * Make a HOST FRESH VM using the TARGET OS and ARCHITECTURE (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
 
-* Mount the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/OrioleNAS-Data /mnt/OrioleNAS-Data nfs defaults 0 0```
+* Mount the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/MYSITENAS-Data /mnt/MYSITENAS-Data nfs defaults 0 0```
 
-* Copy the shell scripts, and look over them, currently I set them to DOWNLOAD INTO: ```TARGET="/mnt/OrioleNAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host```
+* Copy the shell scripts, and look over them, currently I set them to DOWNLOAD INTO: ```TARGET="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host```
 
 * Launch the scripts carefully in order (RUN IT AS ROOT)... basically...:
 

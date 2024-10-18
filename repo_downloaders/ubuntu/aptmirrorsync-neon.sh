@@ -5,7 +5,7 @@
 
 #2. we set up a custom /etc/apt/mirror.list (backuped/removed contents) and added:
 # sudo cp /etc/apt/mirror.list /etc/apt/mirror.list.orig
-# root@ah-kub2004:/mnt/OrioleNAS-Data/repos/neon# cat mirror.list | grep -v '^#'
+# root@ah-kub2004:/mnt/MYSITENAS-Data/repos/neon# cat mirror.list | grep -v '^#'
 # set mirror_path  /nas/repos/neon
 # set nthreads     20
 # set _tilde 0
@@ -34,17 +34,17 @@ nohup /usr/bin/apt-mirror  2>&1 1>$nohup_log &
 #echo "There is a but in Mar2020 for the apt-mirror sanitization bug, see: https://github.com/apt-mirror/apt-mirror/issues/102"
 #echo "Performing workaround... so that it properly downloads filenames correctly with @ signs..."
 #echo "Mirroring files to dep11 directory from http://archive.neon.kde.org/user/dists/focal/main/dep11/ now..."
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar.gz' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar.gz'
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar'
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar.gz' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar.gz'
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar'
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar.gz' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar.gz'
-#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar' -O '/mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar.gz' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar.gz'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-48x48@2.tar'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar.gz' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar.gz'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-64x64@2.tar'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar.gz' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar.gz'
+#wget 'http://archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar' -O '/mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/dep11/icons-128x128@2.tar'
 
 ##Postfix#2... mirror the binary-all directory
 echo "Postfix#2, fixing the binary-all directory..."
-mkdir -p /mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all
-wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages' -O /mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages
-wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.bz2' -O /mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.bz2
-wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.gz' -O /mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.gz
-wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Release' -O /mnt/OrioleNAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Release
+mkdir -p /mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all
+wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages' -O /mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages
+wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.bz2' -O /mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.bz2
+wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.gz' -O /mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Packages.gz
+wget 'http://archive.neon.kde.org/user/dists/focal/main/binary-all/Release' -O /mnt/MYSITENAS-Data/repos/neon/archive.neon.kde.org/user/dists/focal/main/binary-all/Release

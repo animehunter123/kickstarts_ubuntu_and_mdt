@@ -18,7 +18,7 @@ server {
     listen 80;
     server_name pypi.yourdomain.com;  # Replace with your domain or IP
 
-    root /mnt/OrioleNAS-Data/repos/pypi-pipdownloaded;
+    root /mnt/MYSITENAS-Data/repos/pypi-pipdownloaded;
 
     location / {
         autoindex on;
@@ -38,7 +38,7 @@ server {
 
     # Serve the PEP 503 simple API
     location /simple/ {
-        alias /mnt/OrioleNAS-Data/repos/pypi-pipdownloaded/simple/;
+        alias /mnt/MYSITENAS-Data/repos/pypi-pipdownloaded/simple/;
         autoindex on;
         index index.html;
 

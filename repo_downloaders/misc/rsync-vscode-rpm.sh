@@ -9,8 +9,8 @@ pushd .
 rsync_url='rsync://packages.microsoft.com/yumrepos/vscode' 
 
 #Output Folders:
-#rsync_dest='/mnt/OrioleNAS-Data/repos/apt/'
-rsync_dest='/mnt/OrioleNAS-Data/repos/vscode-rpm/'
+#rsync_dest='/mnt/MYSITENAS-Data/repos/apt/'
+rsync_dest='/mnt/MYSITENAS-Data/repos/vscode-rpm/'
 
 #Main()
 echo "Customized download is now in progress --- please verify log via:    tail -f $nohup_log"

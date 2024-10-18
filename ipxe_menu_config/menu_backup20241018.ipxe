@@ -529,7 +529,7 @@ goto start
 :linux-live-foss-clonezilla
 echo CLONEZILLA - Http Loading ISO's filesystem.squashfs... 
 echo CLONEZILLA - NOTE 1: FIX NEEDED, (Butfor now, squashfs is NON-UEFI, so post restore you need UEFI).
-echo CLONEZILLA - NOTE 2: REMEMBER TO USE NFS SETTINGS in GUI like... [172.16.0.5:/volume1/OrioleNAS-Data/mikew/clonezilla-images]
+echo CLONEZILLA - NOTE 2: REMEMBER TO USE NFS SETTINGS in GUI like... [172.16.0.5:/volume1/MYSITENAS-Data/mikew/clonezilla-images]
 kernel http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/vmlinuz boot=live config noswap nolocales edd=on nomodeset vga=788 nosplash noprompt fetch=http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/filesystem.squashfs
 initrd http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/initrd.img
 boot
