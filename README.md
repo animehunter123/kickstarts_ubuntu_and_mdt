@@ -8,7 +8,7 @@ This repository contains all of the repository code for creating a iPXE menu whi
 
 All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (Truenas/Synology/etc), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
 
-## repos_downloaders
+## repo_downloaders
 * These are shell scripts and configs to sync from the internet into this local directory.
 
 1. Ubuntu/Apt/Rocky...
