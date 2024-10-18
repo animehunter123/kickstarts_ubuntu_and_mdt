@@ -1,6 +1,6 @@
 #Mount the NAS
 pushd 
-New-SmbMapping -LocalPath j: -RemotePath \\192.168.0.5\ISO -UserName mdt -Password 'INSERT_YOUR_PASSWORD_HERE' 
+New-SmbMapping -LocalPath j: -RemotePath \\172.16.0.5\ISO -UserName mdt -Password 'INSERT_YOUR_PASSWORD_HERE' 
 j:
 
 #Install the CAB

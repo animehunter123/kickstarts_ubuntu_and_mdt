@@ -85,7 +85,7 @@ autoinstall:
     preserve_sources_list: false
     primary:
       - arches: [i386, amd64]
-        uri: "http://192.168.0.81/repos/apt"
+        uri: "http://172.16.0.81/repos/apt"
 
   network:
     network:
@@ -103,10 +103,10 @@ autoinstall:
     # INSTALL FIREFOX 111, via:
     # 1. Fresh Kick a 2204 with Internet, snap install firefox, locate firefox > allfirefoxfiles.txt, tar cvpzf allfiles.tar.tz -T mylist.txt, Now I have all traces of firefox on system (with /snap/) as a tarball > restore this kick FIRST!
     # 2. Then a unzip of official firefox111 to /opt/firefox111, and a symlink workaround -- to trick snapd that firefox was installed from internet! Thats it!
-    - curtin in-target --target=/target -- sh -c 'cd /opt ; mkdir firefox111 ; cd firefox111 ; sudo snap remove firefox 2>/dev/null ; wget "http://192.168.0.81/software/Firefox/firefox111_for_kub2204_kicks/firefox_111.0.1%2Bbuild2-0ubuntu0.22.04.1_mt1_amd64_snapfiles.tar.gz" ; tar xvfpz *gz -C / ; mv /snap/bin/firefox /snap/bin/firefox/old ; wget "http://192.168.0.81/software/Firefox/firefox111_for_kub2204_kicks/firefox-111.0.tar.bz2" ; bunzip2 *.bz2 ; tar xvfp *.tar ; mv /snap/bin/firefox /snap/bin/firefox.old ;ln -s /opt/firefox111/firefox/firefox /snap/bin/firefox; chmod 777 -R /opt/firefox111/ ; chmod 777 /snap/bin/firefox'
+    - curtin in-target --target=/target -- sh -c 'cd /opt ; mkdir firefox111 ; cd firefox111 ; sudo snap remove firefox 2>/dev/null ; wget "http://172.16.0.81/software/Firefox/firefox111_for_kub2204_kicks/firefox_111.0.1%2Bbuild2-0ubuntu0.22.04.1_mt1_amd64_snapfiles.tar.gz" ; tar xvfpz *gz -C / ; mv /snap/bin/firefox /snap/bin/firefox/old ; wget "http://172.16.0.81/software/Firefox/firefox111_for_kub2204_kicks/firefox-111.0.tar.bz2" ; bunzip2 *.bz2 ; tar xvfp *.tar ; mv /snap/bin/firefox /snap/bin/firefox.old ;ln -s /opt/firefox111/firefox/firefox /snap/bin/firefox; chmod 777 -R /opt/firefox111/ ; chmod 777 /snap/bin/firefox'
  
     # TODO: Disable PIP.CONF on low side, because low-side uses internet pypi instead of nexus (no need to import the 888GB into lowside nexus)
-    #  - curtin in-target --target=/target -- sh -c 'wget -O /etc/pip.conf http://192.168.0.5:8082/pip/pip.conf'
+    #  - curtin in-target --target=/target -- sh -c 'wget -O /etc/pip.conf http://172.16.0.5:8082/pip/pip.conf'
  
     # TODO: Disable snap refresh (Not working on low side yet, but can ignore on high gapped nw)
     #  - curtin in-target --target=/target -- sh -c 'snap refresh --hold ; snap set system refresh.metered=hold 2>/dev/null ; systemctl disable snapd --now 2>/dev/null ; systemctl mask snapd --now 2>/dev/null ; echo "127.0.0.1 api.snapcraft.io" >> /etc/hosts'

@@ -9,7 +9,7 @@ These tests we confirmed work:
 
 * pip uninstall -y numpy pandas dash ; pip cache purge
 
-* pip install  --find-links=http://192.168.0.63/ numpy pandas dash  --trusted-host 192.168.0.63
+* pip install  --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
 ```
 
 # Usage (Quickstart)
@@ -25,7 +25,7 @@ I.e. use Rocky93 VM to get a pypi_rocky93, or a Windows10 with Python12.2 to get
 
 * Make a HOST FRESH VM using the TARGET OS and ARCHITECTURE (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
 
-* Mount the nas destination directory via /etc/fstab: ```192.168.0.5:/volume1/OrioleNAS-Data /mnt/OrioleNAS-Data nfs defaults 0 0```
+* Mount the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/OrioleNAS-Data /mnt/OrioleNAS-Data nfs defaults 0 0```
 
 * Copy the shell scripts, and look over them, currently I set them to DOWNLOAD INTO: ```TARGET="/mnt/OrioleNAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host```
 

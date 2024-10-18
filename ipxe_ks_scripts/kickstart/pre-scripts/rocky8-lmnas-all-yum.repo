@@ -1,0 +1,93 @@
+# File: /etc/yum.repos.d/rocky8-epel-nux.repo
+# repo --name=rocky8-base --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/BaseOS/x86_64/os/
+# repo --name=rocky8-appstream --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/AppStream/x86_64/os/
+# repo --name=rocky8-powertools --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/PowerTools/x86_64/os/
+# repo --name=rocky8-extras --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/extras/x86_64/os/
+# repo --name=epel8 --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/epel/8/Everything/x86_64
+#
+# Current Counts:
+# # yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
+#  1720 rocky8-powertools-lmnas
+#   1313 rocky8-os-lmnas
+#    419 @BaseOS
+#     54 rocky8-extras-lmnas
+#     40 @Appstream
+#      2 @rocky8-os-lmnas
+#      2
+#      1 expiration
+#      1 @EPEL8
+# The internet facing one currently 2023/11/21@Rocky8.8 is...
+#[lmadmin@localhost ~]$ yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
+#   4817 appstream
+#   1268 baseos
+#    777 @AppStream
+#    589 @anaconda
+#     54 extras
+#      3 8
+#      2
+
+[rocky8-os-lmnas]
+name=rocky8-os-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/BaseOS/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky8-appstream-lmnas]
+name=rocky8-appstream-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/AppStream/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky8-powertools-lmnas]
+name=rocky8-powertools-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/PowerTools/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky8-extras-lmnas]
+name=rocky8-extras-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/rocky/8/extras/x86_64/os/
+gpgcheck=0
+enabled=1
+
+
+
+# EPEL!!!!!!!!!!!!!!!
+[epel-lmnas]
+name=epel-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/epel/8/Everything/x86_64
+gpgcheck=0
+enabled=1
+
+
+# VSCode
+[vscode-lmnas]
+name=vscode-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/vscode-rpm
+gpgcheck=0
+enabled=1
+
+
+
+
+
+
+
+
+
+# NUX!!!!!!!!!!!!!!!!!!!! (Source Lockhart -- nux.ro )
+# To check size of the repo (7gb+49mb) use:    yum repolist -v --disablerepo=* --enablerepo=nux*
+[nux-dextop-lmnas]
+name=nux-dextop-lmnas
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/nux/nux-dextop/
+gpgcheck=0
+enabled=0
+gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+
+[nux-misc]
+name=nux-misc
+baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/nux/nux-misc/
+gpgcheck=0
+enabled=0
+gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+

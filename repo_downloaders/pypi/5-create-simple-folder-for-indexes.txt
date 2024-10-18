@@ -83,7 +83,7 @@ echo "PEP 503 structure created successfully!"
 
 # Then you can do this:
 pip uninstall -y numpy pandas dash ; pip cache purge
-pip install --no-index --find-links=http://192.168.0.63/ numpy pandas dash  --trusted-host 192.168.0.63
+pip install --no-index --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
 
 
 # which means you need a pip.conf kinda like this.:::::::
@@ -92,13 +92,13 @@ pip install --no-index --find-links=http://192.168.0.63/ numpy pandas dash  --tr
 
 [global]
 no-index = true
-find-links = http://192.168.0.63/
-trusted-host = 192.168.0.63
+find-links = http://172.16.0.63/
+trusted-host = 172.16.0.63
 
 [install]
 no-index = true
-find-links = http://192.168.0.63/
-trusted-host = 192.168.0.63
+find-links = http://172.16.0.63/
+trusted-host = 172.16.0.63
 
 
 
@@ -158,7 +158,7 @@ trusted-host = 192.168.0.63
 # pip install --no-index --find-links=. yapi
 # pip install --no-index --find-links=. numpy pandas dash
 # Mount it and then, pip install --no-index --find-links=/tmp/OrioleNAS-Data/repos/pypi-pipdownloaded numpy pandas dash
-# pip install --index-url http://192.168.0.63:8000/ numpy pandas dash --trusted-host 192.168.0.63
+# pip install --index-url http://172.16.0.63:8000/ numpy pandas dash --trusted-host 172.16.0.63
 
 
 

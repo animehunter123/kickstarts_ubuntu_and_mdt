@@ -2,7 +2,7 @@
 
 choco feature enable -n allowGlobalConfirmation
 choco feature enable -n allowEmptyChecksums
-choco source add -n=lm-choco -s=http://lm-choco.lm.local:8081/repository/chocolatey-hosted/
+choco source add -n=lm-choco -s=http://lm-choco.YOURDOMAIN.COM:8081/repository/chocolatey-hosted/
 choco source disable -n=chocolatey
 choco list
 

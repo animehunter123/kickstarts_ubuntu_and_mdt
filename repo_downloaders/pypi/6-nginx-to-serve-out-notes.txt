@@ -61,7 +61,7 @@ Now, the webserver is up! Lets create a pip.conf for Rocky93 for example to get 
 # At this point its all sitting in 1 big fat folder
 # Now use number 5 setup nginx with autoindex on
 AND IT SHOULD BE SUPER FAST:
-pip install --index-url http://192.168.0.63/simple/ 021 --trusted-host 192.168.0.63
+pip install --index-url http://172.16.0.63/simple/ 021 --trusted-host 172.16.0.63
 
 
 
@@ -69,17 +69,17 @@ echo "Finally, here setting up the pip.conf into your ETC NOW"
 cat <<EOF | sudo tee /etc/pip.conf
 [global]
 no-index = false
-find-links = http://192.168.0.63/
-trusted-host = 192.168.0.63
+find-links = http://172.16.0.63/
+trusted-host = 172.16.0.63
 
 [install]
 no-index = false
-find-links = http://192.168.0.63/
-trusted-host = 192.168.0.63
+find-links = http://172.16.0.63/
+trusted-host = 172.16.0.63
 EOF
 
 
 echo "PyPI mirror setup complete. Access it at http://pypi.yourdomain.com"
 echo "You can also just manually try a test like this..."
-echo 'pip install --index-url http://192.168.2.42:82/nas/ahm/rocky9-pypi/pypi_rocky93/pypi/web/simple/ requests   --trusted-host 192.168.2.42'
+echo 'pip install --index-url http://172.16.2.42:82/nas/ahm/rocky9-pypi/pypi_rocky93/pypi/web/simple/ requests   --trusted-host 172.16.2.42'
 

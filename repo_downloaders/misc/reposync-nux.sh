@@ -1,6 +1,6 @@
 # NUX repository is provided without rsync protocol, so LFTP is required for this (or reposync)
 
-#0. Make a LM-NAS folder: mkdir /mnt/OrioleNAS-Data/repos/nux/
+#0. Make a INSERT_YOUR_PASS_HERE folder: mkdir /mnt/OrioleNAS-Data/repos/nux/
 
 #1. Set up your repos conf (BE VERY CAREFUL) 
 # NOTE: Nux requires your yum repos conf to be:

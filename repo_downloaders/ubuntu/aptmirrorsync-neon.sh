@@ -11,7 +11,7 @@
 # set _tilde 0
 # deb http://archive.neon.kde.org/user/ focal main
 
-#3. Copied the key TO THE LM-NAS REPO
+#3. Copied the key TO THE INSERT_YOUR_PASS_HERE REPO
 #  wget -q -O - http://archive.neon.kde.org/public.key
 
 #4. Now launch it so that it syncs to the base_path you set in the mirror.list file, via:
