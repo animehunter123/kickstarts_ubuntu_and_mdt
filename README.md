@@ -4,22 +4,22 @@
 
 Repository URL is: https://github.com/animehunter123/kickstarts_ubuntu_and_mdt
 
-This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/CentOS kickstart. You may still need ISO files such as CentOS7/Ubuntu2204/Win10/WinSvr2022/Exchange/Lync. It is only a repository of code at this point, and I will need to document in more detail later.
+This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/Rocky/CentOS kickstarts. You may still need ISO files such as Rocky/CentOS7/Ubuntu2404/Win10/WinSvr2022/Exchange/Lync. It is only a repository of code at this point, and I will need to document in more detail later.
 
-All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (synology or truenas), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
+All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (Truenas/Synology/etc), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
 
 ## repos_downloaders
 * These are shell scripts and configs to sync from the internet into this local directory.
 
-1. ubuntu apt rocky...
-2. rhel/fedora epel...
-3. others...
+1. Ubuntu/Apt/Rocky...
+2. Rhel/Fedora/Epel/Rpmfusion...
+3. Others...
 
 ## ipxe
-* boot-images: Has the unzipped server iso files for any iso's you have (1. ubuntu server standard iso, and 2. a special cubic live custom kubuntu iso we created which isnt required for kickstarts but rather recovery)
+* boot-images: Has the unzipped server iso files for any iso's you have (1. Ubuntu server standard iso, and 2. a special cubic live custom kubuntu iso we created which isnt required for kickstarts but rather recovery)
 * ipxe: the required stage 1 binaries used in pxe boot (BCD+boot.sdi <-- used to chainload MDT; ipxe.efi+undionly.kpxe <--- we compiled these ipxe binaries from scratch per developer docs)
 * kickstart: (cloud-init <-- the Ubuntu Kickstarts, ks+pre-scripts+post-scripts <--- the CentOS Kickstarts)
-* menu_backup20230407.ipxe <-- a menu file sample that you can look at. Shows all the submenus you can dig through for building a ipxe menu for mdt/centos/ubuntu and even live cds like vmware/vyos/ghost/acronis.
+* menu_backup20230407.ipxe <-- a menu file sample that you can look at. Shows all the submenus you can dig through for building a ipxe menu for Mdt/Centos/Ubuntu and even live cds like VMware/Vyos/Ghost/Acronis.
 * dhcp-gui-photos: A picture of everything you need to set up in your pxe server to get the low side kickstarts going first!
 
 ## windows_mdt
