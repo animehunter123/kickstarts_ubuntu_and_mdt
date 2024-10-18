@@ -404,7 +404,7 @@ After the VM is powered on and logged in (NOT via F12), we will now capture via:
 
 # State Restore >> Imaging >> Capture WIM >>> Options Tab, Disable
 
-==Reference/Troubleshooting==
+==Reference/INSERT_YOUR_USERNAME_HEREshooting==
 ===MDT Logging ===
 To turn on Normal Logging, add this to your "Rules" tab in the Deployment Share:
   SLShare=\\192.168.0.215\Logs
