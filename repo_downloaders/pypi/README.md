@@ -1,15 +1,13 @@
 # Description
 These scripts will download pypi using the rocky9 config generated from the docs already in the results_02
 
-Note: The TTFB performance is better for Ubuntu hosts versus Rocky, this affects Morgan mirroring, so reccomend using a ubuntu host or ubuntu docker container.
+Note: The TTFB performance is better for Ubuntu hosts versus Rocky, this affects XargsParallel and also Morgan mirroring, so recommend keeping this in mind.
 
-After it is done you can usually do something like:
+After it is done you can confirm that your new destination webserver that will host pypi works with a quick test:
 ```
-These tests we confirmed work:
+  pip uninstall -y numpy pandas dash ; pip cache purge
 
-* pip uninstall -y numpy pandas dash ; pip cache purge
-
-* pip install  --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
+  pip install  --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
 ```
 
 # Usage (Quickstart)
@@ -19,17 +17,17 @@ IMPORTANT NOTE:
 
 YOU NEED TO RUN THESE SCRIPTS ON THE TARGET OS SO THAT IT FETCHES THAT SPECIFIC ENVIRONMENT OF PYPI. 
 
-I.e. use Rocky93 VM to get a pypi_rocky93, or a Windows10 with Python12.2 to get pypi_win10_py122 
+I.e. if you used Rocky93 VM it will get a pypi_rocky93, elsea Windows10 with Python12.2 to get pypi_win10_py122, for example.
 
 @@@```
 
-* Make a HOST FRESH VM using the TARGET OS and ARCHITECTURE (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
+* FIRST, Make a HOST FRESH VM using the TARGET OS and ARCHITECTURE (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
 
-* Mount the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/MYSITENAS-Data /mnt/MYSITENAS-Data nfs defaults 0 0```
+* NEXT, the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/MYSITENAS-Data /mnt/MYSITENAS-Data nfs defaults 0 0```
 
-* Copy the shell scripts, and look over them, currently I set them to DOWNLOAD INTO: ```TARGET="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host```
+* THEN, Copy the shell scripts, and look over them, currently I set them to DOWNLOAD INTO: ```TARGET="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host```
 
-* Launch the scripts carefully in order (RUN IT AS ROOT)... basically...:
+* Launch/Read the scripts carefully in order (RUN IT AS ROOT)... basically...:
 
 * ./1*.sh  # this makes a result01 file (index.html of full pypi.org)
 * ./2*.txt # MAKE A CRONJOB to CLEAN UP THE .cache/pip folder...BEFORE DOWNLOADING PACKAGES
@@ -41,20 +39,13 @@ I.e. use Rocky93 VM to get a pypi_rocky93, or a Windows10 with Python12.2 to get
 * ./5*.txt # this creates a ./simple (with symlinks and index.htmls containing sha256)
 * ./6.txt  # this shows how to set up Nginx Config files
 
-# Todo (Feature Request)
-* I still need to autoresume resume. for now look at nohup.out for the crashed line then modify result_02.html to delete packages up to that last one. it will download and overwrite. > Currently pip download by default already says: ```File was already downloaded /mnt/Software/ahm/rocky9-pypi/pypi_rocky93_pipdownloader/pypi-pipdownloader/six-1.16.0-py2.py3-none-any.whl```, so i dont think i need this
+# The secret of why this works... PEP 503 Prompt and the secret of the HTML files which allow "pip install" to work!
 
+Basically, we make a folder and host it on a web server.
 
+Why does this work?
 
-
-
-
-
-
-
-# PEP 503 Prompt HTML Notes
-
-To create a PEP 503 simple repository API structure from a directory containing .tgz and .whl files, you need to follow these specific steps:
+Well.. To create a PEP 503 simple repository API structure from a directory containing .tgz and .whl files, you need to follow these specific steps:
 
 1. Create the base directory structure:
 
@@ -140,14 +131,4 @@ Options +Indexes
 7. Ensure all URLs end with a trailing slash:
 Configure your web server to add a trailing slash to directory URLs if missing.
 
-By following these steps, you'll create a PEP 503 compliant simple repository API structure. This structure allows pip and other package managers to correctly index and install packages from your repository.
-
-Citations:
-[1] https://github.com/pytorch/pytorch/issues/25639
-[2] https://peps.python.org/pep-0503/
-[3] https://github.com/python/peps/blob/main/peps/pep-0691.rst
-[4] https://stackoverflow.com/questions/55091949/apache-autoindex-and-python-pep-503
-[5] https://python-poetry.org/docs/repositories/
-[6] https://packaging.python.org/en/latest/specifications/simple-repository-api/
-[7] https://warehouse.pypa.io/api-reference/legacy.html
-[8] https://cloud.google.com/artifact-registry/docs/python
+THUSSSSSSSSSSSSS WE NOW HAVE A a PEP 503 compliant simple repository API structure. This structure allows pip and other package managers to correctly index and install packages from your repository! Pretty awesome!
