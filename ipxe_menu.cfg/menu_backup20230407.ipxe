@@ -63,10 +63,10 @@ goto start
 #########################################################################
 :mdt
 kernel wimboot
-initrd -n BCD 		http://192.168.0.215:81/BCD 		            BCD
-initrd -n boot.sdi 	http://192.168.0.215:81/boot.sdi		        boot.sdi
-initrd -n boot.wim 	http://192.168.0.215/LiteTouchPE_x64.wim		boot.wim
-#initrd -n boot.wim 	http://192.168.0.215/LiteTouchPE_x86.wim		boot.wim #Use this for Bios, like HP Elitebook840G3
+initrd -n BCD 		http://172.16.0.215:81/BCD 		            BCD
+initrd -n boot.sdi 	http://172.16.0.215:81/boot.sdi		        boot.sdi
+initrd -n boot.wim 	http://172.16.0.215/LiteTouchPE_x64.wim		boot.wim
+#initrd -n boot.wim 	http://172.16.0.215/LiteTouchPE_x86.wim		boot.wim #Use this for Bios, like HP Elitebook840G3
 boot
 goto start
 
@@ -119,38 +119,38 @@ clear submenu-default
 goto linux-ks
 
 :linux-ks-centos-7-core-bios
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-core-bios.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-core-bios.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
 :linux-ks-centos-7-core-uefi-nvme
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-core-uefi-nvme.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-core-uefi-nvme.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
 :linux-ks-centos-7-core-uefi-sda
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-core-uefi-sda.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-core-uefi-sda.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
 :linux-ks-centos-7-mate-bios
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-mate-bios.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-mate-bios.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
 :linux-ks-centos-7-mate-uefi-nvme
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-mate-uefi-nvme.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-mate-uefi-nvme.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
 :linux-ks-centos-7-mate-uefi-sda
-kernel http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://lm-webserver.lm.local/http-git/kickstart/ks/centos7-mate-uefi-sda.cfg
-initrd http://lm-webserver.lm.local/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
+kernel http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/vmlinuz ip=dhcp initrd=initrd.img ks=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/http-git/kickstart/ks/centos7-mate-uefi-sda.cfg
+initrd http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/centos/7/os/x86_64/images/pxeboot/initrd.img
 boot
 goto start
 
@@ -200,32 +200,32 @@ choose --timeout ${submenu-timeout} --default ${submenu-default} selected && got
 go start # End of Submenu
 
 :linux-ks-ubuntu-uefi-sda-2204-server
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-sda-2204-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/kubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/kubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-sda-2010-server
-kernel http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-sda-2004-server
-kernel http://192.168.0.215:82/lm_ubuntu_20.04.1_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.04.1_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-20.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.04.1_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.04.1_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.04.1_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/ubuntu-server-20.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.04.1_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-sda-2010-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/kubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd --- 
-initrd http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/sda/kubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd --- 
+initrd http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/initrd
 boot
 goto start
 
@@ -249,32 +249,32 @@ choose --timeout ${submenu-timeout} --default ${submenu-default} selected && got
 go start # End of Submenu
 
 :linux-ks-ubuntu-uefi-nvme-2204-server
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-nvme-2204-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/kubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/kubuntu-server-22.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-nvme-2010-server
-kernel http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-nvme-2004-server
-kernel http://192.168.0.215:82/lm_ubuntu_20.04.1_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.04.1_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-20.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.04.1_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.04.1_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.04.1_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/ubuntu-server-20.04/ boot=casper ip=dhcp raid=noautodetect initrd=initrd ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.04.1_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-uefi-nvme-2010-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/kubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd --- 
-initrd http://192.168.0.215:82/lm_ubuntu_20.10_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.10_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/uefi/nvme/kubuntu-server-20.10/ boot=casper ip=dhcp raid=noautodetect initrd=initrd --- 
+initrd http://172.16.0.215:82/lm_ubuntu_20.10_server/casper/initrd
 boot
 goto start
 
@@ -299,26 +299,26 @@ choose --timeout ${submenu-timeout} --default ${submenu-default} selected && got
 go start # End of Submenu
 
 :linux-ks-ubuntu-legacy-2004-server
-kernel http://192.168.0.215:82/lm_ubuntu_20.04.5_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.04.5_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/legacy/ubuntu-server-20.04/ boot=casper ip=dhcp ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.04.5_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.04.5_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.04.5_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/legacy/ubuntu-server-20.04/ boot=casper ip=dhcp ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.04.5_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-legacy-2004-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_20.04.5_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_20.04.5_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/legacy/kubuntu-server-20.04/ boot=casper ip=dhcp ---
-initrd http://192.168.0.215:82/lm_ubuntu_20.04.5_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_20.04.5_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_20.04.5_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/legacy/kubuntu-server-20.04/ boot=casper ip=dhcp ---
+initrd http://172.16.0.215:82/lm_ubuntu_20.04.5_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-legacy-2204-server
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/legacy/ubuntu-server-22.04/ boot=casper ip=dhcp ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/legacy/ubuntu-server-22.04/ boot=casper ip=dhcp ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
 :linux-ks-ubuntu-legacy-2204-kubuntu
-kernel http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=192.168.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://lm-nas.lm.local:8084/http-git/kickstart/cloud-init/ubuntu/legacy/kubuntu-server-22.04/ boot=casper ip=dhcp ---
-initrd http://192.168.0.215:82/lm_ubuntu_22.04_server/casper/initrd
+kernel http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/vmlinuz nfsroot=172.16.0.215:/lm_iso/lm_ubuntu_22.04_server ro netboot=nfs file=/cdrom/preseed/ubuntu-server.seed  autoinstall ds=nocloud-net;s=http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8084/http-git/kickstart/cloud-init/ubuntu/legacy/kubuntu-server-22.04/ boot=casper ip=dhcp ---
+initrd http://172.16.0.215:82/lm_ubuntu_22.04_server/casper/initrd
 boot
 goto start
 
@@ -355,31 +355,31 @@ choose --timeout ${submenu-timeout} --default ${submenu-default} selected && got
 goto start # END OF SUBMENU
 
 :linux-live-kubuntu-nfs1
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_20-04-Kubuntu
-kernel http://192.168.0.215:82/lm_20-04-Kubuntu/casper/vmlinuz  || read void
-initrd http://192.168.0.215:82/lm_20-04-Kubuntu/casper/initrd   || read void
+kernel http://172.16.0.215:82/lm_20-04-Kubuntu/casper/vmlinuz  || read void
+initrd http://172.16.0.215:82/lm_20-04-Kubuntu/casper/initrd   || read void
 imgargs vmlinuz initrd=initrd root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
 boot
 goto start
 
 :linux-live-kubuntu-nfs2
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_22-04-Kubuntu
-kernel http://192.168.0.215:82/lm_22-04-Kubuntu/casper/vmlinuz  || read void
-initrd http://192.168.0.215:82/lm_22-04-Kubuntu/casper/initrd   || read void
+kernel http://172.16.0.215:82/lm_22-04-Kubuntu/casper/vmlinuz  || read void
+initrd http://172.16.0.215:82/lm_22-04-Kubuntu/casper/initrd   || read void
 imgargs vmlinuz initrd=initrd root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
-# kernel http://192.168.0.215:82/lm_20-04-Kubuntu/casper/vmlinuz  || read void
+# kernel http://172.16.0.215:82/lm_20-04-Kubuntu/casper/vmlinuz  || read void
 # echo Sanboot-Http Loading ISO...
-# sanboot http://192.168.0.5:8083/Ubuntu+Kubuntu/kubuntu-22.04-desktop-amd64.iso || goto failed
+# sanboot http://172.16.0.5:8083/Ubuntu+Kubuntu/kubuntu-22.04-desktop-amd64.iso || goto failed
 boot
 goto start
 
 :linux-live-kubuntu-iso
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_22-04-Kubuntu_Custom/kubuntu-CUSTOM
-initrd http://192.168.0.215:82/lm_22-04-Kubuntu/casper/initrd   || read void
-kernel http://192.168.0.215:82/lm_22-04-Kubuntu_Custom/kubuntu-CUSTOM/casper/vmlinuz  || read void
+initrd http://172.16.0.215:82/lm_22-04-Kubuntu/casper/initrd   || read void
+kernel http://172.16.0.215:82/lm_22-04-Kubuntu_Custom/kubuntu-CUSTOM/casper/vmlinuz  || read void
 imgargs vmlinuz initrd=initrd root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
 boot
 goto start
@@ -387,26 +387,26 @@ goto start
 
 # Bob's version with an extra utility he add, and re-built the ISO (focal xfce 2004)
 :linux-live-lm-rescuezilla
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_rescuezilla
-kernel http://192.168.0.215:82/lm_rescuezilla/casper/vmlinuz  || read void
-initrd http://192.168.0.215:82/lm_rescuezilla/casper/initrd.lz   || read void
+kernel http://172.16.0.215:82/lm_rescuezilla/casper/vmlinuz  || read void
+initrd http://172.16.0.215:82/lm_rescuezilla/casper/initrd.lz   || read void
 imgargs vmlinuz initrd=initrd.lz root=/dev/nfs live-media-path=/casper/ ignore_uuid boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
 boot
 goto start
 
 # Latest version (jammy 2204)
 :linux-live-foss-rescuezilla
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/foss_rescuezilla/rescuezilla-2.4.1-64bit.jammy
-kernel http://192.168.0.215:82/foss_rescuezilla/rescuezilla-2.4.1-64bit.jammy/casper/vmlinuz  || read void
-initrd http://192.168.0.215:82/foss_rescuezilla/rescuezilla-2.4.1-64bit.jammy/casper/initrd.lz   || read void
+kernel http://172.16.0.215:82/foss_rescuezilla/rescuezilla-2.4.1-64bit.jammy/casper/vmlinuz  || read void
+initrd http://172.16.0.215:82/foss_rescuezilla/rescuezilla-2.4.1-64bit.jammy/casper/initrd.lz   || read void
 imgargs vmlinuz initrd=initrd.lz root=/dev/nfs live-media-path=/casper/ ignore_uuid boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
 boot
 goto start
 
 
-# Latest version (jammy 2204) of CLONEZILLA (Works very well, just use gui to restore via nfs 192.168.0.5:/volume1/...* )
+# Latest version (jammy 2204) of CLONEZILLA (Works very well, just use gui to restore via nfs 172.16.0.5:/volume1/...* )
 # TODO #1 I need to make a casper/vmlinuz.efi version, so that this gui works in both UEFI and LEGACY restores (easy, just grab a 2204 one?)
 # TODO #2 Add a customized kernelparam that automounts our nas (this would be awesome to put all clonezillas into the backups dir, and do something like this (the ocs_prerun variable):
 # set image_name your-image-name
@@ -417,27 +417,27 @@ goto start
 :linux-live-foss-clonezilla
 echo CLONEZILLA - Http Loading ISO's filesystem.squashfs... 
 echo CLONEZILLA - NOTE 1: FIX NEEDED, (Butfor now, squashfs is NON-UEFI, so post restore you need UEFI).
-echo CLONEZILLA - NOTE 2: REMEMBER TO USE NFS SETTINGS in GUI like... [192.168.0.5:/volume1/INSERT_YOUR_NASNFSSHARE_HERE/mikew/clonezilla-images]
-kernel http://192.168.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/vmlinuz boot=live config noswap nolocales edd=on nomodeset vga=788 nosplash noprompt fetch=http://192.168.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/filesystem.squashfs
-initrd http://192.168.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/initrd.img
+echo CLONEZILLA - NOTE 2: REMEMBER TO USE NFS SETTINGS in GUI like... [172.16.0.5:/volume1/INSERT_YOUR_NASNFSSHARE_HERE/mikew/clonezilla-images]
+kernel http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/vmlinuz boot=live config noswap nolocales edd=on nomodeset vga=788 nosplash noprompt fetch=http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/filesystem.squashfs
+initrd http://172.16.0.215:82/foss_clonezilla/clonezilla-live-3.0.2-21-amd64/live/initrd.img
 boot
 goto start
 
 :linux-live-vyos
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_vyos_1.4
-kernel http://192.168.0.215:82/lm_vyos_1.4/live/vmlinuz  || read void
-initrd http://192.168.0.215:82/lm_vyos_1.4/live/initrd.img   || read void
-imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live username=live nopersistence noautologin nonetworking union=overlay fetch=http://192.168.0.5:8083/VyOS/vyos-1.4-rolling-202104061641-amd64/live/filesystem.squashfs -- || read void
+kernel http://172.16.0.215:82/lm_vyos_1.4/live/vmlinuz  || read void
+initrd http://172.16.0.215:82/lm_vyos_1.4/live/initrd.img   || read void
+imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live username=live nopersistence noautologin nonetworking union=overlay fetch=http://172.16.0.5:8083/VyOS/vyos-1.4-rolling-202104061641-amd64/live/filesystem.squashfs -- || read void
 boot
 goto start
 
 # This does not work without internet, so I removed it.
 # :linux-live-bootrepair
-# set server_ip 192.168.0.215
+# set server_ip 172.16.0.215
 # set nfs_path /lm_iso/lm_boot-repair-disk
-# kernel http://192.168.0.215:82/lm_boot-repair-disk/casper/vmlinuz.efi  || read void
-# initrd http://192.168.0.215:82/lm_boot-repair-disk/casper/initrd.lz   || read void
+# kernel http://172.16.0.215:82/lm_boot-repair-disk/casper/vmlinuz.efi  || read void
+# initrd http://172.16.0.215:82/lm_boot-repair-disk/casper/initrd.lz   || read void
 # imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper ip=dhcp netboot=nfs nfsroot=${server_ip}:${nfs_path} #FIX THIS
 # boot
 # goto start
@@ -447,16 +447,16 @@ goto start
 #########################################################################
 :spacewalk
 echo Chain Loading file: pxelinux.0 from spacewalk server...
-set 210:string tftp://192.168.0.138/
+set 210:string tftp://172.16.0.138/
 set 209:string pxelinux.cfg/default
-chain tftp://192.168.0.138/pxelinux.0 || goto start
+chain tftp://172.16.0.138/pxelinux.0 || goto start
 
 #########################################################################
 # TOP ACRONIS MENU
 #########################################################################
 :acronis
 echo Sanboot Http Loading file: AcronisBackup 12.5 ISO...
-sanboot --no-describe http://192.168.0.215:82/AcronisBackup_12.5_Boot_media.iso || goto failed
+sanboot --no-describe http://172.16.0.215:82/AcronisBackup_12.5_Boot_media.iso || goto failed
 goto start
 
 
@@ -468,9 +468,9 @@ goto start
 :ghost
 echo Wimboot Loading file: Ghost BCD, Boot.Sdi, and Boot.wim...
 kernel wimboot
-initrd -n BCD 		http://192.168.0.215:82/lm_ghost/BOOT/BCD 		        BCD
-initrd -n boot.sdi 	http://192.168.0.215:82/lm_ghost/BOOT/BOOT.SDI		    boot.sdi
-initrd -n boot.wim 	http://192.168.0.215:82/lm_ghost/SOURCES/BOOT.WIM		boot.wim
+initrd -n BCD 		http://172.16.0.215:82/lm_ghost/BOOT/BCD 		        BCD
+initrd -n boot.sdi 	http://172.16.0.215:82/lm_ghost/BOOT/BOOT.SDI		    boot.sdi
+initrd -n boot.wim 	http://172.16.0.215:82/lm_ghost/SOURCES/BOOT.WIM		boot.wim
 boot
 goto start
 
@@ -493,13 +493,13 @@ choose --timeout ${submenu-timeout} --default ${submenu-default} selected && got
 go start # End of Submenu
 
 :esx-legacy
-sanboot http://192.168.0.215:82/lm_esxi_7.0/esx7.0.iso
+sanboot http://172.16.0.215:82/lm_esxi_7.0/esx7.0.iso
 
 :esx-uefi
-set server_ip 192.168.0.215
+set server_ip 172.16.0.215
 set nfs_path /lm_iso/lm_esxi_7.0
-kernel http://192.168.0.215:82/lm_esxi_7.0/mboot.efi  || read void
-initrd http://192.168.0.215:82/lm_esxi_7.0/EFI/BOOT/BOOT.CFG   || read void
+kernel http://172.16.0.215:82/lm_esxi_7.0/mboot.efi  || read void
+initrd http://172.16.0.215:82/lm_esxi_7.0/EFI/BOOT/BOOT.CFG   || read void
 imgargs mboot.efi root=/dev/nfs ip=dhcp netboot=nfs nfsroot=${server_ip}:${nfs_path}
 boot
 goto start
