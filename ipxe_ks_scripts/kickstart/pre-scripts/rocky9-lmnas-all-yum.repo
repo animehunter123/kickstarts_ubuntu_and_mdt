@@ -6,7 +6,7 @@
 # repo --name=epel9 --baseurl=http://INSERT_YOUR_WEBSERVER_HERE.YOURDOMAIN.COM/repos/epel/9/Everything/x86_64
 #
 # Quick one-liner to count yum repolist in newer rocky8/9:
-# [lmadmin@localhost ~]$ yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
+# [ADMIN_USERNAME@localhost ~]$ yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
 
 [rocky9-baseos-lmnas]
 name=rocky9-baseos-lmnas

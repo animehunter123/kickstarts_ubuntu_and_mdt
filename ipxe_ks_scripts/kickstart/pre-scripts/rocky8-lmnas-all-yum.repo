@@ -17,7 +17,7 @@
 #      1 expiration
 #      1 @EPEL8
 # The internet facing one currently 2023/11/21@Rocky8.8 is...
-#[lmadmin@localhost ~]$ yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
+#[ADMIN_USERNAME@localhost ~]$ yum list all | awk '{print $3}' | sort | uniq -c | sort -nr
 #   4817 appstream
 #   1268 baseos
 #    777 @AppStream

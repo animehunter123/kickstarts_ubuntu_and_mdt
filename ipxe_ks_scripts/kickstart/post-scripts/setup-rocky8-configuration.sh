@@ -28,12 +28,12 @@ nameserver 172.16.0.112
 EOF
 popd 
 
-echo "@@ Creating the lmadmin user..."
-useradd lmadmin
-echo -e "INSERT_YOUR_PASS_HERE\nINSERT_YOUR_PASS_HERE" | passwd lmadmin
-usermod -aG wheel lmadmin
-usermod -aG root lmadmin
-echo 'lmadmin ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/lmadmin
+echo "@@ Creating the ADMIN_USERNAME user..."
+useradd ADMIN_USERNAME
+echo -e "INSERT_YOUR_PASS_HERE\nINSERT_YOUR_PASS_HERE" | passwd ADMIN_USERNAME
+usermod -aG wheel ADMIN_USERNAME
+usermod -aG root ADMIN_USERNAME
+echo 'ADMIN_USERNAME ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/ADMIN_USERNAME
 
 echo "@@ Setting SSHd config..."
 sed -i 's/#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
