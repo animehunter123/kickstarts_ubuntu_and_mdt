@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #Variables
-nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
+#nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
+nohup_log="/mnt/MY_NAS/repos/logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
 
 #Input Source from the Internet Mirrors
 #rsync_url='mirror.arizona.edu/blahdyblah' # <--- another one
@@ -12,10 +13,11 @@ nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
 rsync_url='rsync://download1.rpmfusion.org/rpmfusion/' 
 
 #Output Folders:
-#rsync_dest='/mnt/MYSITENAS-Data/repos/apt/'
-rsync_dest='/mnt/MYSITENAS-Data/repos/rpmfusion/'
+#rsync_dest='/mnt/MY_NAS/repos/apt/'
+rsync_dest='/mnt/MY_NAS/repos/rpmfusion_DOWNLOAD_IN_PROGRESS/'
 
 #Main()
+mkdir -p $rsync_dest 2>/dev/null 1>/dev/null
 echo "Rsync download is now in progress --- please verify log via:    tail -f $nohup_log"
 #nohup rsync -avtz $rsync_url $rsync_dest 2>&1 1>$nohup_log &
 #nohup rsync  --info=progress2 --delete -avtz $rsync_url $rsync_dest 2>&1 1>$nohup_log &

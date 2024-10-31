@@ -1,12 +1,13 @@
 #!/bin/bash
 
 echo "This script will read in the list of packages from [result_02_parsed.ini] and download each one using pip."
-
 echo "THIS TOOK ABOUT 8 DAYS TO RUN ON ROCKY9!!"
+echo "Please remember to run this in your shell via: nohup ./4-download-all-pypi-packages.sh &"
+echo "And then just tail -f nohup.out to see how it goes"
 
 # Directory where pip will store downloaded packages
 # TARGET="./pypi-pipdownloaded"
-TARGET="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded" # make sure you mounted it on your host
+TARGET="/mnt/MY_NAS/repos/pypi-pipdownloaded" # make sure you mounted it on your host
 
 # Ensure the target directory exists
 mkdir -p "$TARGET"

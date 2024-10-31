@@ -2,7 +2,7 @@
 
 # Define the source directory
 # source_dir="./pypi-pipdownloaded"
-source_dir="/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded"
+source_dir="/mnt/MY_NAS/repos/pypi-pipdownloaded"
 
 exit #INTENTIONAL AT THE MOMENT!!!!!!!!!!!
 
@@ -13,7 +13,7 @@ exit #INTENTIONAL AT THE MOMENT!!!!!!!!!!!
 #!/bin/bash
 
 # Start in the repository root
-cd "/mnt/MYSITENAS-Data/repos/pypi-pipdownloaded"
+cd "/mnt/MY_NAS/repos/pypi-pipdownloaded"
 
 # Create simple directory
 rm -rf simple
@@ -83,7 +83,7 @@ echo "PEP 503 structure created successfully!"
 
 # Then you can do this:
 pip uninstall -y numpy pandas dash ; pip cache purge
-pip install --no-index --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
+pip install --no-index --find-links=http://192.168.0.63/ numpy pandas dash  --trusted-host 192.168.0.63
 
 
 # which means you need a pip.conf kinda like this.:::::::
@@ -92,13 +92,13 @@ pip install --no-index --find-links=http://172.16.0.63/ numpy pandas dash  --tru
 
 [global]
 no-index = true
-find-links = http://172.16.0.63/
-trusted-host = 172.16.0.63
+find-links = http://192.168.0.63/
+trusted-host = 192.168.0.63
 
 [install]
 no-index = true
-find-links = http://172.16.0.63/
-trusted-host = 172.16.0.63
+find-links = http://192.168.0.63/
+trusted-host = 192.168.0.63
 
 
 
@@ -157,8 +157,8 @@ trusted-host = 172.16.0.63
 
 # pip install --no-index --find-links=. yapi
 # pip install --no-index --find-links=. numpy pandas dash
-# Mount it and then, pip install --no-index --find-links=/tmp/MYSITENAS-Data/repos/pypi-pipdownloaded numpy pandas dash
-# pip install --index-url http://172.16.0.63:8000/ numpy pandas dash --trusted-host 172.16.0.63
+# Mount it and then, pip install --no-index --find-links=/tmp/MY_NAS/repos/pypi-pipdownloaded numpy pandas dash
+# pip install --index-url http://192.168.0.63:8000/ numpy pandas dash --trusted-host 192.168.0.63
 
 
 
