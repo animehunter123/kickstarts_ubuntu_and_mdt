@@ -8,7 +8,7 @@ Follow the steps on this page from top to bottom to build your MDT environment.
 
 ==Download the ISOs from Microsoft Volume License Center ==
 
-* Login to Microsoft VLSC (https://www.microsoft.com/Licensing/servicecenter/Downloads/DownloadsAndKeys.aspx), and download the ISO's into '''\\INSERT_YOUR_PASS_HERE\ISO''' for: 
+* Login to Microsoft VLSC (https://www.microsoft.com/Licensing/servicecenter/Downloads/DownloadsAndKeys.aspx), and download the ISO's into '''\\lm-nas\ISO''' for: 
 #Windows10Pro/Edu English  '''<--- UPDATED OFTEN''' . Pro includes the "Enterprise WIM" which we will use our LTSB license on.
 #Windows10Pro/Edu Japanese '''<--- UPDATED OFTEN''' 
 #Windows 10 LXP ISO MultiLangAll32/64 (Not updated often)
@@ -35,7 +35,7 @@ Follow the steps on this page from top to bottom to build your MDT environment.
 
 ==Install MDT/ADK Software==
 
-* (On the MDT Server): Before installing MDT, you will need the .NET 3.5 Feature to be installed. This is to enable the http://lm-mdt.YOURDOMAIN.COM:9801/MDTMonitorData/ webpage, and MDT Monitoring section of the GUI. To install .NET 3.5, use the internet or mount the DVD, then use server manager with the last step of sources to use the WindowsServer DVD Install Disk of K:\sources\sxs (or similar). After installing 3.5, it is a good idea to reboot before proceeding to install MDT. '''Also: Note that McAfee may cause issues with the webserver responding so you may need to adjust rules or uninstall it from mdt server'''.
+* (On the MDT Server): Before installing MDT, you will need the .NET 3.5 Feature to be installed. This is to enable the http://lm-mdt.lm.local:9801/MDTMonitorData/ webpage, and MDT Monitoring section of the GUI. To install .NET 3.5, use the internet or mount the DVD, then use server manager with the last step of sources to use the WindowsServer DVD Install Disk of K:\sources\sxs (or similar). After installing 3.5, it is a good idea to reboot before proceeding to install MDT. '''Also: Note that McAfee may cause issues with the webserver responding so you may need to adjust rules or uninstall it from mdt server'''.
 
 * (On the NAS): Download the latest Windows 10 ISO of Windows 10 Pro/Edu (example Windows 10 20H2.1 from downloaded the Microsoft VLSC Webpage. (I always get the x64 english, x64 japanese, FoD Disk1, FoD disk2, and MultiLanguage-All ISOs from the VLSC download page).
 
@@ -62,7 +62,7 @@ Follow the steps on this page from top to bottom to build your MDT environment.
 # Finish 
 
 ==Installing the SYSLINUX PXE Menu==
-* Follow these steps to ensure Syslinux is installed now that we created a default C:\remoteinstall, see: THE LM WIKI FOR MORE INFORMATION
+* Follow these steps to ensure Syslinux is installed now that we created a default C:\remoteinstall, see: http://192.168.0.40/OrioleWiki/index.php/Windows#MDT_with_SYSLINUX_to_CHAINLOAD_Spacewalk
 
 ==Installing the DHCP Option66 and Option 67 Filter to support UEFI and BIOS Boots==
 Using this guide, you can pxe both legacy BIOS and UEFI machines: https://medium.com/visitedspace/pxe-boot-both-legacy-bios-and-uefi-96ecf95a504
@@ -145,10 +145,10 @@ The screens for your DHCP Vendor Class, and DHCP Policies, for supporting both B
 * Next Point the $LXPISO, $FODISO1, $FODISO2 to the correct language pack (docs.ms will tell you exactly which one). Remember that, LXPISOs are updated often.:
 <pre>
 #LXP and FODs for 20H2.1:
-$LXPISO1 = '\\172.16.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
-$LXPISO2 = '\\172.16.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_10C_LXP_ONLY_X22-44318.ISO'
-$FODISO1 = '\\172.16.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
-$FODISO2 = '\\172.16.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
+$LXPISO1 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
+$LXPISO2 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_10C_LXP_ONLY_X22-44318.ISO'
+$FODISO1 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
+$FODISO2 = '\\192.168.0.5\iso\Microsoft\Win10-20H2.1\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
 </pre>
 
 * Next uncomment the below depending on which language you are using:
@@ -164,7 +164,7 @@ Dism /Image:"C:\mount\windows" /Set-SKUIntlDefaults:en-us
 
 * Make a backup of install.wim just in case, before we run the script to inject.
 
-* Open Powershell as INSERT_YOUR_USERNAME_HERE NOW.
+* Open Powershell as ADMINISTRATOR NOW.
 
 * Launch the script carefully one line at a time to make sure no errors ocurred. ''I recommend using VSCode with Powershell Addon, and using the integrated shell (in a escalated VSCode), and highlighting a few lines at a time and running them in the console at the bottom.''
 
@@ -187,7 +187,7 @@ Dism /Image:"C:\mount\windows" /Set-SKUIntlDefaults:en-us
 * Select Wim file: OperatingSystems\Windows10\CUSTOM_LM_IMAGES\ENT_20H2.1\Windows10Enterprise_20H2.1_ENG_INJECTED.wim
 * No product key > next
 * organization: lm, defaults > next
-* Password: password@
+* Password: PASSSSSSSSSSWORDDDDDDD
 * Next > Finish
 
 ==Enable Application Filtering for specific Task Sequences to show/hide apps==
@@ -283,7 +283,7 @@ See this for reference: https://docs.microsoft.com/en-us/windows-hardware/custom
 
 * B) If it is not included, download each driver manually and unzip to a folder.
   We did this for XPS8700 in:
-  \\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\INSERT_YOUR_NASNFSSHARE_HERE\software\Dell\Dell Drivers\Dell Drivers XPS8700_Win10Drivers\Version 20210928
+  \\lm-nas.lm.local\OrioleNAS-Data\software\Dell\Dell Drivers\Dell Drivers XPS8700_Win10Drivers\Version 20210928
 
 
 * Open up MDT GUI > Out-of-box Drivers > Windows 10 > Dell > XPS 8700 (or similar) > create a folder with todays date.
@@ -384,7 +384,7 @@ After the VM is powered on and logged in (NOT via F12), we will now capture via:
 
 * Disable McAfee Antivirus (it will always auto-reenable by itself).
 
-* Open a folder explorer to '''\\lm-mdt.YOURDOMAIN.COM\''' 
+* Open a folder explorer to '''\\lm-mdt.lm.local\''' 
 
 * Navigate to '''.\deploymentshare\scripts\'''
 
@@ -393,6 +393,42 @@ After the VM is powered on and logged in (NOT via F12), we will now capture via:
 * Run through the wizard using the "CAP" task sequence, and saving it with a filename needed.
 
 * Wait a long time. When it is done, restore this snapshot (because capture'ing sysprep'ed this vm, and ruined the capture counter registry value).
+
+
+==PATCH THE CAP Final_Reference_Image==
+We did this to get from 21H1 to 22H2 ''(we did this on the final cap image from previous step above)''. Then trellix will work in 22h2.
+
+===Install NTLite===
+*Download NTLite from the official website (https://www.ntlite.com/download/) // free version works fine but is slow, we NEED TO ASK OFFICE TO BUY IT ASAP
+*Run the installer and follow the on-screen instructions to complete the installation.
+
+===Load the WIM File===
+*Launch NTLite.
+*Click on "Add" in the top-left corner and select "Image (WIM, ESD, SWM)".
+*Navigate to your Windows 10 21H1 WIM file and select it.
+*NTLite will load the image and display its contents.
+===Add Patches and Enablement Package===
+*In NTLite, select the loaded image on the left sidebar.
+*Click on the "Updates" tab in the main window.
+*Click "Add" and browse to the folder containing your Windows updates.
+*Select all relevant cumulative updates and the enablement package for Windows 10 22H2.
+*NTLite will analyze the updates and add them to the queue.
+
+'''... NOTE I ADDED 21H1 AND 21H2 AND 22H2 (IT AUTODETECTED DUPLICATES), AND THIS IS HOW IT WORKED!'''
+
+===Build the New WIM===
+*After adding all updates, click on the "Apply" button in the top-right corner.
+*NTLite will process the changes and create a new WIM file.
+*Once complete, click on "Create ISO" in the left sidebar. '''<---- WE NEED TO BUY IT, SO FOR NOW JUST COPY WIM to mdt...'''
+*Choose your desired options and click "Create" to generate the new ISO containing the updated WIM.
+
+===Copy to MDT===
+*Extract the WIM file from the newly created ISO.
+*Open your MDT Deployment Share.
+*Navigate to the "Operating Systems" folder.
+*Right-click and select "Import Operating System".
+*Choose "Custom image file" and browse to your new WIM file.
+*Follow the wizard to complete the import process.
 
 ==Create the Task Sequence: DPL-W10E-REF2XHX==
 
@@ -404,17 +440,17 @@ After the VM is powered on and logged in (NOT via F12), we will now capture via:
 
 # State Restore >> Imaging >> Capture WIM >>> Options Tab, Disable
 
-==Reference/INSERT_YOUR_USERNAME_HEREshooting==
+==Reference/Troubleshooting==
 ===MDT Logging ===
 To turn on Normal Logging, add this to your "Rules" tab in the Deployment Share:
-  SLShare=\\172.16.0.215\Logs
+  SLShare=\\192.168.0.215\Logs
 
 DANGEROUS / To turn on DYNAMIC Logging (Live Debugging Logging, adds a lot of network traffic to each kick):
-  SLShareDynamicLogging=\\172.16.0.215\Logs
+  SLShareDynamicLogging=\\192.168.0.215\Logs
 
 ===MDT DeploymentShare Rules (CustomSettings.ini) ===
 
-* Note that the "Monitoring" tab of the MDT Deployment share has to have "Enable Monitoring" checked with the FQDN. Also if it doesnt respond to http://mdt.YOURDOMAIN.COM:9800/MDTMonitorEvent then you need to uncheck "Enable Monitoring" then Apply then Re-Check then Apply.
+* Note that the "Monitoring" tab of the MDT Deployment share has to have "Enable Monitoring" checked with the FQDN. Also if it doesnt respond to http://mdt.lm.local:9800/MDTMonitorEvent then you need to uncheck "Enable Monitoring" then Apply then Re-Check then Apply.
 
 * MDT Deployment Share settings are:
 <pre>
@@ -426,16 +462,16 @@ _SMSTSORGNAME=LMLowSide
 UserDataLocation=NONE
 DoCapture=NO
 OSInstall=Y
-AdminPassword=INSERT_YOUR_PASSWORD_HERE
+AdminPassword=PASSSSSSSSSSWORDDDDDDD
 TimeZoneName=Pacific Standard Time 
 JoinWorkgroup=WORKGROUP
 HideShell=YES
 FinishAction=REBOOT
 DoNotCreateExtraPartition=YES
-WSUSServer=http://172.16.0.116:8530
+WSUSServer=http://192.168.0.116:8530
 ApplyGPOPack=NO
-SLShare=\\172.16.0.215\Logs
-; SLShareDynamicLogging=\\172.16.0.215\Logs
+SLShare=\\192.168.0.215\Logs
+; SLShareDynamicLogging=\\192.168.0.215\Logs
 SkipAdminPassword=YES
 SkipProductKey=YES
 SkipComputerName=NO
@@ -451,7 +487,7 @@ SkipRoles=YES
 SkipCapture=NO
 SkipFinalSummary=YES
 SkipComputerBackup=YES
-EventService=http://lm-mdt.YOURDOMAIN.COM:9800
+EventService=http://lm-mdt.lm.local:9800
 
 ; Skip AppSelectionTS for the DPL deployments
 Priority=DPL-W10E-LM1909,DPL-W10J-LM1909,Default
