@@ -7,7 +7,7 @@ echo "And then just tail -f nohup.out to see how it goes"
 
 # Directory where pip will store downloaded packages
 # TARGET="./pypi-pipdownloaded"
-TARGET="/mnt/MY_NAS/repos/pypi-pipdownloaded" # make sure you mounted it on your host
+TARGET="/mnt/NAS/repos/pypi-pipdownloaded" # make sure you mounted it on your host
 
 # Ensure the target directory exists
 mkdir -p "$TARGET"
