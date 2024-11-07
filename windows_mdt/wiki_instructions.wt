@@ -8,7 +8,7 @@ Follow the steps on this page from top to bottom to build your MDT environment.
 
 ==Download the ISOs from Microsoft Volume License Center ==
 
-* Login to Microsoft VLSC (https://www.microsoft.com/Licensing/servicecenter/Downloads/DownloadsAndKeys.aspx), and download the ISO's into '''\\lm-nas\ISO''' for: 
+* Login to Microsoft VLSC (https://www.microsoft.com/Licensing/servicecenter/Downloads/DownloadsAndKeys.aspx), and download the ISO's into '''\\MY-NAS\ISO''' for: 
 #Windows10Pro/Edu English  '''<--- UPDATED OFTEN''' . Pro includes the "Enterprise WIM" which we will use our LTSB license on.
 #Windows10Pro/Edu Japanese '''<--- UPDATED OFTEN''' 
 #Windows 10 LXP ISO MultiLangAll32/64 (Not updated often)
@@ -283,7 +283,7 @@ See this for reference: https://docs.microsoft.com/en-us/windows-hardware/custom
 
 * B) If it is not included, download each driver manually and unzip to a folder.
   We did this for XPS8700 in:
-  \\lm-nas.lm.local\OrioleNAS-Data\software\Dell\Dell Drivers\Dell Drivers XPS8700_Win10Drivers\Version 20210928
+  \\MY-NAS.lm.local\MY-SHARED-DATA\software\Dell\Dell Drivers\Dell Drivers XPS8700_Win10Drivers\Version 20210928
 
 
 * Open up MDT GUI > Out-of-box Drivers > Windows 10 > Dell > XPS 8700 (or similar) > create a folder with todays date.
