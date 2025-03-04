@@ -23,7 +23,7 @@ All important fields need to be replaced after cloning this repo. Search and rep
 * dhcp-gui-photos: A picture of everything you need to set up in your pxe server to get the low side kickstarts going first!
 
 ## windows_mdt
-* wiki_instructions.wt - Contains Wiki Notes on the entire process for building a MDT server from scratch on the low side. (Use the VSCode addon to read with ease: RoweWilsonFrederiskHolme.wikitext)
+* wiki_instructions.wt - Contains Wiki Notes on the entire process for building a MDT server from scratch on the low side. (Use the VSCode addon to read with ease: RoweWilsonFrederiskHolme.wikitext).
 
-* Scripts folder (has a subfolder called LM, this is what you paste into your C:\MDTBuildLab or similar folder's Scripts folder. There is also a custom modification to DeployWiz, ZTIUtility, and ZTI-Chocolatey-Wrapper, use `diff` on the latest versions supplied from Microsoft before merging)
+* Scripts folder (has a subfolder called LM, this is what you paste into your C:\MDTBuildLab or similar folder's Scripts folder. There is also a custom modification to DeployWiz, ZTIUtility, and ZTI-Chocolatey-Wrapper, use `diff` on the latest versions supplied from Microsoft before merging).
 
