@@ -1,10 +1,8 @@
 # Description
 These scripts will download pypi using the rocky9 config generated from the docs already in the results_02
 
-Note: The TTFB performance is better for Ubuntu hosts versus Rocky, this affects XargsParallel and also Morgan mirroring, so recommend keeping this in mind.
-
 After it is done you can confirm that your new destination webserver that will host pypi works with a quick test:
-```
+```bash
   pip uninstall -y numpy pandas dash ; pip cache purge
 
   pip install  --find-links=http://172.16.0.63/ numpy pandas dash  --trusted-host 172.16.0.63
@@ -15,13 +13,15 @@ After it is done you can confirm that your new destination webserver that will h
 ```@@@ 
 IMPORTANT NOTE: 
 
-YOU NEED TO RUN THESE SCRIPTS ON THE TARGET OS SO THAT IT FETCHES THAT SPECIFIC ENVIRONMENT OF PYPI. 
+You need to run these scripts on the target os so that it fetches that specific environment of pypi. 
+
+Be sure to note down what os/arch packages as you build your repo folder so that you know what is downloaded.
 
 I.e. if you used Rocky93 VM it will get a pypi_rocky93, elsea Windows10 with Python12.2 to get pypi_win10_py122, for example.
 
 @@@```
 
-* FIRST, Make a HOST FRESH VM using the TARGET OS and ARCHITECTURE (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
+* FIRST, Make a HOST FRESH VM using the TARGET OS/ARCHITECTURE/REQUIRED_PYTHON_VERSION (i.e. 8C/32GBRAM with Rocky9.3 Python3.9.18)
 
 * NEXT, the nas destination directory via /etc/fstab: ```172.16.0.5:/volume1/MYSITENAS-Data /mnt/MYSITENAS-Data nfs defaults 0 0```
 

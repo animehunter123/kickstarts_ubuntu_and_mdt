@@ -1,26 +1,21 @@
 #!/bin/bash
 
-echo "NOTE:
-1. Its a good idea to run this directly from the NAS -- but very carefully!!! AND CHMOD WWW AFTERWARDS!!!!
-2. THIS WILL BLOW AWAY YOUR ./simple DIRECTORY! 
-3. THIS SCRIPT CAN TAKE 24 HOURS to create a ./simple directory with all targz/whl/egg files appropriately. 
-
-PRESS CONTROL+C TO CANCEL or ANY ENTER TO CONTINUE... <-- disabled for now, using a exit check later.
-"
 # Define the source directory
-# source_dir="./pypi-pipdownloaded"
-#source_dir="/mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded"
-#source_dir="/mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded_DOWNLOAD_IN_PROGRESS/"
-#source_dir="/mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded/"
-source_dir="/volume1/MY-SHARED-DATA/repos/pypi-pipdownloaded" # If running from MY-NAS, this is faster (REMEMBER IF SYNOLOGY ROOT YOU NEED TO RUN CHMOD AFTER THIS SCRIPT TO BE PUBLICALLY VIEWABLE
+# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
+TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
 
-echo "Starting script to create './simple' subdir from wheels/tgz in source. Attempting to cd into [$source_dir]."
+echo "Information About this Script:"
+echo " 1. Its a good idea to run this directly from the NAS -- but very carefully!!! AND CHMOD WWW AFTERWARDS!!!!"
+echo " 2. THIS WILL BLOW AWAY YOUR ./simple DIRECTORY! "
+echo " 3. THIS SCRIPT CAN TAKE 24 HOURS to create a ./simple directory with all targz/whl/egg files appropriately. "
+read -p "Press Enter to continue (Or CTRL+C to cancel)..." #  <-- disabled for now, using a exit check later!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+echo "Starting script to create './simple' subdir from wheels/tgz in source. Attempting to cd into [$TARGET]."
 # NOW... Lets... RECREATE ./simple in the dir that has all the *.tar.gz and *.whl files
 
 # Start in the repository root
-#cd "/mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded"
-#cd $source_dir
-cd "$source_dir" || { echo "Error: Directory '$source' doesn't exist, quitting! PLEASE CHECK WHAT HAPPENED!!!!!!!" >&2; exit 1; }
+#cd "/mnt/OrioleNAS-Data/repos/pypi-pipdownloaded"
+cd "$TARGET" || { echo "Error: Directory '$source' doesn't exist, quitting! PLEASE CHECK WHAT HAPPENED!!!!!!!" >&2; exit 1; }
 
 # Recreate simple directory (it will host a index.html to properly follow PEP 503 requirements for http pypi repo).
 echo "Re-Creating ./simple that is EMPTY, I am currently in:"

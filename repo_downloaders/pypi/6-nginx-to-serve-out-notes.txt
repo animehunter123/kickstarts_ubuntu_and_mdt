@@ -18,7 +18,7 @@ server {
     listen 80;
     server_name pypi.yourdomain.com;  # Replace with your domain or IP
 
-    root /mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded;
+    root /mnt/OrioleNAS-Data/repos/pypi-pipdownloaded;
 
     location / {
         autoindex on;
@@ -38,7 +38,7 @@ server {
 
     # Serve the PEP 503 simple API
     location /simple/ {
-        alias /mnt/MY-SHARED-DATA/repos/pypi-pipdownloaded/simple/;
+        alias /mnt/OrioleNAS-Data/repos/pypi-pipdownloaded/simple/;
         autoindex on;
         index index.html;
 
@@ -61,8 +61,8 @@ Now, the webserver is up! Lets create a pip.conf for Rocky93 for example to get 
 # At this point its all sitting in 1 big fat folder
 # Now use number 5 setup nginx with autoindex on
 AND IT SHOULD BE SUPER FAST:
+pip install --index-url http://lm-webserver.lm.local/repos/pypi-pipdownloaded/ requests --trusted-host lm-webserver.lm.local
 pip install --index-url http://192.168.0.63/simple/ 021 --trusted-host 192.168.0.63
-
 
 
 echo "Finally, here setting up the pip.conf into your ETC NOW"

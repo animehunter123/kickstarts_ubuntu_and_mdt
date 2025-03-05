@@ -27,3 +27,11 @@ with open(file_path, 'r') as file:
                 line = f'{name}'
                 #print(line)
                 result_file.write(line + '\n')
+
+print("""
+Script is complete, feel free to also use 3 VM's to get 110Mbit/s x3 via:
+      
+To split the file "result_02_parsed.ini" into 3 separate chunks of equal size for your VMs to parse, you can use the split command in Linux. Here's how you can do it:
+split -n 3 result_02_parsed.ini chunk_
+      
+""")
