@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="7zip" />
+
+    <!-- High Side Only Packages: -->
+    <!-- <package id="tightvnc" /> -->
+	<!-- <package id="flashplayernpapi" /> -->
+	<!-- <package id="flashplayerppapi" /> -->
+
+    <!-- All Packages: -->
+    <package id="paint.net"  />
+    <package id="python3"  />
+    <package id="wireshark"  />
+    <package id="vim" packageParameters='" /InstallDir:C:\Program Files\Vim /NoDesktopShortcuts "' />
+	<!-- <package id="microsoft-edge" /> No longer needed in 20H2 onwards -->
+
+	<package id="activeperl" />
+	<package id="adobeair" />
+	<package id="adobereader" />
+	<package id="adobeshockwave" />
+	<package id="audacity" />
+	<package id="audacity-ffmpeg" />
+	<package id="audacity-lame" />
+	<package id="autohotkey.install" />
+	<package id="autoit.install" />
+	<package id="cdburnerxp" />
+	<package id="chocolatey" />
+	<package id="cpu-z" />
+	<package id="csource" />
+	<package id="everything" />
+	<package id="ffmpeg" />
+	<package id="filezilla" />
+	<package id="firefox" />
+	<package id="foxitreader" />
+	<package id="fsviewer" />
+	<package id="gimp" />
+	<package id="git" />
+	<package id="googlechrome" />
+	<package id="gpu-z" />
+	<package id="gsudo" />
+	<package id="hwmonitor" />
+	<package id="hxd" />
+	<package id="imageresizer" />
+	<package id="irfanview" />
+	<package id="javajre8" />
+	<package id="jwpce" />
+	<package id="kashmir3d" />
+	<package id="k-litecodecpackfull" />
+	<package id="lame" />
+	<package id="lockhunter" />
+	<package id="minitool" />
+	<package id="microsoft-windows-terminal" />
+	<package id="mingw" />
+	<package id="mobaxterm" />
+	<package id="nagios-ncpa" />
+	<package id="notepadplusplus" />
+	<package id="path-copy-copy" />
+	<package id="processhacker" />
+	<package id="pswindowsupdate-psmodule" />
+	<package id="putty" />
+	<!-- <package id="python2" /> -->
+	<package id="shotcut " />
+	<package id="silverlight" />
+	<package id="sox" />
+	<package id="strawberry-perl" />
+	<package id="sysinternals" />
+	<package id="telnetclient-feature" />
+	<package id="tightvnc" />
+	<package id="unxutils" />
+	<package id="vlc" />
+	<package id="vmware-powercli-psmodule" />
+	<package id="vscode-jp" />
+	<package id="windirstat" />
+	<package id="windjview" />
+	<package id="winrar" />
+
+
+
+    <!-- <package id="mcafee" />  -->
+
+
+</packages>
+

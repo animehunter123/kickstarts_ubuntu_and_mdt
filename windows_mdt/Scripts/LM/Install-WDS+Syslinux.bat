@@ -30,25 +30,25 @@ LABEL livecd-linux-kubuntu2004
   MENU LABEL Linux (^Kubuntu 20.04)
   KERNEL /lm_iso/lm_20-04-Kubuntu/casper/vmlinuz
   INITRD /lm_iso/lm_20-04-Kubuntu/casper/initrd
-  APPEND toram root=/dev/nfs boot=casper ip=dhcp netboot=nfs nfsroot=172.16.0.215:/lm_iso/lm_20-04-Kubuntu/
+  APPEND toram root=/dev/nfs boot=casper ip=dhcp netboot=nfs nfsroot=192.168.0.215:/lm_iso/lm_20-04-Kubuntu/
   splash
 
 LABEL livecd-linux-fedora32
   MENU LABEL Linux (^Fedora 32 KDE; Require >=4GB RAM)
   KERNEL /lm_iso/lm_Fedora-32-KDE/isolinux/vmlinuz
   INITRD /lm_iso/lm_Fedora-32-KDE/isolinux/initrd.img
-  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8083/Fedora/Fedora-KDE-Live-x86_64-32-1.6.iso
+  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_SHARED_FOLDER_HERE.lm.local:8083/Fedora/Fedora-KDE-Live-x86_64-32-1.6.iso
 
 LABEL Linux (^Boot Repair ISO)
   KERNEL /lm_iso/lm_boot-repair-disk/casper/vmlinuz.efi
   INITRD /lm_iso/lm_boot-repair-disk/casper/initrd.lz
-  APPEND toram root=/dev/nfs boot=casper ip=dhcp netboot=nfs nfsroot=172.16.0.215:/lm_iso/lm_boot-repair-disk/
+  APPEND toram root=/dev/nfs boot=casper ip=dhcp netboot=nfs nfsroot=192.168.0.215:/lm_iso/lm_boot-repair-disk/
   splash
 
 LABEL Spacewalk
 MENU LABEL ^Spacewalk
 COM32 pxechn.c32
-APPEND 172.16.0.138::pxelinux.0
+APPEND 192.168.0.138::pxelinux.0
 
 LABEL Acronis
 MENU LABEL ^Acronis
@@ -89,30 +89,30 @@ LABEL local
 #  MENU LABEL ^Linux Live CD 
 #  KERNEL /lm_iso/lm_19-3/vmlinuz
 #  INITRD /lm_iso/lm_19-3/initrd.lz
-#SPACEWALK:  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=172.16.0.141:/var/nfs/lm_19-3/
-#INSERT_YOUR_PASS_HERE  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=172.16.0.5:/volume1/INSERT_YOUR_NASNFSSHARE_HERE/temp/TEST_DELETEME_/lm_19-3/
-#  APPEND toram root=/dev/nfs boot=casper netboot=nfs nfsroot=172.16.0.215:/lm_iso/lm_19-3/
+#SPACEWALK:  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=192.168.0.141:/var/nfs/lm_19-3/
+#INSERT_SHARED_FOLDER_HERE  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=192.168.0.5:/volume1/OrioleNAS-Data/temp/TEST_DELETEME_/lm_19-3/
+#  APPEND toram root=/dev/nfs boot=casper netboot=nfs nfsroot=192.168.0.215:/lm_iso/lm_19-3/
 #  splash
 
 ##LABEL linuxlivecd3
 ##  MENU LABEL ^Linux Live CD (Fedora 32 KDE)
 ##  KERNEL /lm_iso/lm_Fedora-32-KDE/isolinux/vmlinuz
 ##  INITRD /lm_iso/lm_Fedora-32-KDE/isolinux/initrd.img
-##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8082/kubuntu-20.04-desktop-amd64.iso
-##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8082/Fedora-KDE-Live-x86_64-32-1.6.iso
+##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_SHARED_FOLDER_HERE.lm.local:8082/kubuntu-20.04-desktop-amd64.iso
+##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp root=live:http://INSERT_SHARED_FOLDER_HERE.lm.local:8082/Fedora-KDE-Live-x86_64-32-1.6.iso
 
 #got it working via http via;   https://bugzilla.redhat.com/show_bug.cgi?id=1154670
-##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp nfsroot=172.16.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/squashfs.img
-##  APPEND selinux=0  inst.selinux=0 root=/dev/nfs boot=casper netboot=nfs nfsroot=172.16.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/ nosplash nfsrootdebug  --  
-##  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=live:nfs:,nfsvers=3:172.16.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/ nosplash nfsrootdebug selinux=0  inst.selinux=0 --  
+##  APPEND nfsrootdebug selinux=0 rd.live.image root=/dev/nfs  ip=dhcp nfsroot=192.168.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/squashfs.img
+##  APPEND selinux=0  inst.selinux=0 root=/dev/nfs boot=casper netboot=nfs nfsroot=192.168.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/ nosplash nfsrootdebug  --  
+##  APPEND root=/dev/nfs boot=casper netboot=nfs nfsroot=live:nfs:,nfsvers=3:192.168.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/ nosplash nfsrootdebug selinux=0  inst.selinux=0 --  
 
 #FROM: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/chap-anaconda-boot-options
-#APPEND boot=casper netboot=nfs root=live:nfs://172.16.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/squashfs.img ro rd.live.image rd.lvm=0 rd.luks=0 rd.md=0 rd.dm=0 vga=794 -- vconsole.font=latarcyrheb-sun16 
+#APPEND boot=casper netboot=nfs root=live:nfs://192.168.0.215:/lm_iso/lm_Fedora-32-KDE/LiveOS/squashfs.img ro rd.live.image rd.lvm=0 rd.luks=0 rd.md=0 rd.dm=0 vga=794 -- vconsole.font=latarcyrheb-sun16 
 #LINUX memdisk
 #INITRD /lm_iso/Fedora-KDE-Live-x86_64-32-1.6.img
 #APPEND iso  
 
-#http://INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM:8082/Chocolatey-Repo/software/packages/microsoft-windows-terminal/CascadiaPackage_1.0.1401.0_x64.msix.zip'
+#http://INSERT_SHARED_FOLDER_HERE.lm.local:8082/Chocolatey-Repo/software/packages/microsoft-windows-terminal/CascadiaPackage_1.0.1401.0_x64.msix.zip'
 #kernel tftp://${fog-ip}/os/fedora/W27/vmlinuz
 #initrd tftp://${fog-ip}/os/fedora/W27/initrd.img
 #imgargs vmlinuz initrd=initrd.img root=live:nfs://${fog-ip}/images/os/fedora/W27/LiveOS/squashfs.img ip=dhcp repo=nfs://${fog-ip}/images/os/fedora/W27 splash quiet

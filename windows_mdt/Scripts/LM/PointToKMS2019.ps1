@@ -7,5 +7,5 @@ $oscaption = Get-ComputerInfo | select WindowsProductName, WindowsVersion, OsHar
 if ($oscaption -eq "Windows Server 2019 Standard") {
     #I need to test this, and check if it affects the registry correctly of 
     #HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
-    slmgr.vbs /skms lm-kms2019.YOURDOMAIN.COM:1688    
+    slmgr.vbs /skms lm-kms2019.lm.local:1688    
 }

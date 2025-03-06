@@ -1,5 +1,5 @@
 #Set the Registry Settings to point this box to our WSUS Server: 
-#The last line in this file; I made it say: -UpdateServer "http://172.16.0.116:8530/"
+#The last line in this file; I made it say: -UpdateServer "http://192.168.0.116:8530/"
 
 Function Set-ClientWSUSSetting {
     <#  
@@ -57,7 +57,7 @@ Function Set-ClientWSUSSetting {
         Accepted values are: "Everyday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
     
     .PARAMETER ElevateNonAdmins
-        Allow non-INSERT_YOUR_USERNAME_HEREs to approve or disapprove updates
+        Allow non-administrators to approve or disapprove updates
         Accepted values are: "Enable","Disable"
     
     .PARAMETER AllowAutomaticUpdates
@@ -362,4 +362,4 @@ Function Set-ClientWSUSSetting {
 }
 
 #Call the function to set it to point to our wsus
-Set-ClientWSUSSetting -UpdateServer "http://172.16.0.116:8530" -UseWSUSServer Enable -AllowAutomaticUpdates Enable -DetectionFrequency 4 -Options DownloadAndInstall 
+Set-ClientWSUSSetting -UpdateServer "http://192.168.0.116:8530" -UseWSUSServer Enable -AllowAutomaticUpdates Enable -DetectionFrequency 4 -Options DownloadAndInstall 

@@ -24,10 +24,10 @@ write-host -fore Blue  "********************************************************
 mkdir C:\mount\windows -Force 2>$null
 
 #Globals (LXP and FODs for 20H2; Mount the FOD ISOs)
-$LXPISO1 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
-$LXPISO2 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_7C_LXP_ONL_X22-74323.ISO'
-$FODISO1 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
-$FODISO2 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
+$LXPISO1 = '\\192.168.0.5\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
+$LXPISO2 = '\\192.168.0.5\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_7C_LXP_ONL_X22-74323.ISO'
+$FODISO1 = '\\192.168.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
+$FODISO2 = '\\192.168.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
 $FODVOL1 = Mount-DiskImage -ImagePath $FODISO1 -PassThru | Get-DiskImage | Get-Volume
 $FODDIR1 = $FODVOL1.DriveLetter
 $FODVOL2 = Mount-DiskImage -ImagePath $FODISO2 -PassThru | Get-DiskImage | Get-Volume

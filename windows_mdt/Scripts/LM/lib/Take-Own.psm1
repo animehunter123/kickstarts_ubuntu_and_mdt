@@ -16,7 +16,7 @@ function Takeown-Registry($key) {
         }
     }
 
-    # get INSERT_YOUR_USERNAME_HERE group
+    # get administrator group
     $admins = New-Object System.Security.Principal.SecurityIdentifier("S-1-5-32-544")
     $admins = $admins.Translate([System.Security.Principal.NTAccount])
 

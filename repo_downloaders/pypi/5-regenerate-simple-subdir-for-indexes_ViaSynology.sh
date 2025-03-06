@@ -2,8 +2,8 @@
 
 # Define the source directory (with wheels/zips/tars)
 # TARGET=`pwd`
-# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
-TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
+# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from INSERT_SHARED_FOLDER_HERE, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
+TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from INSERT_SHARED_FOLDER_HERE, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
 
 echo "Information About this Script:"
 echo " 0. This script recreates a ./simple with html anchors linking back to the top level tgz/whl/zip files."

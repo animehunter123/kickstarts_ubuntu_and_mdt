@@ -8,10 +8,10 @@
 
 #Globals (LXP and FODs for 20H2; Mount the FOD ISOs)
 $fod_cab_repo = "C:\repository-2XHX" 
-$LXPISO1 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
-# $LXPISO2 = '\\172.16.0.5\iso\Microsoft\Win10-20H2\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_11C_LXP_ONLY_X22-47511.ISO'
-$FODISO1 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
-$FODISO2 = '\\172.16.0.5\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
+$LXPISO1 = '\\\iso\Microsoft\Win10-2XHX\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307.ISO'
+# $LXPISO2 = '\\\iso\Microsoft\Win10-20H2\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultLng_LngPkAll_LIP_11C_LXP_ONLY_X22-47511.ISO'
+$FODISO1 = '\\\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_1_X22-21311.ISO'
+$FODISO2 = '\\\iso\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_2_X22-21313.ISO'
 $LXPVOL1 = Mount-DiskImage -ImagePath $LXPISO1 -PassThru | Get-DiskImage | Get-Volume
 $LXPDIR1 = $LXPVOL1.DriveLetter
 $FODVOL1 = Mount-DiskImage -ImagePath $FODISO1 -PassThru | Get-DiskImage | Get-Volume

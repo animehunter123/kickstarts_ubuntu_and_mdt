@@ -3,10 +3,10 @@
 #Variables
 $ErrorActionPreference = 'silentlycontinue'
 $languages = "ja-jp", "ar-sa", "zh-CN", "zh-tw", "ko-kr", "ru-ru"
-$fod_dir = "\\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\ISO\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_MERGED"
+$fod_dir = "\\INSERT_SHARED_FOLDER_HERE.lm.local\ISO\Microsoft\Win10-2XHX\Win10-x64-FoD\SW_DVD9_NTRL_Win_10_2004_64Bit_MultiLang_FOD_MERGED"
 
 #Mount the FoD Directory to allow this powershell session to gain access to it.
-New-SmbMapping -LocalPath i: -RemotePath "\\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\ISO" -UserName INSERT_YOUR_USERNAME_HERE -Password INSERT_YOUR_PASSWORD_HERE -ea 0 | out-null
+New-SmbMapping -LocalPath i: -RemotePath "\\INSERT_SHARED_FOLDER_HERE.lm.local\ISO" -UserName lmadmin -Password INSERT_YOUR_PASSWORD_HERE -ea 0 | out-null
 
 #Loop through languages, and install each capability
 foreach ($lang in $languages) {
@@ -65,15 +65,15 @@ Remove-SmbMapping -LocalPath i: -Force -ea 0 | out-null
 # #TODO: This is separate from the LOCALE GPO for: Set-WinHomeLocation New-WinUserLanguageList Set-WinSystemLocale Set-Culture Set-WinUserLanguageList Set-WinUILanguageOverride
 
 # #Install CAB LIP Packs via DISM:
-# $LXPDIRSTR = '\\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\LocalExperiencePack'
-# $LIPDIRSTR = '\\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\x64\langpacks'
+# $LXPDIRSTR = '\\INSERT_SHARED_FOLDER_HERE.lm.local\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\LocalExperiencePack'
+# $LIPDIRSTR = '\\INSERT_SHARED_FOLDER_HERE.lm.local\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\x64\langpacks'
 # #$LANGLIST = 'en-us'
 # $LANGLIST = 'ja-jp'
 # Add-AppxPackage -Path "$LXPDIRSTR\$LANGLIST\LanguageExperiencePack.$LANGLIST.Neutral.appx"
 # DISM /online /add-package /packagepath="$LIPDIRSTR\Microsoft-Windows-Client-Language-Pack_x64_$LANGLIST.cab"
 
 # #Install LXP Packs via Add Appx Provisioned Packages
-# $LXPDIRSTR = '\\INSERT_YOUR_PASS_HERE.YOURDOMAIN.COM\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\LocalExperiencePack'
+# $LXPDIRSTR = '\\INSERT_SHARED_FOLDER_HERE.lm.local\ISO\Microsoft\Win10-20H2.1\Win10-x32x64-MultiLanguagePack\SW_DVD9_NTRL_Win_10_2004_32_64_ARM64_MultiLang_LangPackAll_LIP_X22-21307\LocalExperiencePack'
 # # $LANGLIST = "ja-jp", "ar-sa", "zh-cn", "en-us"
 # foreach ($LANG in $LANGLIST) {
 #     DISM /online  /Add-ProvisionedAppxPackage /PackagePath="$LXPDIRSTR\$LANG\LanguageExperiencePack.$LANG.Neutral.appx" /LicensePath:"$LXPDIRSTR\$LANG\License.xml"
