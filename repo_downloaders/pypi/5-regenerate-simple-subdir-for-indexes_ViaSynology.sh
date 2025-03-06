@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Define the source directory
+# Define the source directory (with wheels/zips/tars)
+# TARGET=`pwd`
 # TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
 TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
 
 echo "Information About this Script:"
+echo " 0. This script recreates a ./simple with html anchors linking back to the top level tgz/whl/zip files."
 echo " 1. Its a good idea to run this directly from the NAS -- but very carefully!!! AND CHMOD WWW AFTERWARDS!!!!"
 echo " 2. THIS WILL BLOW AWAY YOUR ./simple DIRECTORY! "
 echo " 3. THIS SCRIPT CAN TAKE 24 HOURS to create a ./simple directory with all targz/whl/egg files appropriately. "
@@ -29,7 +31,7 @@ mkdir -p simple
 echo "<!DOCTYPE html><html><body>" > simple/index.html
 
 # Loop through all .tar.gz, .whl, and .egg files
-for file in *.tar.gz *.whl *.egg; do
+for file in *.tar.gz *.whl *.egg *.zip; do
 
     # Skip if no files match the pattern, else echo the file name
     [ -e "$file" ] || continue
@@ -44,18 +46,14 @@ for file in *.tar.gz *.whl *.egg; do
     # Create package directory if it doesn't exist
     mkdir -p "simple/$normalized_name"
     
-#    echo "Moving file from pkgname [$package_name] to nrmlname [$normalizard_name]..."
-#    mv $file ./simple/$normalized_name/
-    
     # Add to main index.html
     echo "<a href=\"$normalized_name/\">$normalized_name</a><br>" >> simple/index.html
     
     # Create or append to package-specific index.html
     echo "<a href=\"../../$file#sha256=$(sha256sum "$file" | cut -d' ' -f1)\">$file</a><br>" >> "simple/$normalized_name/index.html"
 
-    echo "Moving file from pkgname [$package_name] to nrmlname [$normalized_name]..."
-    mv "$file" "./simple/$normalized_name/"
-    #mv "$file" "./simple/$normalized_name/" || { echo "UH OHHHH" ; exit ; }
+    # echo "Moving file from pkgname [$package_name] to nrmlname [$normalized_name]..."
+    # mv "$file" "./simple/$normalized_name/"
 done
 
 # Close main index.html

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Installing wget and morgan... (apt and dnf)"
+echo "Installing wget and python3-pip... (apt and dnf)"
 apt install -y wget 2>/dev/null
 apt install -y python3-pip 2>/dev/null
 dnf install -y wget 2>/dev/null

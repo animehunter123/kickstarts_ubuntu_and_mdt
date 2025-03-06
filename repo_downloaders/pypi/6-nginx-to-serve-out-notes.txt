@@ -63,6 +63,10 @@ Now, the webserver is up! Lets create a pip.conf for Rocky93 for example to get 
 AND IT SHOULD BE SUPER FAST:
 pip install --index-url http://lm-webserver.lm.local/repos/pypi-pipdownloaded/ requests --trusted-host lm-webserver.lm.local
 pip install --index-url http://192.168.0.63/simple/ 021 --trusted-host 192.168.0.63
+pip install --index-url http://lm-webserver.lm.local/repos/pypi-DOWNLOAD_IN_PROGRESS requests --trusted-host lm-webserver.lm.local       
+
+THESE WORKED 100% (python -m http.server was run from ../simple (the level below with wheels))
+pip install --index-url http://localhost:8000/simple  --trusted-host localhost  requests
 
 
 echo "Finally, here setting up the pip.conf into your ETC NOW"

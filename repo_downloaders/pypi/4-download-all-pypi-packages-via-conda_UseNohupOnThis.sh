@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # ###########################################################
-# Run as nohup, and also read -p are intentionally disabled
-exit # UNCOMMENT THIS AFTER YOU AGREE TO RUN THIS AS "nohup ./4-download-all-pypi-packages.sh &"
+# Run as nohup+root, and also read -p are intentionally disabled
+exit # UNCOMMENT THIS AFTER YOU AGREE TO RUN THIS AS ROOT "nohup ./4-download-all-pypi-packages.sh &"
 # ###########################################################
 
 # Directory where pip will store downloaded packages
