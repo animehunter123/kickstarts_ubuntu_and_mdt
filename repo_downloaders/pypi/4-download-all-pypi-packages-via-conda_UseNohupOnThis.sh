@@ -13,7 +13,7 @@ PYTHONVERSION="3.9.18" # For use with Conda
 
 echo "Information About this Script:"
 echo "This script will read in the list of packages from [result_02_parsed.ini] and download each one using pip."
-echo "THIS TOOK ABOUT 8 DAYS TO RUN ON ROCKY9!!"
+echo "THIS TOOK ABOUT 8 DAYS TO RUN ON ROCKY9 (if 1 ESX, if you split to 3 VMs, it was 3 days)!!"
 echo "Please remember to run this in your shell via: nohup ./4-download-all-pypi-packages.sh &"
 echo "And then just tail -f nohup.out to see how it goes"
 echo "NOTE: You can optionally use conda to select a environment before launching this via:"
@@ -65,6 +65,9 @@ rm -rf pip-pip-egg-info-* pip-unpack-* pip-build-env-* pip-download-* pip-modern
 
 echo "Chmodding 777 all files in target directory"
 chmod 777 -R $TARGET
+
+echo "Saving a file to indicate download is complete to nas"
+printf "@@Finished Downloading Pypi.\n\n@@Platform Used Release is: $(cat /etc/*release)\n\n@@Architecture is:\n$(uname -a)\n\n@Python Version Used was: $(python --version)\n" > "$TARGET"/Pypi_ArchInfo_Downloaded_On_$(date +%Y-%m-%d_%H-%M-%S).log
 
 echo "NOTE: 1. DONT FORGET TO NOTE DOWN WHICH VERSION OF PYTHON AND ARCHITECTURE YOU JUST DOWNLOADED!!!"
 echo "NOTE: 2. DONT FORGET TO RUN SCRIPT #4 NOW. This is to rename all files to respective file then pip installs should work!!!!!!!!!!!!!!!!!!!"

@@ -2,17 +2,17 @@
 
 # Define the source directory (with wheels/zips/tars)
 # TARGET=`pwd`
-# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from INSERT_SHARED_FOLDER_HERE, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
-TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from INSERT_SHARED_FOLDER_HERE, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
+# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
+TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from lm-nas, this is faster (Remember if synology root you need to run chmod after this script to be publically viewable)
 
 echo "Information About this Script:"
 echo " 0. This script recreates a ./simple with html anchors linking back to the top level tgz/whl/zip files."
-echo " 1. Its a good idea to run this directly from the NAS -- but very carefully!!! AND CHMOD WWW AFTERWARDS!!!!"
+echo " 1. It might be a good idea to run this directly from the NAS -- but YOU need to edit script!!! AND CHMOD WWW AFTERWARDS!!!!"
 echo " 2. THIS WILL BLOW AWAY YOUR ./simple DIRECTORY! "
-echo " 3. THIS SCRIPT CAN TAKE 24 HOURS to create a ./simple directory with all targz/whl/egg files appropriately. "
+echo " 3. THIS SCRIPT CAN TAKE 24 HOURS to create a ./simple directory with SOFTLINKS to top level targz/whl/egg files appropriately. "
 read -p "Press Enter to continue (Or CTRL+C to cancel)..." #  <-- disabled for now, using a exit check later!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-echo "Starting script to create './simple' subdir from wheels/tgz in source. Attempting to cd into [$TARGET]."
+echo "Starting script to re-create './simple' subdir from wheels/tgz in source. Attempting to cd into [$TARGET]."
 # NOW... Lets... RECREATE ./simple in the dir that has all the *.tar.gz and *.whl files
 
 # Start in the repository root
@@ -68,6 +68,9 @@ done
 echo "PEP 503 structure created successfully!"
 
 
-echo "Script complete. You can now move this dir to a webserver, and pip install from it!"
+echo "Script complete. 
+See the *.log inside of it. 
+Rename it from $TARGET to whatever you want. (Remember to leave the ./simple html's inside of it.
+You can now move this dir to a webserver, and pip install from it!"
 
 

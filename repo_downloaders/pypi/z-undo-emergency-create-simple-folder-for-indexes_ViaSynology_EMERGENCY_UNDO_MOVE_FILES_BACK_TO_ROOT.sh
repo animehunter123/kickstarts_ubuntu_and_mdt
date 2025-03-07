@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define the source directory
-# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from INSERT_SHARED_FOLDER_HERE, this is faster
-TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from INSERT_SHARED_FOLDER_HERE, this is faster
+# TARGET="/volume1/OrioleNAS-Data/repos/pypi-pipdownloaded" # If running from lm-nas, this is faster
+TARGET="/volume1/OrioleNAS-Data/repos/pypi-DOWNLOAD_IN_PROGRESS" # If running from lm-nas, this is faster
 
 echo "Information About this Script:"
 echo "This script will to MOVE ALL tgz/whl/zip FILES BACK INTO TOP LEVEL."
