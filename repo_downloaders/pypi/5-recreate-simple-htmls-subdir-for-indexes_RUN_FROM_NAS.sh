@@ -65,12 +65,20 @@ for dir in simple/*/; do
     echo "</body></html>" >> "$dir/index.html"
 done
 
+echo "Fixing permissions (please wait, this can take a while)..."
+chmod -R 755 simple 2>/dev/null
+
 echo "PEP 503 structure created successfully!"
 
 
-echo "Script complete. 
+echo "
 See the *.log inside of it. 
-Rename it from $TARGET to whatever you want. (Remember to leave the ./simple html's inside of it.
-You can now move this dir to a webserver, and pip install from it!"
+Rename it from $TARGET to whatever you want. (Remember to leave the subdir ./simple html's inside of it. 
+
+You should now be able to make a test conda or python-venv environment, and run pip install from it. For Example:
+pip install --index-url http://lm-webserver.lm.local/repos/pypi-DOWNLOAD_IN_PROGRESS/simple requests --trusted-host lm-webserver.lm.local
+
+Script complete. 
+"
 
 
