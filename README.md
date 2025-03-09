@@ -4,7 +4,7 @@
 
 Repository URL is: https://github.com/animehunter123/kickstarts_ubuntu_and_mdt
 
-This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/Rocky/CentOS kickstarts. You may still need ISO files such as Rocky/CentOS7/Ubuntu2404/Win10/WinSvr2025/Exchange/Lync. It is only a repository of code at this point, and I will need to document in more detail later.
+This repository contains all of the repository code for creating a iPXE menu which chain loads to a MDT/Ubuntu/Rocky/CentOS kickstarts. You may still need ISO files such as Rocky/CentOS7/Ubuntu2404/Win10/Win11/WinSvr2025/Exchange/Lync. It is only a repository of code at this point, and I will need to document in more detail later.
 
 All important fields need to be replaced after cloning this repo. Search and replace the several fields that begin with ```INSERT_YOUR_xxxxxxxxxx_HERE```. You will also need a nfs share (Truenas/Synology/etc), and fully share the data via NFS/HTTP/TFTP appropriately for your environment. Lot of work required for this.
 
