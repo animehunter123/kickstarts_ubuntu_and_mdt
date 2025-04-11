@@ -1,0 +1,115 @@
+# File: /etc/yum.repos.d/rocky9-all.repo
+# repo --name=rocky9-base --baseurl=http://lm-webserver.lm.local/repos/rocky/9/BaseOS/x86_64/os/
+# repo --name=rocky9-appstream --baseurl=http://lm-webserver.lm.local/repos/rocky/9/AppStream/x86_64/os/
+# repo --name=rocky9-powertools --baseurl=http://lm-webserver.lm.local/repos/rocky/9/PowerTools/x86_64/os/
+# repo --name=rocky9-extras --baseurl=http://lm-webserver.lm.local/repos/rocky/9/extras/x86_64/os/
+# repo --name=epel9 --baseurl=http://lm-webserver.lm.local/repos/epel/9/Everything/x86_64
+#
+# Quick one-liner to count yum repolist in newer rocky8/9:
+
+[rocky9-baseos-lmnas]
+name=rocky9-baseos-lmnas
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/BaseOS/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky9-appstream-lmnas]
+name=rocky9-appstream-lmnas
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/AppStream/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky9-devel-lmnas]
+name=rocky9-devel-lmnas
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/devel/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky9-extras-lmnas]
+name=rocky9-extras-lmnas
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/extras/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky9-crb-lmnas]
+name=rocky9-crb-lmnas
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/CRB/x86_64/os/
+gpgcheck=0
+enabled=1
+
+[rocky9-plus]
+name=rocky9-plus
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/plus/$basearch/os/
+gpgcheck=0
+enabled=1
+
+
+
+
+
+[rocky9-highavailability]
+name=rocky9-highavailability
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/HighAvailability/$basearch/os/
+gpgcheck=0
+enabled=0
+
+[rocky9-resilientstorage]
+name=rocky9-resilientstorage
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/ResilientStorage/$basearch/os/
+gpgcheck=0
+enabled=0
+
+[rocky9-nfv]
+name=rocky9-nfv
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/NFV/$basearch/os/
+gpgcheck=0
+enabled=0
+
+[rocky9-rt]
+name=rocky9-rt
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/RT/$basearch/os/
+gpgcheck=0
+enabled=0
+
+[rocky9-sap]
+name=rocky9-sap
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/SAP/$basearch/os/
+gpgcheck=0
+enabled=0
+
+[rocky9-saphana]
+name=rocky9-saphana
+baseurl=http://lm-webserver.lm.local/repos/rocky/9/SAPHANA/$basearch/os/
+gpgcheck=0
+enabled=0
+
+
+
+
+
+# EPEL!!! (Rocky 9 still requires epel8).
+[epel8-lmnas]
+name=epel8-lmnas
+baseurl=http://lm-webserver.lm.local/repos/epel/8/Everything/x86_64
+gpgcheck=0
+enabled=1
+
+[epel9-lmnas]
+name=epel9-lmnas
+baseurl=http://lm-webserver.lm.local/repos/epel/9/Everything/x86_64
+gpgcheck=0
+enabled=1
+
+# VSCode
+[vscode-lmnas]
+name=vscode-lmnas
+baseurl=http://lm-webserver.lm.local/repos/vscode-rpm
+gpgcheck=0
+enabled=1
+
+# Docker
+[docker-lmnas]
+name=docker-lmnas
+baseurl=http://lm-webserver.lm.local/repos/docker
+gpgcheck=0
+enabled=1

@@ -1,0 +1,13 @@
+#File: /etc/apt/sources.list
+# INTERNET REPOSITORIES (ubuntu 2004 focal)
+
+# Edit the sources.list file
+vim /etc/apt/sources.list
+# 1. point it to your ip of your apt repo
+# 2. Disable the source, and unneeded repos.
+
+# First of all we replace any string archive.ubuntu.com with our local mirror IP, in this case 10.0.0.42. Of course your local IP address could be different.
+sudo  sed -i.bak0 "s/archive\.ubuntu\.com/10\.0\.0\./g" /etc/apt/sources.list
+# This command will create the backup file /etc/apt/sources.list.bak0 and replace any archive.ubuntu.com string with 10.0.0.42. A further adjustment is running again sed in this way:
+sudo  sed -i.bak1 "s/ubuntu/ubuntu\/mirror\/archive\.ubuntu\.com\/ubuntu/g" \ /etc/apt/sources.list
+# This is necessary as apt-mirror appends the path mirror/archive.ubuntu.com/ubuntu to our base path.

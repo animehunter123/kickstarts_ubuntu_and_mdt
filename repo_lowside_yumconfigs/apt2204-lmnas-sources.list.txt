@@ -1,0 +1,10 @@
+deb http://192.168.0.81/repos/apt jammy-backports main restricted universe multiverse
+deb http://192.168.0.81/repos/apt jammy main restricted
+deb http://192.168.0.81/repos/apt jammy multiverse
+deb http://192.168.0.81/repos/apt jammy-security main restricted
+deb http://192.168.0.81/repos/apt jammy-security multiverse
+deb http://192.168.0.81/repos/apt jammy-security universe
+deb http://192.168.0.81/repos/apt jammy universe
+deb http://192.168.0.81/repos/apt jammy-updates main restricted
+deb http://192.168.0.81/repos/apt jammy-updates multiverse
+deb http://192.168.0.81/repos/apt jammy-updates universe

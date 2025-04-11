@@ -1,0 +1,85 @@
+# File: /etc/yum.repos.d/centos-epel-nux.repo
+# INTERNET REPOSITORIES
+# 1. CENTOS
+# 2. EPEL
+# 3. NUX
+
+[centos7-atomic-lmnas]
+name=centos7-atomic-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/atomic/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-configmanagement-lmnas]
+name=centos7-configmanagement-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/configmanagement/x86_64/ansible-29/
+gpgcheck=0
+enabled=1
+
+[centos7-extras-lmnas]
+name=centos7-extras-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/extras/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-os-lmnas]
+name=centos7-os-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/os/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-updates-lmnas]
+name=centos7-updates-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/updates/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-centosplus-lmnas]
+name=centos7-centosplus-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/centosplus/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-dotnet-lmnas]
+name=centos7-dotnet-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/dotnet/x86_64/
+gpgcheck=0
+enabled=1
+
+[centos7-paas-lmnas]
+name=centos7-paas-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/paas/x86_64/openshift-origin311/
+gpgcheck=0
+enabled=1
+
+[centos7-virt-lmnas]
+name=centos7-virt-lmnas
+baseurl=http://lm-webserver.lm.local/repos/centos/7/virt/x86_64/azure/
+gpgcheck=0
+enabled=1
+
+
+# EPEL!!!!!!!!!!!!!!!
+[epel-lmnas]
+name=epel-lmnas
+baseurl=http://lm-webserver.lm.local/repos/epel/7/x86_64/
+gpgcheck=0
+enabled=1
+
+
+# NUX!!!!!!!!!!!!!!!!!!!! (Source Lockhart -- nux.ro )
+# To check size of the repo (7gb+49mb) use:    yum repolist -v --disablerepo=* --enablerepo=nux*
+[nux-dextop-lmnas]
+name=nux-dextop-lmnas
+baseurl=http://lm-webserver.lm.local/repos/nux/nux-dextop/
+gpgcheck=0
+enabled=0
+gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+
+[nux-misc]
+name=nux-misc
+baseurl=http://lm-webserver.lm.local/repos/nux/nux-misc/
+gpgcheck=0
+enabled=0
+gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+

@@ -2,9 +2,9 @@
 
 #Variables
 #nohup_log="./logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
-nohup_log="/mnt/MY_NAS/repos/logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
+nohup_log="/mnt/OrioleNAS-Data/repos/logs/$(basename -- "$0").$(date +'%Y%m%d-%H%M').log"
 rsync_url='rsync://mirror.umd.edu/fedora/epel/8/Everything/x86_64'
-rsync_dest='/mnt/MY_NAS/repos/epel_DOWNLOAD_IN_PROGRESS/8/Everything'
+rsync_dest='/mnt/OrioleNAS-Data/repos/epel_DOWNLOAD_IN_PROGRESS/8/Everything'
 
 #Main()
 mkdir -p $rsync_dest 2>/dev/null 1>/dev/null

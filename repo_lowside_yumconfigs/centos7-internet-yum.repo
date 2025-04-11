@@ -1,0 +1,92 @@
+# File: /etc/yum.repos.d/centos-epel-nux.repo
+# INTERNET REPOSITORIES
+# 1. CENTOS
+# 2. EPEL
+# 3. NUX
+
+[centos7-atomic]
+name=centos7-atomic INTERNET
+baseurl=http://mirror.centos.org/centos/7/atomic/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-configmanagement]
+name=centos7-configmanagement INTERNET
+baseurl=http://mirror.centos.org/centos/7/configmanagement/x86_64/ansible-29/
+enabled=1
+gpgcheck=0
+
+[centos7-extras]
+name=centos7-extras INTERNET
+baseurl=http://mirror.centos.org/centos/7/extras/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-os]
+name=centos7-os INTERNET
+baseurl=http://mirror.centos.org/centos/7/os/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-updates]
+name=centos7-updates INTERNET
+baseurl=http://mirror.centos.org/centos/7/updates/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-centosplus]
+name=centos7-centosplus INTERNET
+baseurl=http://mirror.centos.org/centos/7/centosplus/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-dotnet]
+name=centos7-dotnet INTERNET
+baseurl=http://mirror.centos.org/centos/7/dotnet/x86_64/
+enabled=1
+gpgcheck=0
+
+[centos7-paas]
+name=centos7-paas INTERNET
+baseurl=http://mirror.centos.org/centos/7/paas/x86_64/openshift-origin311/
+enabled=1
+gpgcheck=0
+
+[centos7-virt]
+name=centos7-virt INTERNET
+baseurl=http://mirror.centos.org/centos/7/virt/x86_64/azure/
+enabled=1
+gpgcheck=0
+
+
+
+
+
+# EPEL!!!!!!!!!!!!!!!
+[epel-internet]
+name=epel-internet INTERNET
+baseurl=http://mirror.umd.edu/fedora/epel/7/x86_64/
+enabled=1
+gpgcheck=0
+
+
+
+
+
+
+# NUX!!!!!!!!!!!!!!!!!!!!
+# To check size of the repo (7gb+49mb) use:    yum repolist -v --disablerepo=* --enablerepo=nux*
+#[nux-dextop]
+#name=Nux.Ro Dextop EL RPMs
+##baseurl=http://li.nux.ro/download/nux/dextop/el$releasever/$basearch/ #http://mirror.li.nux.ro/li.nux.ro/nux/dextop/el$releasever/$basearch/
+#enabled=0
+#gpgcheck=1
+#gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+#
+#[nux-misc]
+#name=Nux.Ro Misc EL RPMs
+#baseurl=http://li.nux.ro/download/nux/misc/el$releasever/$basearch/ http://mirror.li.nux.ro/li.nux.ro/nux/misc/el$releasever/$basearch/
+#enabled=0
+#gpgcheck=1
+#gpgkey=http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
+
