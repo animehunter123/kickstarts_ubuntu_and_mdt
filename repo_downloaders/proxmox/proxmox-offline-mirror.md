@@ -79,6 +79,14 @@ da----         7/17/2025   2:12 PM                debian_bookworm_updates
 da----         7/17/2025   2:12 PM                pve_bookworm_no_subscription
 ```
 * now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas
+* after the sync is done, make sure the folders have completed and are named like below, and resync again if they are not.
+```yaml
+Check INSIDE Each of the 4 folders, for example /repos/proxmox-download-in-progress/pve_bookworm_no_subscription/
+
+If the download completed, it wont have .tmp in the name!!!
+OK: 2025-07-17T05:18:50Z/      
+NOT OK: 2025-07-17T05:19:24Z.tmp/  
+```
 * Finally you can make a proxmox repo file to your nas, like this:
 ```bash
 # Modify these to point to the new final location, FOR EXAMPLE I DID:
