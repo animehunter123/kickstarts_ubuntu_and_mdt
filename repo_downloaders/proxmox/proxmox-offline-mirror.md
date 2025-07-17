@@ -78,7 +78,7 @@ da----         7/17/2025   2:12 PM                debian_bookworm_security
 da----         7/17/2025   2:12 PM                debian_bookworm_updates
 da----         7/17/2025   2:12 PM                pve_bookworm_no_subscription
 ```
-* now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas
+* now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas. Note: Its good to only run 1 at a time, if not you will get a "Error: Unable to acquire lock ./.local" error.
 * after the sync is done, make sure the folders have completed and are named like below, and resync again if they are not.
 ```yaml
 Check INSIDE Each of the 4 folders, for example /repos/proxmox-download-in-progress/pve_bookworm_no_subscription/
