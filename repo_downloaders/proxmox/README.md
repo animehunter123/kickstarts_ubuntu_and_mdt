@@ -1,3 +1,10 @@
+# Description of this repo_downloader script and purpose
+
+This is just a wget2 script to download the proxmox repository. I plan to use this to upgrade from 8.4.0 to 8.4.1 for the lab.
+
+Additionally, below are notes of how we can integrate the official documentation for using the repository along with a tool and TOML file eventually to pxe boot a proper proxmox server and match the install team's configuration and guidance (JB etc).
+
+# Proxmox Repository Information
 The proxmox documentation provides a upgrade repository with official support:
 
 https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
