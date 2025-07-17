@@ -1,3 +1,14 @@
+IMPORTANT: 
+The RSYNC Repo Download Command is in: 
+
+```proxmox-offline-mirror.md```
+
+Do not use the wget2 method in this file, this is only historical.
+
+
+
+
+
 # Description of this repo_downloader script and purpose
 This is just a wget2 script to download the proxmox repository. I plan to use this to upgrade from 8.4.0 to 8.4.1 for the lab.
 
