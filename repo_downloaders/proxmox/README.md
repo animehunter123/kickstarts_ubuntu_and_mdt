@@ -4,7 +4,7 @@ This is just a wget2 script to download the proxmox repository. I plan to use th
 Additionally, below are notes of how we can integrate the official documentation for using the repository along with a tool and TOML file eventually to pxe boot a proper proxmox server and match the install team's configuration and guidance (JB etc).
 
 Important: The final restore procedure to build a proxmox would be:
-1. Install Proxmox from the ISO (USB Stick or F12 to ISO)
+1. Install Proxmox from the ISO (USB Stick or F12 to ISO), **NOT A DEBIAN KICKSTART!**
 2. After the install, add our offline proxmox repo to /etc/apt/sources.list
 3. Run apt update ; apt dist-upgrade -y #Which would update to 8.4.1
 
