@@ -27,7 +27,8 @@ Per the documentation, it stated:
 deb http://ftp.debian.org/debian bookworm main contrib
 deb http://ftp.debian.org/debian bookworm-updates main contrib
 # Proxmox VE pve-no-subscription repository provided by proxmox.com (WE PLAN TO wget2 THIS URL to upgrade from 8.4.0 to 8.4.1!!!)
-deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+# deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+deb [trusted=yes] http://download.proxmox.com/debian/pve bookworm pve-no-subscription
 # security updates
 deb http://security.debian.org/debian-security bookworm-security main contrib
 ```
