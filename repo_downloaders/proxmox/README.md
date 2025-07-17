@@ -1,10 +1,17 @@
 # Description of this repo_downloader script and purpose
-
 This is just a wget2 script to download the proxmox repository. I plan to use this to upgrade from 8.4.0 to 8.4.1 for the lab.
 
 Additionally, below are notes of how we can integrate the official documentation for using the repository along with a tool and TOML file eventually to pxe boot a proper proxmox server and match the install team's configuration and guidance (JB etc).
 
-# Proxmox Repository Information
+Important: The final restore procedure to build a proxmox would be:
+1. Install Proxmox from the ISO (USB Stick or F12 to ISO)
+2. After the install, add our offline proxmox repo to /etc/apt/sources.list
+3. Run apt update ; apt dist-upgrade -y #Which would update to 8.4.1
+
+Optional: We can also get the debian 12 repositories too if we want (vim, nfs-common, etc), but it's not necessary. Notice how I dont see a need to do a debian 12 kickstart at this time since we will just use the ISO as the installer just like we used ESX in the past.
+Optional: We dont have access to proxmox ceph repo or enterprise, so some tools outside of the community repo are not available.
+
+# Proxmox Repository Information from docs, and our plan/ideas
 The proxmox documentation provides a upgrade repository with official support:
 
 https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo
