@@ -89,7 +89,7 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 ```
 * Finally you can make a proxmox repo file to your nas, like this:
 ```bash
-# Modify these to point to the new final location, FOR EXAMPLE I DID:
+# /etc/apt/sources.list >> Modify these to point to the new final location, FOR EXAMPLE I DID:
 # Orig
 #deb http://ftp.jp.debian.org/debian bookworm main contrib
 #deb http://ftp.jp.debian.org/debian bookworm-updates main contrib
@@ -99,20 +99,15 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 # New (lm-nas)
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_main/2025-07-17T05%3A18%3A50Z/ bookworm main contrib
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_updates/2025-07-17T05%3A19%3A02Z/ bookworm-updates main contrib
-deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_security/2025-07-17T05%3A19%3A24Z.tmp/ bookworm-security main contrib
-deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_bookworm_no_subscription/2025-07-17T05%3A19%3A39Z.tmp/ bookworm pve-no-subscription
-
+deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_security/2025-07-18T01%3A38%3A00Z/ bookworm-security main contrib
+deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_bookworm_no_subscription/2025-07-17T23%3A10%3A51Z/ bookworm pve-no-subscription
 ``` 
 * at this point you are done! You can make another fresh debian12 or proxmox server, and point apt sources to this nas repo and do things like:
 ```bash
+apt update ; apt dist-upgrade -y # Updates from `pveversion` of 8.4.0 to 8.4.1
 apt-get install proxmox-ve  # <-- for a proxmox server
 apt install -y proxmox-offline-mirror # <-- for proxmox downloader
 ```
 * Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
-
 
 
