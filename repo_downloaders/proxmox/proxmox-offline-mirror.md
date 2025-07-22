@@ -101,13 +101,24 @@ deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookw
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_updates/2025-07-17T05%3A19%3A02Z/ bookworm-updates main contrib
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_security/2025-07-18T01%3A38%3A00Z/ bookworm-security main contrib
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_bookworm_no_subscription/2025-07-17T23%3A10%3A51Z/ bookworm pve-no-subscription
+
 ``` 
 * at this point you are done! You can make another fresh debian12 or proxmox server, and point apt sources to this nas repo and do things like:
 ```bash
-apt update ; apt dist-upgrade -y # Updates from `pveversion` of 8.4.0 to 8.4.1
-apt-get install proxmox-ve  # <-- for a proxmox server
-apt install -y proxmox-offline-mirror # <-- for proxmox downloader
+
+### Example #1: Upgrading PVE from 8.4.0 to 8.4.1 (while already being joined to cluster!!!)
+### With the workaround for hanging install at "Setting up pve-manager (8.4.1) ..."
+apt update ; 
+### Start pmxcfs in local mode (disables cluster):
+systemctl stop pve-cluster
+systemctl stop corosync
+pmxcfs -l
+apt-get dist-upgrade -y ; reboot # Updates from `pveversion` of 8.4.0 to 8.4.1
+
+### Example #2: Installing proxmox-ve on standalone debian
+apt-get install proxmox-ve  
+### Example #3: Installing pom proxmox downloader for offline mirror'ing
+apt install -y proxmox-offline-mirror 
 ```
 * Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 
