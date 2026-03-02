@@ -79,6 +79,31 @@ da----         7/17/2025   2:12 PM                debian_bookworm_updates
 da----         7/17/2025   2:12 PM                pve_bookworm_no_subscription
 ```
 * now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas. Note: Its good to only run 1 at a time, if not you will get a "Error: Unable to acquire lock ./.local" error.
+
+Thus, I used 4 tabs with bash scripts:
+```bash
+# for i in proxmox-download-in-progress/*.sh ; do echo $i ; cat $i ; done
+proxmox-download-in-progress/dl-ceph.sh
+mkdir proxmox-ceph-squid
+cd proxmox-ceph-squid
+wget -m -np -nH --cut-dirs=2 \
+          http://download.proxmox.com/debian/ceph-squid/dists/ \
+            http://download.proxmox.com/debian/ceph-squid/pool/
+cd .. ; chmod -R 777 proxmox-ceph-squid
+proxmox-download-in-progress/dl-debian_trixie_main.sh
+mkdir debian_trixie_main
+proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg' 'debian_trixie_main'
+proxmox-download-in-progress/dl-debian_trixie_security.sh
+mkdir debian_trixie_security
+proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg'  'debian_trixie_security'
+proxmox-download-in-progress/dl-debian_trixie_updates.sh
+mkdir debian_trixie_updates
+proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg'  'debian_trixie_updates'
+proxmox-download-in-progress/dl-pve_trixie_no-subscription.sh
+mkdir pve_trixie_no-subscription
+proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg' 'pve_trixie_no-subscription'
+```
+
 * after the sync is done, make sure the folders have completed and are named like below, and resync again if they are not.
 ```yaml
 Check INSIDE Each of the 4 folders, for example /repos/proxmox-download-in-progress/pve_bookworm_no_subscription/
@@ -87,6 +112,29 @@ If the download completed, it wont have .tmp in the name!!!
 OK: 2025-07-17T05:18:50Z/      
 NOT OK: 2025-07-17T05:19:24Z.tmp/  
 ```
+
+
+
+
+* Next we need to mirror the proxmox ceph repo (use the gui to figure out which one is the latest supported, for me at this time the gui said "squid", so I did:
+
+So it said... http://download.proxmox.com/debian/ceph-squid
+
+So I did:
+
+mkdir proxmox-ceph-squid
+cd proxmox-ceph-squid
+wget -m -np -nH --cut-dirs=2 \
+  http://download.proxmox.com/debian/ceph-squid/dists/ \
+  http://download.proxmox.com/debian/ceph-squid/pool/
+cd .. ; chmod -R 777 proxmox-ceph-squid
+
+
+
+
+
+
+
 * Finally you can make a proxmox repo file to your nas, like this:
 ```bash
 # /etc/apt/sources.list >> Modify these to point to the new final location, FOR EXAMPLE I DID:
@@ -101,10 +149,9 @@ deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookw
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_updates/2025-07-17T05%3A19%3A02Z/ bookworm-updates main contrib
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_bookworm_security/2025-07-18T01%3A38%3A00Z/ bookworm-security main contrib
 deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_bookworm_no_subscription/2025-07-17T23%3A10%3A51Z/ bookworm pve-no-subscription
+deb http://lm-webserver.lm.local/repos/proxmox-download-in-progress/ .... something for ceph!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ``` 
-* at this point you are done! You can make another fresh debian12 or proxmox server, and point apt sources to this nas repo and do things like:
-```bash
 
 ### Example #1: Upgrading PVE from 8.4.0 to 8.4.1 (while already being joined to cluster!!!)
 ### With the workaround for hanging install at "Setting up pve-manager (8.4.1) ..."
@@ -120,5 +167,8 @@ apt-get install proxmox-ve
 ### Example #3: Installing pom proxmox downloader for offline mirror'ing
 apt install -y proxmox-offline-mirror 
 ```
+
 * Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
