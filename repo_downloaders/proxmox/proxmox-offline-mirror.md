@@ -116,11 +116,14 @@ proxmox-offline-mirror config mirror add \
   --sync true \
   --verify false \
   --base-dir /tmp/nas/repos/proxmox-download-in-progress/ceph_squid_trixie
+# TODO im not sure but I noticed we needed to mkdir this to work:
+mkdir -p /tmp/nas/repos/proxmox-download-in-progress/ceph_squid_trixie/ceph_squid_trixie/.pool ; 
+mkdir -p /tmp/nas/repos/proxmox-download-in-progress/ceph_squid_trixie/.pool ; 
 ```
 
 * now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas. Note: Its good to only run 1 at a time, if not you will get a "Error: Unable to acquire lock ./.local" error.
 
-Thus, I used a SINGLETHREADED bash script (TO GO SLOWLY):
+Thus, I SPLIT THESE BELOW SCRIPT INTO 5 SEPARATE FILES BUT RAN ONE AT A TIME until it actually FINISHED CORRECTLY.
 ```bash
 # MAKE THIS FILE: vim  /tmp/nas/repos/proxmox-download-in-progress/dl-proxmox+debian13+ceph.sh
 
