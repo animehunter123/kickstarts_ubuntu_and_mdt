@@ -105,43 +105,38 @@ da----         7/17/2025   2:12 PM                debian_trixie_security   <--- 
 da----         7/17/2025   2:12 PM                debian_trixie_updates   <--- NOTHING IS INSIDE
 da----         7/17/2025   2:12 PM                pve_trixie_no_subscription   <--- NOTHING IS INSIDE
 ```
-
-* You will notice 4 folders (3 for debian, one for pve, but NO folder yet for ceph-squid-trixie so lets add it now).
-```bash
-proxmox-offline-mirror config mirror add \
-  --id ceph_squid_trixie \
-  --architectures amd64 \
-  --repository 'deb http://download.proxmox.com/debian/ceph-squid trixie no-subscription' \
-  --key-path /etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg \
-  --sync true \
-  --verify false \
-  --base-dir /tmp/nas/repos/proxmox-download-in-progress/ceph_squid_trixie
-```
-
 * now, lets start the sync and run those commands for all 4 syncs. You can use `glances` and should see the Rx/sec to increase from 20-40Mbit, and it should eventually download all of them to the nas. Note: Its good to only run 1 at a time, if not you will get a "Error: Unable to acquire lock ./.local" error.
 
 Thus, I used a SINGLETHREADED bash script (TO GO SLOWLY):
 ```bash
-# MAKE THIS FILE: vim  /tmp/nas/repos/proxmox-download-in-progress/dl-proxmox+debian13+ceph.sh
+# MAKE THIS FILE: vim  /tmp/nas/repos/proxmox-download-in-progress/dl-ceph.sh
 
 #!/usr/bin/env bash
 set -euo pipefail
-mkdir debian_trixie_main 2>/dev/null
-mkdir debian_trixie_security 2>/dev/null
-mkdir debian_trixie_updates 2>/dev/null
-mkdir pve_trixie_no-subscription 2>/dev/null
-mkdir ceph_squid_trixie 2>/dev/null
 
-# Download Debian13 repos...
+# Download CEPH first
+# Set this to use the version of ceph that the PROXMOX GUI says when you dl-debian_trixie_updates to install it online, mine said squid today (20260101)
+BASE_URL='http://download.proxmox.com/debian/ceph-squid'
+SUITE='trixie'
+COMPONENT='no-subscription'
+DEST="./ceph-squid-$SUITE"
+mkdir -p "$DEST"
+wget -m -np -nH --cut-dirs=2 \
+  -P "$DEST" \
+  "${BASE_URL}/dists/${SUITE}/${COMPONENT}/"
+
+# Download POM next...
+mkdir debian_trixie_main 2>/dev/null
 proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg' 'debian_trixie_main'
+
+mkdir debian_trixie_security 2>/dev/null
 proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg'  'debian_trixie_security'
+
+mkdir debian_trixie_updates 2>/dev/null
 proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg'  'debian_trixie_updates'
 
-# Download Proxmox9 repos...
+mkdir pve_trixie_no-subscription 2>/dev/null
 proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg' 'pve_trixie_no-subscription'
-
-# Download Ceph repos...
-proxmox-offline-mirror mirror snapshot create --config '/etc/proxmox-offline-mirror.cfg' 'ceph_squid_trixie'
 
 echo "Script complete."
 ```
@@ -157,6 +152,29 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 
 
 
+
+############# NOT SURE ABOUT THIS PART BUT SKIP AND READ THE NEXT NEXT SECTION!!!!!!!!!
+############# NOT SURE ABOUT THIS PART BUT SKIP AND READ THE NEXT NEXT SECTION!!!!!!!!!
+############# NOT SURE ABOUT THIS PART BUT SKIP AND READ THE NEXT NEXT SECTION!!!!!!!!!
+* Next WE NEED CEPH. THIS IS SEPARATE.
+We need to mirror the proxmox ceph repo (use the gui to figure out which one is the latest supported, for me at this time the gui said "squid", so I did:
+
+So the gui wizard said... http://download.proxmox.com/debian/ceph-squid
+So I just used WGET TO DOWNLOAD IT...
+
+mkdir proxmox-ceph-squid
+cd proxmox-ceph-squid
+wget -m -np -nH --cut-dirs=2 \
+  http://download.proxmox.com/debian/ceph-squid/dists/ \
+  http://download.proxmox.com/debian/ceph-squid/pool/
+cd .. ; chmod -R 777 proxmox-ceph-squid
+
+
+
+
+
+
+
 * Finally you can make a proxmox repo file to your nas, like this:
 ```bash
 # /etc/apt/sources.list >> Modify these to point to the new final location, FOR EXAMPLE I DID:
@@ -167,10 +185,10 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 #deb http://download.proxmox.com/debian/pve trixie pve-no-subscription
 
 # New (lm-nas)
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_main/2026-07-19T05%3A18%3A50Z/ trixie main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_updates/2026-07-16T05%3A19%3A02Z/ trixie-updates main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_security/2026-07-16T01%3A38%3A00Z/ trixie-security main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_trixie_no_subscription/2026-07-16T23%3A10%3A51Z/ trixie pve-no-subscription
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_main/2025-07-17T05%3A18%3A50Z/ trixie main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_updates/2025-07-17T05%3A19%3A02Z/ trixie-updates main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_security/2025-07-18T01%3A38%3A00Z/ trixie-security main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_trixie_no_subscription/2025-07-17T23%3A10%3A51Z/ trixie pve-no-subscription
 deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/ceph-squid-trixie trixie no-subscription #.... something for ceph!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ``` 
@@ -191,7 +209,6 @@ apt install -y proxmox-offline-mirror
 ```
 
 * Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-* Bobl also reccomended reading this strictly before doing in-place-upgrades >> https://pve.proxmox.com/wiki/Upgrade_from_8_to_9
 
 
 
