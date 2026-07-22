@@ -153,48 +153,44 @@ echo "Script complete."
 ```yaml
 Check INSIDE Each of the 4 folders, for example /repos/proxmox-download-in-progress/pve_trixie_no_subscription/
 
-If the download completed, it wont have .tmp in the name!!!
-OK: 2025-07-17T05:18:50Z/      
+If the download completed, it wont have .tmp in the name!!! If it fails run bash again and will re-use the tmp folders!!!
+OK: 2025-07-17T05:18:50Z/         <-- This Z is a complete repo, with files like ./dists ./pool
 NOT OK: 2025-07-17T05:19:24Z.tmp/  
 ```
 
-
+* When this is done, cd into each directory and ensure that there is only the Z directory not the tmp. Then remove the tmp directories. Then rename the Z directory to not have ':' characters so that Windows CIFS will be able to copy to a hard drive later.
 
 * Finally you can make a proxmox repo file to your nas, like this:
+1. if internet disconnected, move the /etc/apt/sourfces.listt.d files out
+2. populate the /etc/apt/sources.list with this:
 ```bash
-# /etc/apt/sources.list >> Modify these to point to the new final location, FOR EXAMPLE I DID:
-# Orig
-#deb http://ftp.jp.debian.org/debian trixie main contrib
-#deb http://ftp.jp.debian.org/debian trixie-updates main contrib
-#deb http://security.debian.org trixie-security main contrib
-#deb http://download.proxmox.com/debian/pve trixie pve-no-subscription
-
-# New (lm-nas)
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_main/2026-07-19T05%3A18%3A50Z/ trixie main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_updates/2026-07-16T05%3A19%3A02Z/ trixie-updates main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/debian_trixie_security/2026-07-16T01%3A38%3A00Z/ trixie-security main contrib
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/pve_trixie_no_subscription/2026-07-16T23%3A10%3A51Z/ trixie pve-no-subscription
-deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox-download-in-progress/ceph-squid-trixie trixie no-subscription #.... something for ceph!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+# /etc/apt/sources.list >> POINT IT TO YOUR WEB SERVER. Modify to final location, FOR EXAMPLE I DID:
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/debian_trixie_main/2026-07-21T230928Z/ trixie main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/debian_trixie_security/2026-07-20T152701Z/ trixie-security main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/debian_trixie_updates/2026-07-20T150811Z/ trixie-updates main contrib
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/pve_trixie_no-subscription/2026-07-20T080601Z/ trixie pve-no-subscription
+deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/ceph_squid_trixie/2026-07-20T081011Z/ trixie no-subscription #.... something for ceph!!!!!!!!!!!!!!!!!!!!!!!!!!
 ``` 
 
 ### Example #1: Upgrading PVE from 8.4.0 to 8.4.1 (while already being joined to cluster!!!)
 ### With the workaround for hanging install at "Setting up pve-manager (8.4.1) ..."
-apt update ; 
+pveversion ; 
 ### Start pmxcfs in local mode (disables cluster):
+apt update ; 
 systemctl stop pve-cluster
 systemctl stop corosync
 pmxcfs -l
-apt-get dist-upgrade -y ; reboot # Updates from `pveversion` of 8.4.0 to 8.4.1
+# Now do the in-place upgrade from `pveversion` of 8.4.0 to 8.4.1 or 9.x.x
+apt-get dist-upgrade -y ; reboot 
+pveversion ; 
 
 ### Example #2: Installing proxmox-ve on standalone debian
 apt-get install proxmox-ve  
+
 ### Example #3: Installing pom proxmox downloader for offline mirror'ing
 apt install -y proxmox-offline-mirror 
 ```
 
 * Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 * Bobl also reccomended reading this strictly before doing in-place-upgrades >> https://pve.proxmox.com/wiki/Upgrade_from_8_to_9
-
-
 
