@@ -165,6 +165,7 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 ```bash
 mv /etc/apt/sources.list.d/ ~ ; mkdir /etc/apt/sources.list.d/ ; vi /etc/apt/sources.list
 ```
+
 2. Re-populate the /etc/apt/sources.list with this:
 ```bash
 # /etc/apt/sources.list >> POINT IT TO YOUR WEB SERVER. Modify to final location, FOR EXAMPLE I DID:
@@ -204,7 +205,7 @@ mv sources.list.d/ ~/sources.list.d_post_upgrade ;  mkdir /etc/apt/sources.list.
 ```
 
 ### Example #2: Installing proxmox-ve on standalone debian
-apt-get install -y proxmox-ve  
+apt-get install -y proxmox-ve neovim fish curl byobu git 
 
 ### Example #3: Installing pom proxmox downloader for offline mirror'ing
 apt install -y proxmox-offline-mirror 
