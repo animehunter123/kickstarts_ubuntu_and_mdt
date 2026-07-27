@@ -24,8 +24,8 @@ apt install -y proxmox-offline-mirror
 mv /etc/proxmox-offline-mirror.cfg /etc/proxmox-offline-mirror.cfg.oldddddddddddddddddddd
 proxmox-offline-mirror setup
 ```
-```
 
+```
 #######################################################################################
 # Here is how I ran mine USING THE MOUNTED NAS AS A FOLDER!!!!! (READ THESE CAREFULLY!)
 #######################################################################################
@@ -162,7 +162,10 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 
 * Finally you can make a proxmox repo file to your nas, like this:
 1. if internet disconnected, move the /etc/apt/sourfces.listt.d files out
-2. populate the /etc/apt/sources.list with this:
+```bash
+mv /etc/apt/sources.list.d/ ~ ; mkdir /etc/apt/sources.list.d/ ; vi /etc/apt/sources.list
+```
+2. Re-populate the /etc/apt/sources.list with this:
 ```bash
 # /etc/apt/sources.list >> POINT IT TO YOUR WEB SERVER. Modify to final location, FOR EXAMPLE I DID:
 deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/debian_trixie_main/2026-07-21T230928Z/ trixie main contrib
@@ -173,24 +176,37 @@ deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bcep
 ``` 
 
 ### Example #1: Upgrading PVE from 8.4.0 to 8.4.1 (while already being joined to cluster!!!)
-### With the workaround for hanging install at "Setting up pve-manager (8.4.1) ..."
+# This is in-place upgrade from `pveversion` of 8.4.0 to 8.4.1 or 9.x.x (This is my modified method to ensure no prompts during the upgrade)
+```bash
+export DEBIAN_FRONTEND=noninteractive ;
+export ACCEPT_EULA=Y ;
+echo "postfix postfix/main_mailer_type select No configuration" | debconf-set-selections
+echo "postfix postfix/mailname string $(hostname -f)" | debconf-set-selections
+apt-get update -y ;
+apt-get dist-upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" ; 
+reboot ;
 pveversion ; 
-### Start pmxcfs in local mode (disables cluster):
-apt update ; 
-systemctl stop pve-cluster
-systemctl stop corosync
-pmxcfs -l
-# Now do the in-place upgrade from `pveversion` of 8.4.0 to 8.4.1 or 9.x.x
-apt-get dist-upgrade -y ; reboot 
-pveversion ; 
+ceph osd require-osd-release squid ; reboot # NOTE: Do this if you see error "[SOLVED] all OSDs are running squid or later but require_osd_release < squid"
+```
 
 ### Example #2: Installing proxmox-ve on standalone debian
 apt-get install proxmox-ve  
 
 ### Example #3: Installing pom proxmox downloader for offline mirror'ing
 apt install -y proxmox-offline-mirror 
-```
 
-* Thats it! You downloaded a Repo to the nas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+### Example #4: Mount a cephfs network filesystem
+1) On your VM install ceph-common package: {sudo} apt install ceph-common
+2) On your VM execute: echo "CONTENTS OF A VALID CEPH KEY" > /etc/ceph/[I USED THE SHARENAME].secret
+3) Create the mount directory: {sudo} mkdir -p /mnt/[I USED THE SHARE NAME]
+4) Test the mount with: {sudo} mount -t ceph [IP ADDRESSES OF YOUR NODE. SEPARATED BY A SINGLE COMMA]:/ [MOUNT DIRECTORY] -o name=[USERNAME TO MOUNT AS],secretfile=[PATH TO KEY FILE],fs=[SHARE NAME]
+5) Once working, then un-mount the share using umount [PATH TO MOUNT DIRECTORY]
+6) Update your /etc/fstab file as follows: {sudo} nano /etc/fstab
+        # Mount Ceph storage for [SHARE NAME]
+        [IP ADDRESSES OF YOUR NODE. SEPARATED BY A SINGLE COMMA]:/ [MOUNT DIRECTORY] ceph name=[USERNAME TO MOUNT AS],secretfile=[PATH TO KEY FILE],fs=[SHARE NAME],noatime,_netdev 0 0
+7) run the following to mount the share: (it will be auto mounted when the system boots afterwards)       
+    {sudo} systemctl daemon-reload && {sudo} mount -a
+
+* Thats it!
 * Bobl also reccomended reading this strictly before doing in-place-upgrades >> https://pve.proxmox.com/wiki/Upgrade_from_8_to_9
 
