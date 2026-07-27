@@ -175,8 +175,19 @@ deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bcep
 deb [trusted=yes] http://lm-webserver.lm.local/repos/proxmox9.2%2Bdebian13%2Bceph19/ceph_squid_trixie/2026-07-20T081011Z/ trixie no-subscription #.... something for ceph!!!!!!!!!!!!!!!!!!!!!!!!!!
 ``` 
 
-### Example #1: Upgrading PVE from 8.4.0 to 8.4.1 (while already being joined to cluster!!!)
-# This is in-place upgrade from `pveversion` of 8.4.0 to 8.4.1 or 9.x.x (This is my modified method to ensure no prompts during the upgrade)
+3. Allow Debian Apt to use Valid-Until Security/Updates Repos for our offline homelab rack (RUN AS ROOT!!!)
+```bash
+set -euo pipefail
+CONF="/etc/apt/apt.conf.d/99offline"
+cat > "$CONF" <<'EOF'
+Acquire {
+    Check-Valid-Until "false";
+}
+EOF
+```
+
+### Example #1: Upgrading PVE from 8.4.0 to 8.4.1/9.x.x (In-Place)
+# (This method to ensure no prompts during the upgrade)!!!!!!!!!!!
 ```bash
 export DEBIAN_FRONTEND=noninteractive ;
 export ACCEPT_EULA=Y ;
@@ -186,18 +197,21 @@ apt-get update -y ;
 apt-get dist-upgrade -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" ; 
 reboot ;
 pveversion ; 
+
+# NEXT ARE OPTIONAL STEPS...
 ceph osd require-osd-release squid ; reboot # NOTE: Do this if you see error "[SOLVED] all OSDs are running squid or later but require_osd_release < squid"
+mv sources.list.d/ ~/sources.list.d_post_upgrade ;  mkdir /etc/apt/sources.list.d # NOTE: Post upgrade it will point to the internet again, if you need homelab just mv this new one back to homedir
 ```
 
 ### Example #2: Installing proxmox-ve on standalone debian
-apt-get install proxmox-ve  
+apt-get install -y proxmox-ve  
 
 ### Example #3: Installing pom proxmox downloader for offline mirror'ing
 apt install -y proxmox-offline-mirror 
 
 ### Example #4: Mount a cephfs network filesystem
 1) On your VM install ceph-common package: {sudo} apt install ceph-common
-2) On your VM execute: echo "CONTENTS OF A VALID CEPH KEY" > /etc/ceph/[I USED THE SHARENAME].secret
+2) On your VM execute: echo "CONTENTS OF A VALID CEPH KEY" > /etc/ceph/[I USED THE SHARENAME].secret   # You can get this from pve01 via: cat /etc/pve/priv/ceph.client.admin.keyring
 3) Create the mount directory: {sudo} mkdir -p /mnt/[I USED THE SHARE NAME]
 4) Test the mount with: {sudo} mount -t ceph [IP ADDRESSES OF YOUR NODE. SEPARATED BY A SINGLE COMMA]:/ [MOUNT DIRECTORY] -o name=[USERNAME TO MOUNT AS],secretfile=[PATH TO KEY FILE],fs=[SHARE NAME]
 5) Once working, then un-mount the share using umount [PATH TO MOUNT DIRECTORY]
@@ -208,5 +222,5 @@ apt install -y proxmox-offline-mirror
     {sudo} systemctl daemon-reload && {sudo} mount -a
 
 * Thats it!
-* Bobl also reccomended reading this strictly before doing in-place-upgrades >> https://pve.proxmox.com/wiki/Upgrade_from_8_to_9
+* Bobl also recomended reading this strictly before doing in-place-upgrades >> https://pve.proxmox.com/wiki/Upgrade_from_8_to_9
 
