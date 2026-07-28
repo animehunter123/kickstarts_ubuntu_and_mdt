@@ -160,6 +160,11 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 
 * When this is done, cd into each directory and ensure that there is only the Z directory not the tmp. Then remove the tmp directories. Then rename the Z directory to not have ':' characters so that Windows CIFS will be able to copy to a hard drive later.
 
+
+
+
+
+
 * Finally you can make a proxmox repo file to your nas, like this:
 1. if internet disconnected, move the /etc/apt/sourfces.listt.d files out
 ```bash
@@ -189,6 +194,10 @@ EOF
 
 ### Example #1: Upgrading PVE from 8.4.0 to 8.4.1/9.x.x (In-Place)
 # (This method to ensure no prompts during the upgrade)!!!!!!!!!!!
+
+_...NOW IN THE HOMELAB BASICALLY WE WANNA USE IT - KEEP READING...
+ ssh into pve01 >> ha-manager crm-command node-maintenance enable pve01 # This just changes the icon in the GUI >> qm list (migrate if not 0)>> pct list (migrate if not 0) >> THEN UPGRADE IT below instructions >> THE UNMAINTENANCE MODE IT_
+
 ```bash
 export DEBIAN_FRONTEND=noninteractive ;
 export ACCEPT_EULA=Y ;
