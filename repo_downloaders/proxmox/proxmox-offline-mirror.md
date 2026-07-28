@@ -163,9 +163,16 @@ NOT OK: 2025-07-17T05:19:24Z.tmp/
 
 
 
+A THIS POINT --- TO USE OFFLINE, FIRST READ THIS EXAMPLE THEN CONTINUE READING!!!
+A THIS POINT --- TO USE OFFLINE, FIRST READ THIS EXAMPLE THEN CONTINUE READING!!!
+A THIS POINT --- TO USE OFFLINE, FIRST READ THIS EXAMPLE THEN CONTINUE READING!!!
+
+...NOW IN THE HOMELAB BASICALLY WE WANNA USE IT - KEEP READING...
+ssh into pve01 >> ha-manager crm-command node-maintenance enable pve01 # This just changes the icon in the GUI >> qm list (Rclick Pve01 > Bulk Migrate if not 0)>> pct list (migrate if not 0) >> THEN UPGRADE IT below instructions >> THE UNMAINTENANCE MODE IT
 
 
-* Finally you can make a proxmox repo file to your nas, like this:
+
+* Therefore: you can make a proxmox repo file to your nas, like this:
 1. if internet disconnected, move the /etc/apt/sourfces.listt.d files out
 ```bash
 mv /etc/apt/sources.list.d/ ~ ; mkdir /etc/apt/sources.list.d/ ; vi /etc/apt/sources.list
@@ -192,12 +199,11 @@ Acquire {
 EOF
 ```
 
+NOW...
+And `apt update` to make sure it is working and wget'ing correctly. Chmod777 if needed.
+
 ### Example #1: Upgrading PVE from 8.4.0 to 8.4.1/9.x.x (In-Place)
 # (This method to ensure no prompts during the upgrade)!!!!!!!!!!!
-
-_...NOW IN THE HOMELAB BASICALLY WE WANNA USE IT - KEEP READING...
- ssh into pve01 >> ha-manager crm-command node-maintenance enable pve01 # This just changes the icon in the GUI >> qm list (migrate if not 0)>> pct list (migrate if not 0) >> THEN UPGRADE IT below instructions >> THE UNMAINTENANCE MODE IT_
-
 ```bash
 export DEBIAN_FRONTEND=noninteractive ;
 export ACCEPT_EULA=Y ;
@@ -210,7 +216,7 @@ pveversion ;
 
 # NEXT ARE OPTIONAL STEPS...
 ceph osd require-osd-release squid ; reboot # NOTE: Do this if you see error "[SOLVED] all OSDs are running squid or later but require_osd_release < squid"
-mv sources.list.d/ ~/sources.list.d_post_upgrade ;  mkdir /etc/apt/sources.list.d # NOTE: Post upgrade it will point to the internet again, if you need homelab just mv this new one back to homedir
+mv /etc/apt/sources.list.d/ ~/sources.list.d_post_upgrade 2>/dev/null ;  mkdir /etc/apt/sources.list.d 2>/dev/null # NOTE: Post upgrade it will point to the internet again, if you need homelab just mv this new one back to homedir
 ```
 
 ### Example #2: Installing proxmox-ve on standalone debian
