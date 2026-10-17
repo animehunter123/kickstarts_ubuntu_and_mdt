@@ -2,7 +2,7 @@ __TOC__
 
 MDT with Windows 10/11 Enterprise Process. '''We strictly follow Microsoft Docs, and this page is the best:''' https://docs.microsoft.com/en-us/windows/deployment/deploy-windows-mdt/deploy-a-windows-10-image-using-mdt#step-5-prepare-the-drivers-repository
 
-An older alternative method is [[MDT 20H2 Galvin Method]] as well (not reccomended).
+An older alternative method is [[MDT 20H2 Galvin Method]] as well.
 
 Follow the steps on this page from top to bottom to build your MDT environment.
 
